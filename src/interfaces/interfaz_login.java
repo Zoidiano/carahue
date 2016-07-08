@@ -41,6 +41,11 @@ public class interfaz_login extends javax.swing.JFrame {
         btnLimpiar.setText("LIMPIAR");
 
         btnSalir.setText("SALIR");
+        btnSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalirActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -100,6 +105,10 @@ public class interfaz_login extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, ""+txtUsuario.getText()+" "+txtContrasena.getText()+"");
         }
     }//GEN-LAST:event_btnIngresarActionPerformed
+
+    private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnSalirActionPerformed
 
     
     public static void main(String args[]) {
