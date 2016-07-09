@@ -115,8 +115,7 @@ public class interfaz_login extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "usuario encontrado");
         }else
         {
-            JOptionPane.showMessageDialog(null, "aprende a escribir");
-            JOptionPane.showMessageDialog(null, ""+txtUsuario.getText()+" "+txtContrasena.getText()+"");
+            JOptionPane.showMessageDialog(null, "Usuario no encontrado");
         }
     }//GEN-LAST:event_btnIngresarActionPerformed
 

@@ -15,7 +15,7 @@ Connection conectar = null;
     try
     {
       Class.forName("com.mysql.jdbc.Driver");
-      this.conectar = DriverManager.getConnection("jdbc:mysql://localhost/empresa", "root", "");
+      this.conectar = DriverManager.getConnection("jdbc:mysql://localhost/carahue", "root", "");
     }
     catch (Exception e)
     {

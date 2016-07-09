@@ -27,7 +27,7 @@ public class ConsultasSQL
     {
         boolean Consulta=false;
         try{
-            CadSql="select usuario, clave from usuarios where usuario='"+usuario+"' && clave='"+contraseña+"';";
+            CadSql="select user, password from usuarios where user='"+usuario+"' && password='"+contraseña+"';";
             JOptionPane.showMessageDialog(null, CadSql);
             Statement st = this.cn.createStatement();
             ResultSet rs = st.executeQuery(CadSql);
@@ -35,7 +35,6 @@ public class ConsultasSQL
             while (rs.next())
             {
             Consulta=true;
-            JOptionPane.showMessageDialog(null, "llegue compita");
             }
         }
         catch(Exception ex)
