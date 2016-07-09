@@ -175,7 +175,7 @@ public class ConsultasSQL
 //            JOptionPane.showMessageDialog(null, ex);
 //        }
 //    }
-    public void CargarTablaClientess(int numero,String campo)
+    public void CargarTablaProductos(int numero,String campo)
     {
         DefaultTableModel modelo = new DefaultTableModel();
 //        modelo.addColumn("CodigoProducto");
@@ -205,7 +205,7 @@ public class ConsultasSQL
             datos[4] = rs.getString(5);
             modelo.addRow(datos);
           }
-             interfaces.interfaz_inventario.tbinventario.setModel(modelo);
+             interfaces.interfaz_inventario.tbproductos.setModel(modelo);
         }
         catch(Exception ex)
         {
