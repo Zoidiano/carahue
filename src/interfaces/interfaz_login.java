@@ -112,7 +112,12 @@ public class interfaz_login extends javax.swing.JFrame {
     private void btnIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarActionPerformed
         if(sql.ConsultaUsuario(txtUsuario.getText(), txtContrasena.getText()))
         {
-            JOptionPane.showMessageDialog(null, "usuario encontrado");
+            dispose();
+            interfaz_usuarios iu = new interfaz_usuarios();
+              iu.setLocationRelativeTo(null);
+              iu.setVisible(true);
+//                interfaz_inventario ii=new interfaz_inventario();
+//                ii.setVisible(true);
         }else
         {
             JOptionPane.showMessageDialog(null, "Usuario no encontrado");

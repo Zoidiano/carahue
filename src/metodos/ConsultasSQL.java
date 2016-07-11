@@ -17,32 +17,57 @@ import javax.swing.table.TableColumnModel;
  * @author Lucas Jara Espinoza
  * Estudiante Ingenieria en Informatica
  */
-public class ConsultasSQL 
-{
-    private String CadSql=""; 
-    private int verificador=0;
-    
-    public boolean ConsultaUsuario(String usuario,String contraseña)
-    {
-    {
-        boolean Consulta=false;
-        try{
-            CadSql="select user, password from usuarios where user='"+usuario+"' && password='"+contraseña+"';";
-            JOptionPane.showMessageDialog(null, CadSql);
+public class ConsultasSQL {
+
+    private String CadSql = "";
+    private int verificador = 0;
+
+    public boolean ConsultaUsuario(String usuario, String contraseña) {
+        {
+            boolean Consulta = false;
+            try {
+                CadSql = "select user, password from usuarios where user='" + usuario + "' && password='" + contraseña + "';";
+                Statement st = this.cn.createStatement();
+                ResultSet rs = st.executeQuery(CadSql);
+
+                while (rs.next()) {
+                    Consulta = true;
+                }
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(null, ex);
+            }
+            return Consulta;
+        }
+    }
+
+    public void CargarRegiones() {
+        try {
+            CadSql = "Select des_region from regiones;";
             Statement st = this.cn.createStatement();
             ResultSet rs = st.executeQuery(CadSql);
-
-            while (rs.next())
+            while (rs.next()) {
+            //    interfaz_principal.cboRegionFactura.addItem(rs.getString(1));
+            }
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, ex);
+        }
+    }
+        public void CargarCiudad(int campo)
+    {   
+        try
+        {
+           CadSql="SELECT des_ciudad FROM ciudad WHERE cod_provincia ="+campo+";";
+           Statement st = this.cn.createStatement();
+           ResultSet rs = st.executeQuery(CadSql);
+           while (rs.next())
             {
-            Consulta=true;
+         //       interfaz_principal.cboCiudadFactura.addItem(rs.getString(1));
             }
         }
         catch(Exception ex)
         {
-        JOptionPane.showMessageDialog(null, ex);
-        }
-        return Consulta;
-    }
+            JOptionPane.showMessageDialog(null, ex);
+        }   
     }
 //    
 //    public boolean ConsultarRut(String rut, int numero)
@@ -107,41 +132,8 @@ public class ConsultasSQL
 //        }
 //        catch (Exception e){}    
 //    }
-//    public void CargarRegiones()
-//    {   
-//        try
-//        {
-//           CadSql="Select des_region from regiones;";
-//           Statement st = this.cn.createStatement();
-//           ResultSet rs = st.executeQuery(CadSql);
-//           while (rs.next())
-//            {
-//                interfaz_principal.cboRegionFactura.addItem(rs.getString(1));
-//            }
-//        }
-//        catch(Exception ex)
-//        {
-//            JOptionPane.showMessageDialog(null, ex);
-//        }   
-//    }
-//    public void CargarCiudad(int campo)
-//    {   
-//        try
-//        {
-//           CadSql="SELECT des_ciudad FROM ciudad WHERE cod_provincia ="+campo+";";
-//           Statement st = this.cn.createStatement();
-//           ResultSet rs = st.executeQuery(CadSql);
-//           while (rs.next())
-//            {
-//                interfaz_principal.cboCiudadFactura.addItem(rs.getString(1));
-//            }
-//        }
-//        catch(Exception ex)
-//        {
-//            JOptionPane.showMessageDialog(null, ex);
-//        }   
-//    }
-    
+
+
 //    public void CargarTablaClientes(int numero,String campo)
 //    {
 //        DefaultTableModel modelo = new DefaultTableModel();
@@ -175,40 +167,38 @@ public class ConsultasSQL
 //            JOptionPane.showMessageDialog(null, ex);
 //        }
 //    }
-    public void CargarTablaProductos(int numero,String campo)
-    {
+    public void CargarTablaProductos(int numero, String campo) {
         DefaultTableModel modelo = new DefaultTableModel();
 //        modelo.addColumn("CodigoProducto");
 //        modelo.addColumn("Cantidad");
 //        modelo.addColumn("Categoria");
 //        modelo.addColumn("Valor Producto");
 //        modelo.addColumn("Fecha LLegada");
-            switch(numero){
-            case 1:CadSql="SELECT * FROM productos;";
-            break;
-            case 2:CadSql="SELECT * FROM productos where categoria="+campo+";";
-            break;
-            case 3:CadSql="SELECT * FROM clientes where nombre_cliente like'%"+campo+"%';";
-            break;
-                }
-        try
-        {
+        switch (numero) {
+            case 1:
+                CadSql = "SELECT * FROM productos;";
+                break;
+            case 2:
+                CadSql = "SELECT * FROM productos where categoria=" + campo + ";";
+                break;
+            case 3:
+                CadSql = "SELECT * FROM clientes where nombre_cliente like'%" + campo + "%';";
+                break;
+        }
+        try {
             String[] datos = new String[5];
             Statement st = this.cn.createStatement();
             ResultSet rs = st.executeQuery(CadSql);
-             while (rs.next())
-          {
-            datos[0] = rs.getString(1);
-            datos[1] = rs.getString(2);
-            datos[2] = rs.getString(3);
-            datos[3] = rs.getString(4);
-            datos[4] = rs.getString(5);
-            modelo.addRow(datos);
-          }
-             interfaces.interfaz_inventario.tbproductos.setModel(modelo);
-        }
-        catch(Exception ex)
-        {
+            while (rs.next()) {
+                datos[0] = rs.getString(1);
+                datos[1] = rs.getString(2);
+                datos[2] = rs.getString(3);
+                datos[3] = rs.getString(4);
+                datos[4] = rs.getString(5);
+                modelo.addRow(datos);
+            }
+            interfaces.interfaz_inventario.tbproductos.setModel(modelo);
+        } catch (Exception ex) {
             JOptionPane.showMessageDialog(null, ex);
         }
     }
@@ -446,5 +436,5 @@ public class ConsultasSQL
 //        }catch(Exception ex){}
 //    }
     conectar cc = new conectar();
-  Connection cn = this.cc.conexion();
+    Connection cn = this.cc.conexion();
 }
