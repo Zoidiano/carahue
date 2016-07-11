@@ -2,6 +2,7 @@ package metodos;
 
 import conexion.conectar;
 import interfaces.interfaz_principal;
+import interfaces.interfaz_usuarios;
 //import interfaces.mostrar_busqueda;
 //import interfaces.muestra;
 import java.sql.Connection;
@@ -21,6 +22,7 @@ public class ConsultasSQL {
 
     private String CadSql = "";
     private int verificador = 0;
+    
 
     public boolean ConsultaUsuario(String usuario, String contraseña) {
         {
@@ -46,30 +48,77 @@ public class ConsultasSQL {
             Statement st = this.cn.createStatement();
             ResultSet rs = st.executeQuery(CadSql);
             while (rs.next()) {
-            //    interfaz_principal.cboRegionFactura.addItem(rs.getString(1));
+                //    interfaz_principal.cboRegionFactura.addItem(rs.getString(1));
             }
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(null, ex);
         }
     }
-        public void CargarCiudad(int campo)
-    {   
-        try
-        {
-           CadSql="SELECT des_ciudad FROM ciudad WHERE cod_provincia ="+campo+";";
-           Statement st = this.cn.createStatement();
-           ResultSet rs = st.executeQuery(CadSql);
-           while (rs.next())
-            {
-         //       interfaz_principal.cboCiudadFactura.addItem(rs.getString(1));
+
+    public void CargarCiudad(int campo) {
+        try {
+            CadSql = "SELECT des_ciudad FROM ciudad WHERE cod_provincia =" + campo + ";";
+            Statement st = this.cn.createStatement();
+            ResultSet rs = st.executeQuery(CadSql);
+            while (rs.next()) {
+                //       interfaz_principal.cboCiudadFactura.addItem(rs.getString(1));
             }
-        }
-        catch(Exception ex)
-        {
+        } catch (Exception ex) {
             JOptionPane.showMessageDialog(null, ex);
-        }   
+        }
     }
-//    
+
+    public void GuardarUsuario(String tipo, String nombre, String usuario, String contraseña) {
+        try {
+
+            PreparedStatement pst = this.cn.prepareStatement("INSERT INTO usuarios(cod_user,user,password,nombre,tipo) VALUES (?,?,?,?,?)");
+            pst.setString(1, null);
+            pst.setString(2, usuario);
+            pst.setString(3, contraseña);
+            pst.setString(4, nombre);
+            pst.setString(5, tipo);
+            pst.executeUpdate();
+            JOptionPane.showMessageDialog(null, "Usuario Ingresado Correctamente");
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+        }
+    }
+
+    public void CargarTablausuarios(int numero, String campo) {
+        DefaultTableModel modelo = new DefaultTableModel();
+        modelo.addColumn("Codigo");
+        modelo.addColumn("Usuario");
+        modelo.addColumn("Contraseña");
+        modelo.addColumn("Nombre");
+        modelo.addColumn("Tipo");
+        switch (numero) {
+            case 1:
+                CadSql = "SELECT * FROM usuarios;";
+                break;
+            case 2:
+                CadSql = "SELECT * FROM usuarios where categoria=" + campo + ";";
+                break;
+            case 3:
+                CadSql = "SELECT * FROM usuarios where nombre like'%" + campo + "%';";
+                break;
+        }
+        try {
+            String[] datos = new String[5];
+            Statement st = this.cn.createStatement();
+            ResultSet rs = st.executeQuery(CadSql);
+            while (rs.next()) {
+                datos[0] = rs.getString(1);
+                datos[1] = rs.getString(2);
+                datos[2] = rs.getString(3);
+                datos[3] = rs.getString(4);
+                datos[4] = rs.getString(5);
+                modelo.addRow(datos);
+            }
+            interfaz_usuarios.tbUsuarios.setModel(modelo);
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, ex);
+        }
+    }
 //    public boolean ConsultarRut(String rut, int numero)
 //    {
 //        boolean Consulta=false;
@@ -132,7 +181,6 @@ public class ConsultasSQL {
 //        }
 //        catch (Exception e){}    
 //    }
-
 
 //    public void CargarTablaClientes(int numero,String campo)
 //    {

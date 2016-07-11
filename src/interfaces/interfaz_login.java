@@ -114,7 +114,6 @@ public class interfaz_login extends javax.swing.JFrame {
         {
             dispose();
             interfaz_usuarios iu = new interfaz_usuarios();
-              iu.setLocationRelativeTo(null);
               iu.setVisible(true);
 //                interfaz_inventario ii=new interfaz_inventario();
 //                ii.setVisible(true);

@@ -121,6 +121,9 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="NUEVO"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BtnNuevoActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="BtnModificar">
           <Properties>
@@ -193,7 +196,7 @@
         </Component>
       </SubComponents>
     </Container>
-    <Container class="javax.swing.JPanel" name="jPanel1">
+    <Container class="javax.swing.JPanel" name="PanelCambianteInventario">
       <Properties>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.MatteColorBorderInfo">

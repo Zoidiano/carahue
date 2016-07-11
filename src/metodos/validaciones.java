@@ -10,7 +10,7 @@ import javax.swing.JOptionPane;
 public class validaciones
 {
   public boolean validador=false;
-  
+
 //  public boolean CamposVacios()
 //  {
 //     validador=true;

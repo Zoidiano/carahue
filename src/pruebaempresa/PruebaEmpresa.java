@@ -13,9 +13,9 @@ public class PruebaEmpresa {
      try{
         JFrame.setDefaultLookAndFeelDecorated(true);
         JDialog.setDefaultLookAndFeelDecorated(true);
-        //UIManager.setLookAndFeel("com.sun.java.swing.plaf.nimbus.NimbusLookAndFeel");//agradable a la vista
+        UIManager.setLookAndFeel("com.sun.java.swing.plaf.nimbus.NimbusLookAndFeel");//agradable a la vista
         //UIManager.setLookAndFeel("javax.swing.plaf.metal.MetalLookAndFeel"); //estilo metalico
-        UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");//estilo Windows
+        //UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");//estilo Windows
         //UIManager.setLookAndFeel("com.sun.java.swing.plaf.motif.MotifLookAndFeel"); // estilo Windows viejo
     }
     catch (Exception e)

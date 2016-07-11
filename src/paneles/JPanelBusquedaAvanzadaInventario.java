@@ -9,12 +9,12 @@ package paneles;
  *
  * @author Zoidiano
  */
-public class JPanelElimUsuarios extends javax.swing.JPanel {
+public class JPanelBusquedaAvanzadaInventario extends javax.swing.JPanel {
 
     /**
-     * Creates new form JPanelNuevoUsuarios
+     * Creates new form JPanelBusquedaAvanzadaInventario
      */
-    public JPanelElimUsuarios() {
+    public JPanelBusquedaAvanzadaInventario() {
         initComponents();
     }
 
@@ -31,11 +31,11 @@ public class JPanelElimUsuarios extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 413, Short.MAX_VALUE)
+            .addGap(0, 759, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 155, Short.MAX_VALUE)
+            .addGap(0, 227, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 

@@ -5,7 +5,13 @@
  */
 package interfaces;
 
+import java.awt.BorderLayout;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import metodos.ConsultasSQL;
+import paneles.JPanelModUsuarios;
+import paneles.JPanelNuevoInventario;
+import paneles.JPanelNuevoUsuarios;
 
 /**
  *
@@ -13,13 +19,15 @@ import javax.swing.JOptionPane;
  */
 public class interfaz_usuarios extends javax.swing.JFrame {
 
-    /**
-     * Creates new form interfaz_principal
-     */
+   
+   public ConsultasSQL sql=new ConsultasSQL();
+   
     public interfaz_usuarios() {
         initComponents();
+        sql.CargarTablausuarios(1, "");
     }
-
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -37,9 +45,7 @@ public class interfaz_usuarios extends javax.swing.JFrame {
         btnEliminar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tbUsuarios = new javax.swing.JTable();
-        jPanel2 = new javax.swing.JPanel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        PanelCambianteUsuarios = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -55,6 +61,11 @@ public class interfaz_usuarios extends javax.swing.JFrame {
         });
 
         BtnNuevo.setText("NUEVO");
+        BtnNuevo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnNuevoActionPerformed(evt);
+            }
+        });
 
         BtnModificar.setText("MODIFICAR");
         BtnModificar.addActionListener(new java.awt.event.ActionListener() {
@@ -63,7 +74,7 @@ public class interfaz_usuarios extends javax.swing.JFrame {
             }
         });
 
-        btnEliminar.setText("Eliminar");
+        btnEliminar.setText("ELIMINAR");
         btnEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEliminarActionPerformed(evt);
@@ -85,7 +96,7 @@ public class interfaz_usuarios extends javax.swing.JFrame {
                 .addComponent(BtnModificar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnEliminar)
-                .addContainerGap(67, Short.MAX_VALUE))
+                .addContainerGap(63, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -130,37 +141,34 @@ public class interfaz_usuarios extends javax.swing.JFrame {
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 300, 520, 100));
 
-        jPanel2.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(51, 255, 51)));
+        PanelCambianteUsuarios.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(51, 255, 51)));
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jTextArea1.setText("Mismo sistema que en interfaz inventario");
-        jScrollPane2.setViewportView(jTextArea1);
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(70, 70, 70)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 364, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(84, Short.MAX_VALUE))
+        javax.swing.GroupLayout PanelCambianteUsuariosLayout = new javax.swing.GroupLayout(PanelCambianteUsuarios);
+        PanelCambianteUsuarios.setLayout(PanelCambianteUsuariosLayout);
+        PanelCambianteUsuariosLayout.setHorizontalGroup(
+            PanelCambianteUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 508, Short.MAX_VALUE)
         );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(49, 49, 49)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(58, Short.MAX_VALUE))
+        PanelCambianteUsuariosLayout.setVerticalGroup(
+            PanelCambianteUsuariosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 178, Short.MAX_VALUE)
         );
 
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 520, 140));
+        getContentPane().add(PanelCambianteUsuarios, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 510, 180));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void BtnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnModificarActionPerformed
-        // TODO add your handling code here:
+    JPanelModUsuarios pmu=new JPanelModUsuarios();
+        pmu.setSize(400,165);
+        pmu.setLocation(5,5);
+        
+        PanelCambianteUsuarios.removeAll();
+        PanelCambianteUsuarios.add(pmu,BorderLayout.CENTER);
+        PanelCambianteUsuarios.revalidate();
+        PanelCambianteUsuarios.repaint();
+        desabilitarmod();
     }//GEN-LAST:event_BtnModificarActionPerformed
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
@@ -183,6 +191,7 @@ public class interfaz_usuarios extends javax.swing.JFrame {
 
     private void txtNombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombreKeyTyped
         char c = evt.getKeyChar();
+        sql.CargarTablausuarios(3, txtNombre.getText());
         if (Character.isDigit(c)) {
             getToolkit().beep();
             evt.consume();
@@ -191,9 +200,52 @@ public class interfaz_usuarios extends javax.swing.JFrame {
     }//GEN-LAST:event_txtNombreKeyTyped
 
     private void tbUsuariosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbUsuariosMouseClicked
+        int fila = this.tbUsuarios.getSelectedRow();
+        try {
+            
+//            txtNombre.setText(this.tbUsuarios.getValueAt(fila, 1).toString());
+//            txtNombre.setText(this.tbUsuarios.getValueAt(fila, 2).toString());
+//            txtNombre.setText(this.tbUsuarios.getValueAt(fila, 3).toString());
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, ex);
+        }
 
     }//GEN-LAST:event_tbUsuariosMouseClicked
 
+    private void BtnNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnNuevoActionPerformed
+        JPanelNuevoUsuarios pni=new JPanelNuevoUsuarios();
+        pni.setSize(400,165);
+        pni.setLocation(5,5);
+        
+        PanelCambianteUsuarios.removeAll();
+        PanelCambianteUsuarios.add(pni,BorderLayout.CENTER);
+        PanelCambianteUsuarios.revalidate();
+        PanelCambianteUsuarios.repaint();
+        desabilitar();
+    }//GEN-LAST:event_BtnNuevoActionPerformed
+
+      public void desabilitar()
+    {
+        BtnModificar.setEnabled(false);
+        btnEliminar.setEnabled(false);
+    }
+      public void desabilitarmod()
+    {
+        BtnNuevo.setEnabled(false);
+        btnEliminar.setEnabled(false);
+    }
+      public void habilitarmod()
+    {
+        BtnNuevo.setEnabled(true);
+        btnEliminar.setEnabled(true);
+        txtNombre.setFocusable(true);
+    }
+        public void habilitar()
+    {
+        BtnModificar.setEnabled(true);
+        btnEliminar.setEnabled(true);
+        txtNombre.setFocusable(true);
+    }
     /**
      * @param args the command line arguments
      */
@@ -237,16 +289,14 @@ public class interfaz_usuarios extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton BtnModificar;
-    private javax.swing.JButton BtnNuevo;
-    private javax.swing.JButton btnEliminar;
+    public javax.swing.JButton BtnModificar;
+    public javax.swing.JButton BtnNuevo;
+    private javax.swing.JPanel PanelCambianteUsuarios;
+    public javax.swing.JButton btnEliminar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTable tbUsuarios;
-    private javax.swing.JTextField txtNombre;
+    public static javax.swing.JTable tbUsuarios;
+    public javax.swing.JTextField txtNombre;
     // End of variables declaration//GEN-END:variables
 }

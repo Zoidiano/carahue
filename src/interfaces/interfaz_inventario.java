@@ -5,7 +5,9 @@
  */
 package interfaces;
 
+import java.awt.BorderLayout;
 import javax.swing.JOptionPane;
+import paneles.JPanelNuevoInventario;
 
 /**
  *
@@ -40,7 +42,7 @@ public class interfaz_inventario extends javax.swing.JFrame {
         btnEliminar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tbproductos = new javax.swing.JTable();
-        jPanel1 = new javax.swing.JPanel();
+        PanelCambianteInventario = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
 
@@ -64,6 +66,11 @@ public class interfaz_inventario extends javax.swing.JFrame {
         btnLimpiar.setText("LIMPIAR");
 
         BtnNuevo.setText("NUEVO");
+        BtnNuevo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnNuevoActionPerformed(evt);
+            }
+        });
 
         BtnModificar.setText("MODIFICAR");
 
@@ -130,31 +137,31 @@ public class interfaz_inventario extends javax.swing.JFrame {
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 310, 710, 100));
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(51, 255, 51)));
+        PanelCambianteInventario.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(51, 255, 51)));
 
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
         jTextArea1.setText("Funcionamiento:\n*Elegir Categoria.\n*Se habilita el nombre se escribe.\n*se muestran en la tabla todos los productos de esa categoria.\nIngresar:\n*se da click en nuevo.\n*aparecen los campos en el panel(ademas de un boton aceptar y cancelar).\n*se ingresan los campos.\n*click en aceptar\nModificar:\n*al hacer click el usuario en la tabla se setean todos los datos necesarios a este\npanel(nombre,precio,etc).\n*ahi se cambia lo que se tiene que cambiar y se presiona modificar.\nEliminar:\n*seleccionado en la tabla aparece cuadro de motivo de eliminacion en el panel.\n*se escribe motivo y se da click en eliminar.\nNotas:\n*Recomendaciones o sugerencias recibidas.\n*sea la opcion que se elige este panel se debe modificar pero debe tener siempre\nlos 3 botones minimos (aceptar,cancelar,limpiar).\n*notacion de henry :).\n*la cantidad de campos lo tendre para el lunes al parecer.\n*como rotar un panel:https://www.youtube.com/watch?v=4t2itejwTCw");
         jScrollPane2.setViewportView(jTextArea1);
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        javax.swing.GroupLayout PanelCambianteInventarioLayout = new javax.swing.GroupLayout(PanelCambianteInventario);
+        PanelCambianteInventario.setLayout(PanelCambianteInventarioLayout);
+        PanelCambianteInventarioLayout.setHorizontalGroup(
+            PanelCambianteInventarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PanelCambianteInventarioLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 715, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(63, Short.MAX_VALUE))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        PanelCambianteInventarioLayout.setVerticalGroup(
+            PanelCambianteInventarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PanelCambianteInventarioLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(26, Short.MAX_VALUE))
         );
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 790, 180));
+        getContentPane().add(PanelCambianteInventario, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 790, 180));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -184,6 +191,17 @@ public class interfaz_inventario extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, ex);
         }
     }//GEN-LAST:event_btnEliminarActionPerformed
+
+    private void BtnNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnNuevoActionPerformed
+        JPanelNuevoInventario pni=new JPanelNuevoInventario();
+        pni.setSize(780,165);
+        pni.setLocation(5,5);
+        
+        PanelCambianteInventario.removeAll();
+        PanelCambianteInventario.add(pni,BorderLayout.CENTER);
+        PanelCambianteInventario.revalidate();
+        PanelCambianteInventario.repaint();
+    }//GEN-LAST:event_BtnNuevoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -230,12 +248,12 @@ public class interfaz_inventario extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtnModificar;
     private javax.swing.JButton BtnNuevo;
+    private javax.swing.JPanel PanelCambianteInventario;
     private javax.swing.JButton btnEliminar;
     private javax.swing.JButton btnLimpiar;
     private javax.swing.JComboBox<String> cboCategoria;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
