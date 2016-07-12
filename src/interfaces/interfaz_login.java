@@ -1,6 +1,7 @@
 package interfaces;
 
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 import metodos.ConsultasSQL;
 
 /*
@@ -47,6 +48,7 @@ public class interfaz_login extends javax.swing.JFrame {
         jLabel2.setText("Contraseña");
 
         txtUsuario.setToolTipText("");
+        txtUsuario.setMaximumSize(new java.awt.Dimension(5, 2147483647));
         txtUsuario.setName(""); // NOI18N
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/login.png"))); // NOI18N
@@ -198,6 +200,9 @@ public class interfaz_login extends javax.swing.JFrame {
         }else
         {
             JOptionPane.showMessageDialog(null, "Usuario no encontrado");
+            txtUsuario.setText("");
+            txtContrasena.setText("");
+            txtUsuario.requestFocus();
         }
     }//GEN-LAST:event_btnIngresarActionPerformed
 
