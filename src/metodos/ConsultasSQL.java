@@ -3,6 +3,7 @@ package metodos;
 import conexion.conectar;
 import interfaces.interfaz_principal;
 import interfaces.interfaz_usuarios;
+import interfaces.interfaz_usuarios2;
 //import interfaces.mostrar_busqueda;
 //import interfaces.muestra;
 import java.sql.Connection;
@@ -38,6 +39,26 @@ public class ConsultasSQL {
             } catch (Exception ex) {
                 JOptionPane.showMessageDialog(null, ex);
             }
+            return Consulta;
+        }
+    }
+    
+        public String Consultatipo(String usuario) {
+        {
+            String Consulta = "";
+            try {
+                CadSql = "select tipo from usuarios where user='" + usuario + "';";
+                Statement st = this.cn.createStatement();
+                ResultSet rs = st.executeQuery(CadSql);
+
+                while (rs.next()) {
+                    Consulta = rs.getString(1);
+                    
+                }
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(null, ex);
+            }
+            
             return Consulta;
         }
     }
@@ -114,7 +135,7 @@ public class ConsultasSQL {
                 datos[4] = rs.getString(5);
                 modelo.addRow(datos);
             }
-            interfaz_usuarios.tbUsuarios.setModel(modelo);
+            interfaz_usuarios2.tbUsuarios.setModel(modelo);
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(null, ex);
         }

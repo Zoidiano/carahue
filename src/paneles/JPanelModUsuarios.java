@@ -6,6 +6,10 @@
 package paneles;
 
 import interfaces.interfaz_usuarios;
+import interfaces.interfaz_usuarios2;
+import java.awt.AWTException;
+import java.awt.Robot;
+import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
 import metodos.ConsultasSQL;
 
@@ -15,11 +19,12 @@ import metodos.ConsultasSQL;
  */
 public class JPanelModUsuarios extends javax.swing.JPanel {
 
-    ConsultasSQL sql=new ConsultasSQL();
+    ConsultasSQL sql = new ConsultasSQL();
+
     public JPanelModUsuarios() {
         initComponents();
     }
-    interfaz_usuarios iu=new interfaz_usuarios();
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -158,17 +163,15 @@ public class JPanelModUsuarios extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
-        String nombre=txtNombres.getText(),usuario=txtUsuario.getText(),contraseña=txtpass.getText(),tipo=cboTipo.getSelectedItem().toString();
-        
-        if(nombre.equals("") || usuario.equals("") || contraseña.equals(""))
-        {
+        String nombre = txtNombres.getText(), usuario = txtUsuario.getText(), contraseña = txtpass.getText(), tipo = cboTipo.getSelectedItem().toString();
+
+        if (nombre.equals("") || usuario.equals("") || contraseña.equals("")) {
             JOptionPane.showMessageDialog(null, "Alguno de los campos necesarios se encuentra vacio");
-        }
-        else
-        {
-            sql.GuardarUsuario(tipo,nombre,usuario,contraseña);
+        } else {
+            sql.GuardarUsuario(tipo, nombre, usuario, contraseña);
             sql.CargarTablausuarios(1, "");
-            iu.habilitar();
+            interfaz_usuarios iu = new interfaz_usuarios();
+
             iu.setVisible(true);
         }
     }//GEN-LAST:event_btnAceptarActionPerformed
@@ -178,10 +181,14 @@ public class JPanelModUsuarios extends javax.swing.JPanel {
     }//GEN-LAST:event_cboTipoActionPerformed
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
-            iu.habilitar();
-            iu.requestFocus();
-            iu.dispose();
-            iu.setVisible(true);
+        try {
+            Robot robot = new Robot();
+            robot.keyPress(KeyEvent.VK_CONTROL);
+            robot.keyPress(KeyEvent.VK_C);
+            
+        } catch (AWTException a) {
+            a.printStackTrace();
+        }
     }//GEN-LAST:event_btnCancelarActionPerformed
 
 
@@ -195,8 +202,8 @@ public class JPanelModUsuarios extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField txtNombres;
-    private javax.swing.JTextField txtUsuario;
-    private javax.swing.JPasswordField txtpass;
+    public static javax.swing.JTextField txtNombres;
+    public static javax.swing.JTextField txtUsuario;
+    public static javax.swing.JPasswordField txtpass;
     // End of variables declaration//GEN-END:variables
 }

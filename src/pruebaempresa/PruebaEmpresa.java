@@ -1,6 +1,6 @@
 package pruebaempresa;
 
-import interfaces.interfaz_login;
+import interfaces.Main;
 import interfaces.interfaz_principal;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
@@ -26,9 +26,11 @@ public class PruebaEmpresa {
 //       interfaz_principal ip =new interfaz_principal();
 //        ip.setLocationRelativeTo(null);
 //        ip.setVisible(true);
-        interfaz_login il = new interfaz_login();
-        il.setLocationRelativeTo(null);
-        il.setVisible(true);
+//        interfaz_login il = new interfaz_login();
+//        il.setLocationRelativeTo(null);
+//        il.setVisible(true);
+        Main mn = new Main();
+        mn.setVisible(true);
     } 
     
 }

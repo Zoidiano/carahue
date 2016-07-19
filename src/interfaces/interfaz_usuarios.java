@@ -27,7 +27,6 @@ public class interfaz_usuarios extends javax.swing.JFrame {
         sql.CargarTablausuarios(1, "");
     }
     
-    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -37,6 +36,7 @@ public class interfaz_usuarios extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        Pprincipal = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         txtNombre = new javax.swing.JTextField();
@@ -47,7 +47,8 @@ public class interfaz_usuarios extends javax.swing.JFrame {
         tbUsuarios = new javax.swing.JTable();
         PanelCambianteUsuarios = new javax.swing.JPanel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(255, 153, 0)));
@@ -111,8 +112,6 @@ public class interfaz_usuarios extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 510, 40));
-
         tbUsuarios.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
@@ -139,8 +138,6 @@ public class interfaz_usuarios extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(tbUsuarios);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 300, 520, 100));
-
         PanelCambianteUsuarios.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(51, 255, 51)));
 
         javax.swing.GroupLayout PanelCambianteUsuariosLayout = new javax.swing.GroupLayout(PanelCambianteUsuarios);
@@ -154,13 +151,38 @@ public class interfaz_usuarios extends javax.swing.JFrame {
             .addGap(0, 178, Short.MAX_VALUE)
         );
 
-        getContentPane().add(PanelCambianteUsuarios, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 510, 180));
+        javax.swing.GroupLayout PprincipalLayout = new javax.swing.GroupLayout(Pprincipal);
+        Pprincipal.setLayout(PprincipalLayout);
+        PprincipalLayout.setHorizontalGroup(
+            PprincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PprincipalLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(PprincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(PanelCambianteUsuarios, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 520, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(20, Short.MAX_VALUE))
+        );
+        PprincipalLayout.setVerticalGroup(
+            PprincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PprincipalLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(PanelCambianteUsuarios, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(29, Short.MAX_VALUE))
+        );
+
+        getContentPane().add(Pprincipal, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 550, 420));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void BtnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnModificarActionPerformed
-    JPanelModUsuarios pmu=new JPanelModUsuarios();
+    
+        JPanelModUsuarios pmu=new JPanelModUsuarios();
         pmu.setSize(400,165);
         pmu.setLocation(5,5);
         
@@ -169,6 +191,7 @@ public class interfaz_usuarios extends javax.swing.JFrame {
         PanelCambianteUsuarios.revalidate();
         PanelCambianteUsuarios.repaint();
         desabilitarmod();
+        
     }//GEN-LAST:event_BtnModificarActionPerformed
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
@@ -216,7 +239,6 @@ public class interfaz_usuarios extends javax.swing.JFrame {
         JPanelNuevoUsuarios pni=new JPanelNuevoUsuarios();
         pni.setSize(400,165);
         pni.setLocation(5,5);
-        
         PanelCambianteUsuarios.removeAll();
         PanelCambianteUsuarios.add(pni,BorderLayout.CENTER);
         PanelCambianteUsuarios.revalidate();
@@ -234,18 +256,7 @@ public class interfaz_usuarios extends javax.swing.JFrame {
         BtnNuevo.setEnabled(false);
         btnEliminar.setEnabled(false);
     }
-      public void habilitarmod()
-    {
-        BtnNuevo.setEnabled(true);
-        btnEliminar.setEnabled(true);
-        txtNombre.setFocusable(true);
-    }
-        public void habilitar()
-    {
-        BtnModificar.setEnabled(true);
-        btnEliminar.setEnabled(true);
-        txtNombre.setFocusable(true);
-    }
+
     /**
      * @param args the command line arguments
      */
@@ -292,6 +303,7 @@ public class interfaz_usuarios extends javax.swing.JFrame {
     public javax.swing.JButton BtnModificar;
     public javax.swing.JButton BtnNuevo;
     private javax.swing.JPanel PanelCambianteUsuarios;
+    private javax.swing.JPanel Pprincipal;
     public javax.swing.JButton btnEliminar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
