@@ -99,7 +99,7 @@ public class ConsultasSQL {
             pst.setString(4, nombre);
             pst.setString(5, tipo);
             pst.executeUpdate();
-            JOptionPane.showMessageDialog(null, "Usuario Ingresado Correctamente");
+            
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e);
         }
@@ -154,14 +154,12 @@ public class ConsultasSQL {
 
         try {
             PreparedStatement pst = this.cn.prepareStatement("UPDATE usuarios SET cod_user=?, user=?, password=?, nombre=?, tipo=? WHERE cod_user=?;");
-
             pst.setString(1, valor);
             pst.setString(2, usuario);
             pst.setString(3, contrasena);
             pst.setString(4, nombre);
             pst.setString(5, tipo);
             pst.setString(6, valor);
-            JOptionPane.showMessageDialog(null, pst);
             pst.executeUpdate();
             CargarTablausuarios(1, "");
         } catch (Exception ex) {

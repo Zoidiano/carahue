@@ -166,11 +166,17 @@ public class JPanelNuevoUsuarios extends javax.swing.JPanel {
         if (nombre.equals("") || usuario.equals("") || contraseña.equals("")) {
             JOptionPane.showMessageDialog(null, "Alguno de los campos necesarios se encuentra vacio");
         } else {
-            interfaz_usuarios iu = new interfaz_usuarios();
             sql.GuardarUsuario(tipo, nombre, usuario, contraseña);
             sql.CargarTablausuarios(1, "");
-            iu.requestFocus();
-            iu.setVisible(true);
+        try {
+            Robot robot = new Robot();
+            robot.keyPress(KeyEvent.VK_CONTROL);
+            robot.keyPress(KeyEvent.VK_C);
+            robot.keyRelease(KeyEvent.VK_CONTROL);
+            robot.keyRelease(KeyEvent.VK_C);
+        } catch (AWTException a) {
+            a.printStackTrace();
+        }
         }
     }//GEN-LAST:event_btnAceptarActionPerformed
 
@@ -183,6 +189,8 @@ public class JPanelNuevoUsuarios extends javax.swing.JPanel {
             Robot robot = new Robot();
             robot.keyPress(KeyEvent.VK_CONTROL);
             robot.keyPress(KeyEvent.VK_C);
+            robot.keyRelease(KeyEvent.VK_CONTROL);
+            robot.keyRelease(KeyEvent.VK_C);
         } catch (AWTException a) {
             a.printStackTrace();
         }

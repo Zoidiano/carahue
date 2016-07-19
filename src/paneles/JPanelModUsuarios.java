@@ -64,7 +64,7 @@ public class JPanelModUsuarios extends javax.swing.JPanel {
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel1.setText("MODIFICAR:");
 
-        cboTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Vendedor", "Administrador" }));
+        cboTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ventas", "Administrador" }));
         cboTipo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cboTipoActionPerformed(evt);
@@ -175,6 +175,7 @@ public class JPanelModUsuarios extends javax.swing.JPanel {
             String cod = interfaz_usuarios2.tbUsuarios.getValueAt(fila, 0).toString();
                 if (fila != -1) {
                         sql.ModUsuarios(cod,usuario,contrasena,nombre,tipo);
+                        JOptionPane.showMessageDialog(null, "Usuario Modificado correctamente");
                         sql.CargarTablausuarios(1, cod);
                 }else
                 {
@@ -194,7 +195,8 @@ public class JPanelModUsuarios extends javax.swing.JPanel {
             Robot robot = new Robot();
             robot.keyPress(KeyEvent.VK_CONTROL);
             robot.keyPress(KeyEvent.VK_C);
-            
+            robot.keyRelease(KeyEvent.VK_CONTROL);
+            robot.keyRelease(KeyEvent.VK_C);
         } catch (AWTException a) {
             a.printStackTrace();
         }

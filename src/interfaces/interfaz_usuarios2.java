@@ -20,6 +20,7 @@ public class interfaz_usuarios2 extends javax.swing.JInternalFrame {
     /**
      * Creates new form interfaz_usuarios1
      */
+    
     public interfaz_usuarios2() {
         initComponents();
     sql.CargarTablausuarios(1, "");
@@ -269,9 +270,9 @@ public class interfaz_usuarios2 extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_BtnModificarActionPerformed
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
+        try {
         int fila = this.tbUsuarios.getSelectedRow();
         String cod = this.tbUsuarios.getValueAt(fila, 0).toString();
-        try {
             if (fila != -1) {
                 int resp = JOptionPane.showConfirmDialog(null, "Esta seguro que desea eliminar el Cliente?");
                 if (JOptionPane.OK_OPTION == resp) {
@@ -283,7 +284,7 @@ public class interfaz_usuarios2 extends javax.swing.JInternalFrame {
                 JOptionPane.showMessageDialog(null, "Seleccione un elemento de la tabla");
             }
         } catch (Exception ex) {
-            JOptionPane.showMessageDialog(null, ex);
+            JOptionPane.showMessageDialog(null, "Seleccione un elemento de la tabla");
         }
     }//GEN-LAST:event_btnEliminarActionPerformed
 
