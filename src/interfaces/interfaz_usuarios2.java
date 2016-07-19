@@ -261,7 +261,6 @@ public class interfaz_usuarios2 extends javax.swing.JInternalFrame {
         PanelCambianteUsuarios.add(mod,BorderLayout.CENTER);
         PanelCambianteUsuarios.revalidate();
         PanelCambianteUsuarios.repaint();
-        
         desabilitarmod();
 
     }//GEN-LAST:event_BtnModificarActionPerformed
