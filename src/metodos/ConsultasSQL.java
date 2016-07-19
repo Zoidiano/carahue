@@ -12,6 +12,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumnModel;
 
@@ -23,7 +24,6 @@ public class ConsultasSQL {
 
     private String CadSql = "";
     private int verificador = 0;
-    
 
     public boolean ConsultaUsuario(String usuario, String contraseña) {
         {
@@ -42,8 +42,8 @@ public class ConsultasSQL {
             return Consulta;
         }
     }
-    
-        public String Consultatipo(String usuario) {
+
+    public String Consultatipo(String usuario) {
         {
             String Consulta = "";
             try {
@@ -53,12 +53,12 @@ public class ConsultasSQL {
 
                 while (rs.next()) {
                     Consulta = rs.getString(1);
-                    
+
                 }
             } catch (Exception ex) {
                 JOptionPane.showMessageDialog(null, ex);
             }
-            
+
             return Consulta;
         }
     }
@@ -105,6 +105,15 @@ public class ConsultasSQL {
         }
     }
 
+    public void EliminarUsuario(String valor) {
+        try {
+            PreparedStatement pst = this.cn.prepareStatement("DELETE FROM usuarios WHERE  cod_user='" + valor + "'");
+            pst.executeUpdate();
+            CargarTablausuarios(1, valor);
+        } catch (Exception ex) {
+        }
+    }
+
     public void CargarTablausuarios(int numero, String campo) {
         DefaultTableModel modelo = new DefaultTableModel();
         modelo.addColumn("Codigo");
@@ -136,6 +145,25 @@ public class ConsultasSQL {
                 modelo.addRow(datos);
             }
             interfaz_usuarios2.tbUsuarios.setModel(modelo);
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, ex);
+        }
+    }
+
+    public void ModUsuarios(String valor, String usuario, String contrasena, String nombre, String tipo) {
+
+        try {
+            PreparedStatement pst = this.cn.prepareStatement("UPDATE usuarios SET cod_user=?, user=?, password=?, nombre=?, tipo=? WHERE cod_user=?;");
+
+            pst.setString(1, valor);
+            pst.setString(2, usuario);
+            pst.setString(3, contrasena);
+            pst.setString(4, nombre);
+            pst.setString(5, tipo);
+            pst.setString(6, valor);
+            JOptionPane.showMessageDialog(null, pst);
+            pst.executeUpdate();
+            CargarTablausuarios(1, "");
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(null, ex);
         }

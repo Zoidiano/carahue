@@ -163,16 +163,25 @@ public class JPanelModUsuarios extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
-        String nombre = txtNombres.getText(), usuario = txtUsuario.getText(), contraseña = txtpass.getText(), tipo = cboTipo.getSelectedItem().toString();
-
-        if (nombre.equals("") || usuario.equals("") || contraseña.equals("")) {
+        String nombre = txtNombres.getText(), usuario = txtUsuario.getText(), contrasena = txtpass.getText(), tipo = cboTipo.getSelectedItem().toString();
+        
+        if (nombre.equals("") || usuario.equals("") || contrasena.equals("")) {
             JOptionPane.showMessageDialog(null, "Alguno de los campos necesarios se encuentra vacio");
         } else {
-            sql.GuardarUsuario(tipo, nombre, usuario, contraseña);
-            sql.CargarTablausuarios(1, "");
-            interfaz_usuarios iu = new interfaz_usuarios();
-
-            iu.setVisible(true);
+        }
+            
+        try {
+            int fila = interfaz_usuarios2.tbUsuarios.getSelectedRow();
+            String cod = interfaz_usuarios2.tbUsuarios.getValueAt(fila, 0).toString();
+                if (fila != -1) {
+                        sql.ModUsuarios(cod,usuario,contrasena,nombre,tipo);
+                        sql.CargarTablausuarios(1, cod);
+                }else
+                {
+                    
+                }
+            } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, "Seleccione en la tabla antes de modificar");
         }
     }//GEN-LAST:event_btnAceptarActionPerformed
 

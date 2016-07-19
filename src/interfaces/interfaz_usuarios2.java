@@ -131,7 +131,7 @@ public class interfaz_usuarios2 extends javax.swing.JInternalFrame {
                 .addComponent(BtnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(67, Short.MAX_VALUE))
+                .addContainerGap(87, Short.MAX_VALUE))
         );
 
         jInternalFrame2.setVisible(true);
@@ -155,6 +155,9 @@ public class interfaz_usuarios2 extends javax.swing.JInternalFrame {
                 return types [columnIndex];
             }
         });
+        tbUsuarios.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        tbUsuarios.setShowHorizontalLines(false);
+        tbUsuarios.setShowVerticalLines(false);
         tbUsuarios.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tbUsuariosMouseClicked(evt);
@@ -262,15 +265,17 @@ public class interfaz_usuarios2 extends javax.swing.JInternalFrame {
         PanelCambianteUsuarios.revalidate();
         PanelCambianteUsuarios.repaint();
         desabilitarmod();
-
+        
     }//GEN-LAST:event_BtnModificarActionPerformed
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
         int fila = this.tbUsuarios.getSelectedRow();
+        String cod = this.tbUsuarios.getValueAt(fila, 0).toString();
         try {
             if (fila != -1) {
                 int resp = JOptionPane.showConfirmDialog(null, "Esta seguro que desea eliminar el Cliente?");
                 if (JOptionPane.OK_OPTION == resp) {
+                    sql.EliminarUsuario(cod);
                     JOptionPane.showMessageDialog(null, "Cliente eliminado Correctamente");
                 }
             }else
