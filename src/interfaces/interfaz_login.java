@@ -188,6 +188,7 @@ public class interfaz_login extends javax.swing.JInternalFrame  {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarActionPerformed
+      if(ValidarCampos()){
         if(sql.ConsultaUsuario(txtUsuario.getText(), txtContrasena.getText()))
         {
             dispose();
@@ -196,6 +197,7 @@ public class interfaz_login extends javax.swing.JInternalFrame  {
                 Main.Slider1.setEnabled(true);
                 Main.Slider2.setEnabled(true);
                 Main.Slider3.setEnabled(true);
+                Main.Slider4.setEnabled(true);
                 
             }else if(sql.Consultatipo(txtUsuario.getText()).equals("Ventas"))
             {
@@ -204,11 +206,15 @@ public class interfaz_login extends javax.swing.JInternalFrame  {
             
         }else
         {
-            JOptionPane.showMessageDialog(null, "Usuario no encontrado");
+            JOptionPane.showMessageDialog(null, "Usuario y/o contraseña Incorrecta");
             txtUsuario.setText("");
             txtContrasena.setText("");
             txtUsuario.requestFocus();
         }
+      }else
+      {
+          JOptionPane.showMessageDialog(null, "Campos Obligatorios vacios");
+      }
     }//GEN-LAST:event_btnIngresarActionPerformed
 
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
@@ -220,7 +226,16 @@ public class interfaz_login extends javax.swing.JInternalFrame  {
         txtContrasena.setText("");
         txtUsuario.requestFocus();
     }//GEN-LAST:event_btnLimpiarActionPerformed
-
+    private boolean ValidarCampos()
+    {
+        boolean campo=true; 
+        
+        if(txtUsuario.getText().equals("") || txtContrasena.getText().equals(""))
+        {
+            campo=false;
+        }
+        return campo;
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnIngresar;

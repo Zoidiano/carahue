@@ -30,13 +30,14 @@ public class Main extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         Slider1 = new javax.swing.JMenu();
         llama_interfaz_principal = new javax.swing.JMenuItem();
-        llama_interfaz_informes = new javax.swing.JMenuItem();
         Slider2 = new javax.swing.JMenu();
-        llamaProducto = new javax.swing.JMenuItem();
-        llamaEmpleado = new javax.swing.JMenuItem();
-        llamaCliente = new javax.swing.JMenuItem();
+        llamaLibreria = new javax.swing.JMenuItem();
+        llamaVestuario = new javax.swing.JMenuItem();
+        llamaCasayPesca = new javax.swing.JMenuItem();
         Slider3 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
+        llamaUsuarios = new javax.swing.JMenuItem();
+        Slider4 = new javax.swing.JMenu();
+        llama_interfaz_informes = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -60,6 +61,11 @@ public class Main extends javax.swing.JFrame {
 
         Slider1.setText("Ventas");
         Slider1.setEnabled(false);
+        Slider1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Slider1ActionPerformed(evt);
+            }
+        });
 
         llama_interfaz_principal.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_V, java.awt.event.InputEvent.CTRL_MASK));
         llama_interfaz_principal.setText("Generar Venta");
@@ -70,46 +76,37 @@ public class Main extends javax.swing.JFrame {
         });
         Slider1.add(llama_interfaz_principal);
 
-        llama_interfaz_informes.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_R, java.awt.event.InputEvent.CTRL_MASK));
-        llama_interfaz_informes.setText("Reportes Venta");
-        llama_interfaz_informes.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                llama_interfaz_informesActionPerformed(evt);
-            }
-        });
-        Slider1.add(llama_interfaz_informes);
-
         jMenuBar1.add(Slider1);
 
         Slider2.setText("Inventario");
         Slider2.setEnabled(false);
 
-        llamaProducto.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_1, java.awt.event.InputEvent.CTRL_MASK));
-        llamaProducto.setText("Inventario 1");
-        llamaProducto.addActionListener(new java.awt.event.ActionListener() {
+        llamaLibreria.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_1, java.awt.event.InputEvent.CTRL_MASK));
+        llamaLibreria.setText("Inventario Libreria");
+        llamaLibreria.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                llamaProductoActionPerformed(evt);
+                llamaLibreriaActionPerformed(evt);
             }
         });
-        Slider2.add(llamaProducto);
+        Slider2.add(llamaLibreria);
 
-        llamaEmpleado.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_2, java.awt.event.InputEvent.CTRL_MASK));
-        llamaEmpleado.setText("Inventario 2");
-        llamaEmpleado.addActionListener(new java.awt.event.ActionListener() {
+        llamaVestuario.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_2, java.awt.event.InputEvent.CTRL_MASK));
+        llamaVestuario.setText("Inventario Vestuario");
+        llamaVestuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                llamaEmpleadoActionPerformed(evt);
+                llamaVestuarioActionPerformed(evt);
             }
         });
-        Slider2.add(llamaEmpleado);
+        Slider2.add(llamaVestuario);
 
-        llamaCliente.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_3, java.awt.event.InputEvent.CTRL_MASK));
-        llamaCliente.setText("Inventario 3");
-        llamaCliente.addActionListener(new java.awt.event.ActionListener() {
+        llamaCasayPesca.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_3, java.awt.event.InputEvent.CTRL_MASK));
+        llamaCasayPesca.setText("Inventario Casa y Pesca");
+        llamaCasayPesca.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                llamaClienteActionPerformed(evt);
+                llamaCasayPescaActionPerformed(evt);
             }
         });
-        Slider2.add(llamaCliente);
+        Slider2.add(llamaCasayPesca);
 
         jMenuBar1.add(Slider2);
 
@@ -121,16 +118,30 @@ public class Main extends javax.swing.JFrame {
             }
         });
 
-        jMenuItem1.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.CTRL_MASK));
-        jMenuItem1.setText("Usuario");
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+        llamaUsuarios.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.CTRL_MASK));
+        llamaUsuarios.setText("Usuario");
+        llamaUsuarios.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
+                llamaUsuariosActionPerformed(evt);
             }
         });
-        Slider3.add(jMenuItem1);
+        Slider3.add(llamaUsuarios);
 
         jMenuBar1.add(Slider3);
+
+        Slider4.setText("Reportes");
+        Slider4.setEnabled(false);
+
+        llama_interfaz_informes.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_R, java.awt.event.InputEvent.CTRL_MASK));
+        llama_interfaz_informes.setText("Reportes Venta");
+        llama_interfaz_informes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                llama_interfaz_informesActionPerformed(evt);
+            }
+        });
+        Slider4.add(llama_interfaz_informes);
+
+        jMenuBar1.add(Slider4);
 
         setJMenuBar(jMenuBar1);
 
@@ -148,20 +159,35 @@ public class Main extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void llamaProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_llamaProductoActionPerformed
+    private void llamaLibreriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_llamaLibreriaActionPerformed
+        interfaz_inventario1 Form = new interfaz_inventario1();
+        Form.CargarTablas(2,"LIBRERIA");
+        Form.setVisible(true);
+        Contenedor.removeAll();
+        Contenedor.updateUI();
+        Contenedor.add(Form);
+    }//GEN-LAST:event_llamaLibreriaActionPerformed
 
-    }//GEN-LAST:event_llamaProductoActionPerformed
+    private void llamaVestuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_llamaVestuarioActionPerformed
+        interfaz_inventario1 Form = new interfaz_inventario1();
+        Form.CargarTablas(2,"VESTUARIO");
+        Form.setVisible(true);
+        Contenedor.removeAll();
+        Contenedor.updateUI();
+        Contenedor.add(Form);
+    }//GEN-LAST:event_llamaVestuarioActionPerformed
 
-    private void llamaEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_llamaEmpleadoActionPerformed
-
-    }//GEN-LAST:event_llamaEmpleadoActionPerformed
-
-    private void llamaClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_llamaClienteActionPerformed
-
-    }//GEN-LAST:event_llamaClienteActionPerformed
+    private void llamaCasayPescaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_llamaCasayPescaActionPerformed
+        interfaz_inventario1 Form = new interfaz_inventario1();
+        Form.CargarTablas(2,"CASA Y PESCA");
+        Form.setVisible(true);
+        Contenedor.removeAll();
+        Contenedor.updateUI();
+        Contenedor.add(Form);
+    }//GEN-LAST:event_llamaCasayPescaActionPerformed
 
     private void llama_interfaz_principalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_llama_interfaz_principalActionPerformed
-        interfaz_principal Form = new interfaz_principal();
+        interfaz_ventab Form = new interfaz_ventab();
         Form.setVisible(true);
         Contenedor.removeAll();
         Contenedor.updateUI();
@@ -192,9 +218,17 @@ public class Main extends javax.swing.JFrame {
         Contenedor.add(il);
     }//GEN-LAST:event_formWindowOpened
 
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+    private void llamaUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_llamaUsuariosActionPerformed
     usuarios();
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
+    }//GEN-LAST:event_llamaUsuariosActionPerformed
+
+    private void Slider1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Slider1ActionPerformed
+    interfaz_ventab il = new interfaz_ventab();
+        il.setVisible(true);
+        Contenedor.removeAll();
+        Contenedor.updateUI();
+        Contenedor.add(il);
+    }//GEN-LAST:event_Slider1ActionPerformed
 
     public void usuarios()
     {
@@ -244,11 +278,12 @@ public class Main extends javax.swing.JFrame {
     public static javax.swing.JMenu Slider1;
     public static javax.swing.JMenu Slider2;
     public static javax.swing.JMenu Slider3;
+    public static javax.swing.JMenu Slider4;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem llamaCliente;
-    private javax.swing.JMenuItem llamaEmpleado;
-    private javax.swing.JMenuItem llamaProducto;
+    private javax.swing.JMenuItem llamaCasayPesca;
+    private javax.swing.JMenuItem llamaLibreria;
+    private javax.swing.JMenuItem llamaUsuarios;
+    private javax.swing.JMenuItem llamaVestuario;
     private javax.swing.JMenuItem llama_interfaz_informes;
     private javax.swing.JMenuItem llama_interfaz_principal;
     // End of variables declaration//GEN-END:variables

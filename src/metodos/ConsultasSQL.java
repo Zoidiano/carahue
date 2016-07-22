@@ -1,6 +1,7 @@
 package metodos;
 
 import conexion.conectar;
+import interfaces.interfaz_inventario1;
 import interfaces.interfaz_principal;
 import interfaces.interfaz_usuarios;
 import interfaces.interfaz_usuarios2;
@@ -229,74 +230,51 @@ public class ConsultasSQL {
 //        catch (Exception e){}    
 //    }
 
-//    public void CargarTablaClientes(int numero,String campo)
-//    {
-//        DefaultTableModel modelo = new DefaultTableModel();
-//        modelo.addColumn("Rut");
-//        modelo.addColumn("Nombre");
-//        modelo.addColumn("Telefono");
-//            switch(numero){
-//            case 1:CadSql="SELECT * FROM clientes;";
-//            break;
-//            case 2:CadSql="SELECT * FROM clientes where rut="+campo+";";
-//            break;
-//            case 3:CadSql="SELECT * FROM clientes where nombre_cliente like'%"+campo+"%';";
-//            break;
-//                }
-//        try
-//        {
-//            String[] datos = new String[3];
-//            Statement st = this.cn.createStatement();
-//            ResultSet rs = st.executeQuery(CadSql);
-//             while (rs.next())
-//          {
-//            datos[0] = rs.getString(1);
-//            datos[1] = rs.getString(2);
-//            datos[2] = rs.getString(3);
-//            modelo.addRow(datos);
-//          }
-//             mostrar_busqueda.tbclientes.setModel(modelo);
-//        }
-//        catch(Exception ex)
-//        {
-//            JOptionPane.showMessageDialog(null, ex);
-//        }
-//    }
-    public void CargarTablaProductos(int numero, String campo) {
+    public void CargarTablaproductos(int numero,String campo)
+    {
         DefaultTableModel modelo = new DefaultTableModel();
-//        modelo.addColumn("CodigoProducto");
-//        modelo.addColumn("Cantidad");
-//        modelo.addColumn("Categoria");
-//        modelo.addColumn("Valor Producto");
-//        modelo.addColumn("Fecha LLegada");
-        switch (numero) {
-            case 1:
-                CadSql = "SELECT * FROM productos;";
-                break;
-            case 2:
-                CadSql = "SELECT * FROM productos where categoria=" + campo + ";";
-                break;
-            case 3:
-                CadSql = "SELECT * FROM clientes where nombre_cliente like'%" + campo + "%';";
-                break;
-        }
-        try {
-            String[] datos = new String[5];
+            modelo.addColumn("Codigo");
+            modelo.addColumn("Nombre Producto");
+            modelo.addColumn("Descripción");
+            modelo.addColumn("Categoria");
+            modelo.addColumn("Cantidad");
+            modelo.addColumn("Valor Producto");
+            modelo.addColumn("Fecha LLegada");
+            modelo.addColumn("Num_Factura");
+            //Recordar cambiar tamaños
+            switch(numero){
+            case 1:CadSql="SELECT cod_producto, nom_producto, descripcion, categoria, cantidad, valor_producto, fecha_ingreso, num_factura FROM productos;";
+            break;
+            case 2:CadSql="SELECT cod_producto, nom_producto, descripcion, categoria, cantidad, valor_producto, fecha_ingreso, num_factura FROM productos where categoria='"+campo+"';";
+            break;
+            case 3:CadSql="SELECT cod_producto, nom_producto, descripcion, categoria, cantidad, valor_producto, fecha_ingreso, num_factura FROM productos where nom_producto like'%"+campo+"%';";
+            break;
+                }
+        try
+        {
+            String[] datos = new String[8];
             Statement st = this.cn.createStatement();
             ResultSet rs = st.executeQuery(CadSql);
-            while (rs.next()) {
-                datos[0] = rs.getString(1);
-                datos[1] = rs.getString(2);
-                datos[2] = rs.getString(3);
-                datos[3] = rs.getString(4);
-                datos[4] = rs.getString(5);
-                modelo.addRow(datos);
-            }
-            interfaces.interfaz_inventario.tbproductos.setModel(modelo);
-        } catch (Exception ex) {
+             while (rs.next())
+          {
+            datos[0] = rs.getString(1);
+            datos[1] = rs.getString(2);
+            datos[2] = rs.getString(3);
+            datos[3] = rs.getString(4);
+            datos[4] = rs.getString(5);
+            datos[5] = rs.getString(6);
+            datos[6] = rs.getString(7);
+            datos[7] = rs.getString(8);
+            modelo.addRow(datos);
+          }
+             interfaz_inventario1.tbproductos.setModel(modelo);
+        }
+        catch(Exception ex)
+        {
             JOptionPane.showMessageDialog(null, ex);
         }
     }
+  
 //
 //    public void CargarTablaFactura(int numero, String campo)
 //    {

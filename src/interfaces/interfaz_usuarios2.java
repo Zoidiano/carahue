@@ -44,6 +44,7 @@ public class interfaz_usuarios2 extends javax.swing.JInternalFrame {
         jLabel1 = new javax.swing.JLabel();
         txtNombre = new javax.swing.JTextField();
         BtnLimpiar = new javax.swing.JButton();
+        btnEliminar1 = new javax.swing.JButton();
         jInternalFrame2 = new javax.swing.JInternalFrame();
         jScrollPane1 = new javax.swing.JScrollPane();
         tbUsuarios = new javax.swing.JTable();
@@ -90,6 +91,13 @@ public class interfaz_usuarios2 extends javax.swing.JInternalFrame {
             }
         });
 
+        btnEliminar1.setText("SALIR");
+        btnEliminar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminar1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jInternalFrame1Layout = new javax.swing.GroupLayout(jInternalFrame1.getContentPane());
         jInternalFrame1.getContentPane().setLayout(jInternalFrame1Layout);
         jInternalFrame1Layout.setHorizontalGroup(
@@ -110,8 +118,10 @@ public class interfaz_usuarios2 extends javax.swing.JInternalFrame {
                             .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(jInternalFrame1Layout.createSequentialGroup()
                             .addGap(22, 22, 22)
-                            .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(51, Short.MAX_VALUE))
+                            .addGroup(jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(btnEliminar1, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(43, Short.MAX_VALUE))
         );
         jInternalFrame1Layout.setVerticalGroup(
             jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -132,7 +142,9 @@ public class interfaz_usuarios2 extends javax.swing.JInternalFrame {
                 .addComponent(BtnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(87, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(btnEliminar1, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(43, Short.MAX_VALUE))
         );
 
         jInternalFrame2.setVisible(true);
@@ -184,7 +196,7 @@ public class interfaz_usuarios2 extends javax.swing.JInternalFrame {
         jInternalFrame2Layout.setHorizontalGroup(
             jInternalFrame2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jInternalFrame2Layout.createSequentialGroup()
-                .addContainerGap(47, Short.MAX_VALUE)
+                .addContainerGap(63, Short.MAX_VALUE)
                 .addGroup(jInternalFrame2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 520, Short.MAX_VALUE)
                     .addComponent(PanelCambianteUsuarios, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -206,7 +218,7 @@ public class interfaz_usuarios2 extends javax.swing.JInternalFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jInternalFrame1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jInternalFrame2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
@@ -232,7 +244,6 @@ public class interfaz_usuarios2 extends javax.swing.JInternalFrame {
         } catch (Exception ex) {
             
         }
-        
     }//GEN-LAST:event_tbUsuariosMouseClicked
 
     private void txtNombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombreKeyTyped
@@ -253,7 +264,6 @@ public class interfaz_usuarios2 extends javax.swing.JInternalFrame {
         PanelCambianteUsuarios.add(nu,BorderLayout.CENTER);
         PanelCambianteUsuarios.revalidate();
         PanelCambianteUsuarios.repaint();
-        
         desabilitar();
     }//GEN-LAST:event_BtnNuevoActionPerformed
 
@@ -293,6 +303,10 @@ public class interfaz_usuarios2 extends javax.swing.JInternalFrame {
           sql.CargarTablausuarios(3, txtNombre.getText());
     }//GEN-LAST:event_BtnLimpiarActionPerformed
 
+    private void btnEliminar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminar1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnEliminar1ActionPerformed
+
       public void desabilitar()
     {
         BtnModificar.setEnabled(false);
@@ -310,6 +324,7 @@ public class interfaz_usuarios2 extends javax.swing.JInternalFrame {
     public javax.swing.JButton BtnNuevo;
     private javax.swing.JPanel PanelCambianteUsuarios;
     public javax.swing.JButton btnEliminar;
+    public javax.swing.JButton btnEliminar1;
     private javax.swing.JInternalFrame jInternalFrame1;
     private javax.swing.JInternalFrame jInternalFrame2;
     private javax.swing.JLabel jLabel1;

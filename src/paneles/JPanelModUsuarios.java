@@ -168,9 +168,7 @@ public class JPanelModUsuarios extends javax.swing.JPanel {
         if (nombre.equals("") || usuario.equals("") || contrasena.equals("")) {
             JOptionPane.showMessageDialog(null, "Alguno de los campos necesarios se encuentra vacio");
         } else {
-        }
-            
-        try {
+             try {
             int fila = interfaz_usuarios2.tbUsuarios.getSelectedRow();
             String cod = interfaz_usuarios2.tbUsuarios.getValueAt(fila, 0).toString();
                 if (fila != -1) {
@@ -184,6 +182,8 @@ public class JPanelModUsuarios extends javax.swing.JPanel {
             } catch (Exception ex) {
             JOptionPane.showMessageDialog(null, "Seleccione en la tabla antes de modificar");
         }
+        }
+       
     }//GEN-LAST:event_btnAceptarActionPerformed
 
     private void cboTipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboTipoActionPerformed
