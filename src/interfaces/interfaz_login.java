@@ -200,6 +200,9 @@ public class interfaz_login extends javax.swing.JInternalFrame  {
       }else
       {
           JOptionPane.showMessageDialog(null, "Campos Obligatorios vacios");
+        txtUsuario.setText("");
+        txtContrasena.setText("");
+        txtUsuario.requestFocus();
       }
     }//GEN-LAST:event_btnIngresarActionPerformed
 
