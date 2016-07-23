@@ -5,6 +5,7 @@
  */
 package interfaces;
 
+import com.sun.glass.events.KeyEvent;
 import javax.swing.JOptionPane;
 import metodos.ConsultasSQL;
 
@@ -59,6 +60,12 @@ public class interfaz_login extends javax.swing.JInternalFrame  {
         txtUsuario.setToolTipText("");
         txtUsuario.setMaximumSize(new java.awt.Dimension(5, 2147483647));
         txtUsuario.setName(""); // NOI18N
+
+        txtContrasena.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtContrasenaKeyReleased(evt);
+            }
+        });
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/login.png"))); // NOI18N
 
@@ -189,7 +196,42 @@ public class interfaz_login extends javax.swing.JInternalFrame  {
 
     private void btnIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarActionPerformed
       if(ValidarCampos()){
-        if(sql.ConsultaUsuario(txtUsuario.getText(), txtContrasena.getText()))
+          entrar();
+      }else
+      {
+          JOptionPane.showMessageDialog(null, "Campos Obligatorios vacios");
+      }
+    }//GEN-LAST:event_btnIngresarActionPerformed
+
+    private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_btnSalirActionPerformed
+
+    private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
+        txtUsuario.setText("");
+        txtContrasena.setText("");
+        txtUsuario.requestFocus();
+    }//GEN-LAST:event_btnLimpiarActionPerformed
+
+    private void txtContrasenaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtContrasenaKeyReleased
+        if(evt.getKeyCode()==KeyEvent.VK_ENTER)
+        {
+            entrar();
+        }
+    }//GEN-LAST:event_txtContrasenaKeyReleased
+    private boolean ValidarCampos()
+    {
+        boolean campo=true; 
+        
+        if(txtUsuario.getText().equals("") || txtContrasena.getText().equals(""))
+        {
+            campo=false;
+        }
+        return campo;
+    }
+    private void entrar()   
+    {
+       if(sql.ConsultaUsuario(txtUsuario.getText(), txtContrasena.getText()))
         {
             dispose();
             if(sql.Consultatipo(txtUsuario.getText()).equals("Administrador"))
@@ -210,31 +252,7 @@ public class interfaz_login extends javax.swing.JInternalFrame  {
             txtUsuario.setText("");
             txtContrasena.setText("");
             txtUsuario.requestFocus();
-        }
-      }else
-      {
-          JOptionPane.showMessageDialog(null, "Campos Obligatorios vacios");
-      }
-    }//GEN-LAST:event_btnIngresarActionPerformed
-
-    private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
-        System.exit(0);
-    }//GEN-LAST:event_btnSalirActionPerformed
-
-    private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
-        txtUsuario.setText("");
-        txtContrasena.setText("");
-        txtUsuario.requestFocus();
-    }//GEN-LAST:event_btnLimpiarActionPerformed
-    private boolean ValidarCampos()
-    {
-        boolean campo=true; 
-        
-        if(txtUsuario.getText().equals("") || txtContrasena.getText().equals(""))
-        {
-            campo=false;
-        }
-        return campo;
+        } 
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
