@@ -475,8 +475,7 @@ public class interfaz_ventab extends javax.swing.JInternalFrame {
             nombre();
             sql.NuevaVenta(cod_venta,cantidad,precio_individual,precio,Integer.parseInt(nombre),cboCategoria.getSelectedItem().toString(),cantidad2);
             sql.CargarTablaListadoProductos(1, cboCategoria.getSelectedItem().toString(), "");
-            
-           // sql.CargarTablaCompra(1, txtcodigo.getText());
+            sql.CargarTablaCompra(1, txtcodigo.getText());
         }
     }//GEN-LAST:event_BtnAceptarActionPerformed
 

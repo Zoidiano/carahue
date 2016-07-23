@@ -273,7 +273,7 @@ public class ConsultasSQL {
                 CadSql = "SELECT cod_producto, nom_producto, descripcion, categoria, cantidad, valor_producto, fecha_ingreso, num_factura FROM productos;";
                 break;
             case 2:
-                CadSql = "SELECT cod_producto, nom_producto, descripcion, categoria, cantidad, valor_producto, fecha_ingreso, num_factura FROM productos where categoria=" + campo + ";";
+                CadSql = "SELECT cod_producto, nom_producto, descripcion, categoria, cantidad, valor_producto, fecha_ingreso, num_factura FROM productos where categoria='" + campo + "';";
                 break;
             case 3:
                 CadSql = "SELECT cod_producto, nom_producto, descripcion, categoria, cantidad, valor_producto, fecha_ingreso, num_factura FROM productos where nom_producto like'%" + campo + "%';";
@@ -309,7 +309,7 @@ public class ConsultasSQL {
             modelo.addColumn("Valor");
         switch(numero){
             case 1:
-                CadSql="s";
+                CadSql="select p.nom_producto, p.descripcion, v.cantidad, p.valor_individual_venta, v.precio from productos p, ventas v where p.id_producto=v.cod_producto AND v.cod_venta='"+campo+"';";
                 break;
             case 2:
                 CadSql="";
