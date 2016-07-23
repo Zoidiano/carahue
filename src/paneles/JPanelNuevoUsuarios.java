@@ -6,7 +6,6 @@
 package paneles;
 
 import interfaces.Main;
-import interfaces.interfaz_usuarios;
 import interfaces.interfaz_usuarios2;
 import java.awt.AWTException;
 import java.awt.Robot;

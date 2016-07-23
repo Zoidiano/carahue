@@ -7,7 +7,6 @@ package interfaces;
 
 import java.awt.BorderLayout;
 import javax.swing.JOptionPane;
-import paneles.JPanelNuevoInventario;
 
 /**
  *
@@ -193,14 +192,14 @@ public class interfaz_inventario extends javax.swing.JFrame {
     }//GEN-LAST:event_btnEliminarActionPerformed
 
     private void BtnNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnNuevoActionPerformed
-        JPanelNuevoInventario pni=new JPanelNuevoInventario();
-        pni.setSize(780,165);
-        pni.setLocation(5,5);
-        
-        PanelCambianteInventario.removeAll();
-        PanelCambianteInventario.add(pni,BorderLayout.CENTER);
-        PanelCambianteInventario.revalidate();
-        PanelCambianteInventario.repaint();
+//        JPanelNuevoInventario pni=new JPanelNuevoInventario();
+//        pni.setSize(780,165);
+//        pni.setLocation(5,5);
+//        
+//        PanelCambianteInventario.removeAll();
+//        PanelCambianteInventario.add(pni,BorderLayout.CENTER);
+//        PanelCambianteInventario.revalidate();
+//        PanelCambianteInventario.repaint();
     }//GEN-LAST:event_BtnNuevoActionPerformed
 
     /**

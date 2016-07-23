@@ -5,7 +5,7 @@
             <url>src/paneles/JPanelNuevoUsuarios.java</url>
             <bookmark id="1">
                 <name/>
-                <line>184</line>
+                <line>183</line>
                 <key/>
             </bookmark>
         </file>
@@ -13,12 +13,8 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/Users/Zoidiano/Documents/GitHub/carahue/src/interfaces/interfaz_inventario1.java</file>
-            <file>file:/C:/Users/Zoidiano/Documents/GitHub/carahue/src/paneles/JPanelNuevoInventario.java</file>
-            <file>file:/C:/Users/Zoidiano/Documents/GitHub/carahue/src/interfaces/interfaz_usuarios.java</file>
+            <file>file:/C:/Users/Zoidiano/Documents/GitHub/carahue/src/interfaces/interfaz_inventario.java</file>
             <file>file:/C:/Users/Zoidiano/Documents/GitHub/carahue/src/interfaces/interfaz_usuarios2.java</file>
-            <file>file:/C:/Users/Zoidiano/Documents/GitHub/carahue/src/paneles/JPanelNuevoUsuarios.java</file>
-            <file>file:/C:/Users/Zoidiano/Documents/GitHub/carahue/src/interfaces/Main.java</file>
-            <file>file:/C:/Users/Zoidiano/Documents/GitHub/carahue/src/interfaces/interfaz_usuarios1.java</file>
             <file>file:/C:/Users/Zoidiano/Documents/GitHub/carahue/src/interfaces/interfaz_ventab.java</file>
             <file>file:/C:/Users/Zoidiano/Documents/GitHub/carahue/src/metodos/ConsultasSQL.java</file>
         </group>

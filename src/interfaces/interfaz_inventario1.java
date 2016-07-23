@@ -9,7 +9,6 @@ import java.awt.BorderLayout;
 import javax.swing.JOptionPane;
 import jdk.nashorn.internal.runtime.regexp.joni.EncodingHelper;
 import metodos.ConsultasSQL;
-import paneles.JPanelNuevoInventario;
 
 /**
  *

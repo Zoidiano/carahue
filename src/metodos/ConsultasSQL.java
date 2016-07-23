@@ -3,8 +3,8 @@ package metodos;
 import conexion.conectar;
 import interfaces.interfaz_inventario1;
 import interfaces.interfaz_principal;
-import interfaces.interfaz_usuarios;
 import interfaces.interfaz_usuarios2;
+import interfaces.interfaz_ventab;
 //import interfaces.mostrar_busqueda;
 //import interfaces.muestra;
 import java.sql.Connection;
@@ -100,7 +100,7 @@ public class ConsultasSQL {
             pst.setString(4, nombre);
             pst.setString(5, tipo);
             pst.executeUpdate();
-            
+
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e);
         }
@@ -186,18 +186,45 @@ public class ConsultasSQL {
 //        catch(Exception ex){}
 //        return Consulta;
 //    }
-//    public void GuardarCliente()
-//    {
-//       try
-//        {
-//          PreparedStatement pst = this.cn.prepareStatement("INSERT INTO clientes(rut,nombre_cliente,telefono) VALUES (?,?,?)");
-//          pst.setString(1, interfaz_principal.txtRutCliente.getText());
-//          pst.setString(2, interfaz_principal.txtNombreCliente.getText());
-//          pst.setString(3, interfaz_principal.txtTelefonoCliente.getText());
-//          pst.executeUpdate();
-//        }
-//        catch (Exception e){}
-//    }
+
+    public void NuevaVenta(int cod_venta, int cantidad, int valor, int precio, int cod_producto, String categoria, int cantidad2) {
+        try {
+            PreparedStatement pst = this.cn.prepareStatement("INSERT INTO ventas(cod_venta,cod_producto,cantidad,valor,precio) VALUES (?,?,?,?,?)");
+            pst.setInt(1, cod_venta);
+            pst.setInt(2, cod_producto);
+            pst.setInt(3, cantidad);
+            pst.setInt(4, valor);
+            pst.setInt(5, precio);
+            pst.executeUpdate();
+            GuardarOrdenVenta(cod_venta, cod_producto, precio);
+            StockProductos(cod_producto, cantidad2, categoria);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+        }
+    }
+
+    public void GuardarOrdenVenta(int codigoventa, int cod_producto, int precio) {
+        try {
+            PreparedStatement pst = this.cn.prepareStatement("INSERT INTO ordenes_pedido(cod_venta,cod_producto,precio,ganancia) VALUES (?,?,?,?)");
+            pst.setInt(1, codigoventa);
+            pst.setInt(2, cod_producto);
+            pst.setInt(3, precio);
+            pst.setInt(4, precio);
+            pst.executeUpdate();
+        } catch (Exception e) {
+        }
+    }
+
+    public void StockProductos(int cod_producto, int cantidad, String categoria) {
+        try {
+            PreparedStatement pst = this.cn.prepareStatement("UPDATE productos SET cantidad=? WHERE cod_producto=?;");
+            pst.setInt(1, cantidad);
+            pst.setString(2, String.valueOf(cod_producto));
+            pst.executeUpdate();
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, ex);
+        }
+    }
 //    public void GuardarPedido()
 //    {
 //       try
@@ -230,51 +257,116 @@ public class ConsultasSQL {
 //        catch (Exception e){}    
 //    }
 
-    public void CargarTablaproductos(int numero,String campo)
-    {
+    public void CargarTablaproductos(int numero, String campo) {
         DefaultTableModel modelo = new DefaultTableModel();
-            modelo.addColumn("Codigo");
-            modelo.addColumn("Nombre Producto");
-            modelo.addColumn("Descripción");
-            modelo.addColumn("Categoria");
-            modelo.addColumn("Cantidad");
-            modelo.addColumn("Valor Producto");
-            modelo.addColumn("Fecha LLegada");
-            modelo.addColumn("Num_Factura");
-            //Recordar cambiar tamaños
-            switch(numero){
-            case 1:CadSql="SELECT cod_producto, nom_producto, descripcion, categoria, cantidad, valor_producto, fecha_ingreso, num_factura FROM productos;";
-            break;
-            case 2:CadSql="SELECT cod_producto, nom_producto, descripcion, categoria, cantidad, valor_producto, fecha_ingreso, num_factura FROM productos where categoria='"+campo+"';";
-            break;
-            case 3:CadSql="SELECT cod_producto, nom_producto, descripcion, categoria, cantidad, valor_producto, fecha_ingreso, num_factura FROM productos where nom_producto like'%"+campo+"%';";
-            break;
-                }
-        try
-        {
+        modelo.addColumn("Codigo");
+        modelo.addColumn("Nombre Producto");
+        modelo.addColumn("Descripción");
+        modelo.addColumn("Categoria");
+        modelo.addColumn("Cantidad");
+        modelo.addColumn("Valor Producto");
+        modelo.addColumn("Fecha LLegada");
+        modelo.addColumn("Num_Factura");
+        //Recordar cambiar tamaños
+        switch (numero) {
+            case 1:
+                CadSql = "SELECT cod_producto, nom_producto, descripcion, categoria, cantidad, valor_producto, fecha_ingreso, num_factura FROM productos;";
+                break;
+            case 2:
+                CadSql = "SELECT cod_producto, nom_producto, descripcion, categoria, cantidad, valor_producto, fecha_ingreso, num_factura FROM productos where categoria=" + campo + ";";
+                break;
+            case 3:
+                CadSql = "SELECT cod_producto, nom_producto, descripcion, categoria, cantidad, valor_producto, fecha_ingreso, num_factura FROM productos where nom_producto like'%" + campo + "%';";
+                break;
+        }
+        try {
             String[] datos = new String[8];
             Statement st = this.cn.createStatement();
             ResultSet rs = st.executeQuery(CadSql);
-             while (rs.next())
-          {
-            datos[0] = rs.getString(1);
-            datos[1] = rs.getString(2);
-            datos[2] = rs.getString(3);
-            datos[3] = rs.getString(4);
-            datos[4] = rs.getString(5);
-            datos[5] = rs.getString(6);
-            datos[6] = rs.getString(7);
-            datos[7] = rs.getString(8);
-            modelo.addRow(datos);
-          }
-             interfaz_inventario1.tbproductos.setModel(modelo);
-        }
-        catch(Exception ex)
-        {
+            while (rs.next()) {
+                datos[0] = rs.getString(1);
+                datos[1] = rs.getString(2);
+                datos[2] = rs.getString(3);
+                datos[3] = rs.getString(4);
+                datos[4] = rs.getString(5);
+                datos[5] = rs.getString(6);
+                datos[6] = rs.getString(7);
+                datos[7] = rs.getString(8);
+                modelo.addRow(datos);
+            }
+            interfaz_inventario1.tbproductos.setModel(modelo);
+        } catch (Exception ex) {
             JOptionPane.showMessageDialog(null, ex);
         }
     }
-  
+
+    public void CargarTablaCompra(int numero, String campo) {
+        DefaultTableModel modelo = new DefaultTableModel();
+            modelo.addColumn("Nombre");
+            modelo.addColumn("Descripcion");
+            modelo.addColumn("Cantidad");
+            modelo.addColumn("Precio");
+            modelo.addColumn("Valor");
+        switch(numero){
+            case 1:
+                CadSql="s";
+                break;
+            case 2:
+                CadSql="";
+                break;
+        }
+        JOptionPane.showMessageDialog(null, CadSql);
+        try {
+            String[] datos = new String[5];
+            Statement st = this.cn.createStatement();
+            ResultSet rs = st.executeQuery(CadSql);
+            while (rs.next()) {
+                datos[0] = rs.getString(1);
+                datos[1] = rs.getString(2);
+                datos[2] = rs.getString(3);
+                datos[3] = rs.getString(4);
+                datos[4] = rs.getString(5);
+                modelo.addRow(datos);
+            }
+            interfaz_ventab.tbventa.setModel(modelo);
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, ex);
+        }
+    }
+
+    public void CargarTablaListadoProductos(int numero, String campo, String campo2) {
+        DefaultTableModel modelo = new DefaultTableModel();
+        modelo.addColumn("Codigo");
+        modelo.addColumn("Nombre Producto");
+        modelo.addColumn("Descripción");
+        modelo.addColumn("Cantidad");
+        modelo.addColumn("Valor Producto");
+        //Recordar cambiar tamaños
+        switch (numero) {
+            case 1:
+                CadSql = "SELECT cod_producto, nom_producto, descripcion, cantidad, valor_individual_venta FROM productos where categoria='" + campo + "';";
+                break;
+            case 2:
+                CadSql = "SELECT cod_producto, nom_producto, descripcion, cantidad, valor_individual_venta FROM productos where nom_producto like'%" + campo + "%' AND categoria='" + campo2 + "';";
+                break;
+        }
+        try {
+            String[] datos = new String[5];
+            Statement st = this.cn.createStatement();
+            ResultSet rs = st.executeQuery(CadSql);
+            while (rs.next()) {
+                datos[0] = rs.getString(1);
+                datos[1] = rs.getString(2);
+                datos[2] = rs.getString(3);
+                datos[3] = rs.getString(4);
+                datos[4] = rs.getString(5);
+                modelo.addRow(datos);
+            }
+            interfaz_ventab.tbproductosListado.setModel(modelo);
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, ex);
+        }
+    }
 //
 //    public void CargarTablaFactura(int numero, String campo)
 //    {

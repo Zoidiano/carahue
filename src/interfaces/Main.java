@@ -203,11 +203,7 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_llama_interfaz_informesActionPerformed
 
     private void Slider3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Slider3ActionPerformed
-    interfaz_usuarios Form = new interfaz_usuarios();
-        Form.setVisible(true);
-        Contenedor.removeAll();
-        Contenedor.updateUI();
-        Contenedor.add(Form);
+
     }//GEN-LAST:event_Slider3ActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
@@ -219,7 +215,11 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowOpened
 
     private void llamaUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_llamaUsuariosActionPerformed
-    usuarios();
+    interfaz_usuarios2 Form = new interfaz_usuarios2();
+        Form.setVisible(true);
+        Contenedor.removeAll();
+        Contenedor.updateUI();
+        Contenedor.add(Form);
     }//GEN-LAST:event_llamaUsuariosActionPerformed
 
     private void Slider1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Slider1ActionPerformed
@@ -230,14 +230,7 @@ public class Main extends javax.swing.JFrame {
         Contenedor.add(il);
     }//GEN-LAST:event_Slider1ActionPerformed
 
-    public void usuarios()
-    {
-        interfaz_usuarios2 Form = new interfaz_usuarios2();
-        Form.setVisible(true);
-        Contenedor.removeAll();
-        Contenedor.updateUI();
-        Contenedor.add(Form);
-    }
+
     /**
      * @param args the command line arguments
      */
