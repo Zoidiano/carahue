@@ -5,6 +5,8 @@
  */
 package interfaces;
 
+import java.awt.Dimension;
+
 /**
  *
  * @author Zoidiano
@@ -162,6 +164,10 @@ public class Main extends javax.swing.JFrame {
     private void llamaLibreriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_llamaLibreriaActionPerformed
         interfaz_inventario1 Form = new interfaz_inventario1();
         Form.CargarTablas(2,"LIBRERIA");
+        this.add(Form);
+        Dimension desktopSize = this.getSize();
+        Dimension FrameSize= Form.getSize();
+        Form.setLocation((desktopSize.width - FrameSize.width)/2, (desktopSize.height-FrameSize.height)/2);        
         Form.setVisible(true);
         Contenedor.removeAll();
         Contenedor.updateUI();
@@ -172,6 +178,10 @@ public class Main extends javax.swing.JFrame {
         interfaz_inventario1 Form = new interfaz_inventario1();
         Form.CargarTablas(2,"VESTUARIO");
         Form.setVisible(true);
+        this.add(Form);
+        Dimension desktopSize = this.getSize();
+        Dimension FrameSize= Form.getSize();
+        Form.setLocation((desktopSize.width - FrameSize.width)/2, (desktopSize.height-FrameSize.height)/2);
         Contenedor.removeAll();
         Contenedor.updateUI();
         Contenedor.add(Form);
@@ -181,6 +191,10 @@ public class Main extends javax.swing.JFrame {
         interfaz_inventario1 Form = new interfaz_inventario1();
         Form.CargarTablas(2,"CASA Y PESCA");
         Form.setVisible(true);
+        this.add(Form);
+        Dimension desktopSize = this.getSize();
+        Dimension FrameSize= Form.getSize();
+        Form.setLocation((desktopSize.width - FrameSize.width)/2, (desktopSize.height-FrameSize.height)/2);
         Contenedor.removeAll();
         Contenedor.updateUI();
         Contenedor.add(Form);
@@ -189,6 +203,10 @@ public class Main extends javax.swing.JFrame {
     private void llama_interfaz_principalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_llama_interfaz_principalActionPerformed
         interfaz_ventab Form = new interfaz_ventab();
         Form.setVisible(true);
+        this.add(Form);
+        Dimension desktopSize = this.getSize();
+        Dimension FrameSize= Form.getSize();
+        Form.setLocation((desktopSize.width - FrameSize.width)/2, (desktopSize.height-FrameSize.height)/2);
         Contenedor.removeAll();
         Contenedor.updateUI();
         Contenedor.add(Form);
@@ -197,6 +215,10 @@ public class Main extends javax.swing.JFrame {
     private void llama_interfaz_informesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_llama_interfaz_informesActionPerformed
         interfaz_informes Form = new interfaz_informes();
         Form.setVisible(true);
+        this.add(Form);
+        Dimension desktopSize = this.getSize();
+        Dimension FrameSize= Form.getSize();
+        Form.setLocation((desktopSize.width - FrameSize.width)/2, (desktopSize.height-FrameSize.height)/2);
         Contenedor.removeAll();
         Contenedor.updateUI();
         Contenedor.add(Form);
@@ -209,6 +231,10 @@ public class Main extends javax.swing.JFrame {
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
     interfaz_login il = new interfaz_login();
         il.setVisible(true);
+        this.add(il);
+        Dimension desktopSize = this.getSize();
+        Dimension FrameSize= il.getSize();
+        il.setLocation((desktopSize.width - FrameSize.width)/2, (desktopSize.height-FrameSize.height)/2);
         Contenedor.removeAll();
         Contenedor.updateUI();
         Contenedor.add(il);
@@ -217,6 +243,10 @@ public class Main extends javax.swing.JFrame {
     private void llamaUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_llamaUsuariosActionPerformed
     interfaz_usuarios2 Form = new interfaz_usuarios2();
         Form.setVisible(true);
+        this.add(Form);
+        Dimension desktopSize = this.getSize();
+        Dimension FrameSize= Form.getSize();
+        Form.setLocation((desktopSize.width - FrameSize.width)/2, (desktopSize.height-FrameSize.height)/2);
         Contenedor.removeAll();
         Contenedor.updateUI();
         Contenedor.add(Form);
