@@ -214,6 +214,18 @@ public class ConsultasSQL {
         } catch (Exception e) {
         }
     }
+    public void GuardarGanancia(int codigoventa, double monto_neto, double iva, double impuesto_adicional, double total) {
+        try {
+            PreparedStatement pst = this.cn.prepareStatement("INSERT INTO ganancias(cod_venta,monto_neto,iva,impuesto_adicional,total) VALUES (?,?,?,?,?)");
+            pst.setInt(1, codigoventa);
+            pst.setDouble(2, monto_neto);
+            pst.setDouble(3, iva);
+            pst.setDouble(4, impuesto_adicional);
+            pst.setDouble(5, total);
+            pst.executeUpdate();
+        } catch (Exception e) {
+        }
+    }
 
     public void StockProductos(int cod_producto, int cantidad, String categoria) {
         try {
@@ -302,17 +314,17 @@ public class ConsultasSQL {
 
     public void CargarTablaCompra(int numero, String campo) {
         DefaultTableModel modelo = new DefaultTableModel();
-            modelo.addColumn("Nombre");
-            modelo.addColumn("Descripcion");
-            modelo.addColumn("Cantidad");
-            modelo.addColumn("Precio");
-            modelo.addColumn("Valor");
-        switch(numero){
+        modelo.addColumn("Nombre");
+        modelo.addColumn("Descripcion");
+        modelo.addColumn("Cantidad");
+        modelo.addColumn("Precio");
+        modelo.addColumn("Valor");
+        switch (numero) {
             case 1:
-                CadSql="select p.nom_producto, p.descripcion, v.cantidad, p.valor_individual_venta, v.precio from productos p, ventas v where p.id_producto=v.cod_producto AND v.cod_venta='"+campo+"';";
+                CadSql = "select p.nom_producto, p.descripcion, v.cantidad, p.valor_individual_venta, v.precio from productos p, ventas v where p.id_producto=v.cod_producto AND v.cod_venta='" + campo + "';";
                 break;
             case 2:
-                CadSql="";
+                CadSql = "";
                 break;
         }
         JOptionPane.showMessageDialog(null, CadSql);
