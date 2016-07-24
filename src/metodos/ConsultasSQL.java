@@ -214,6 +214,7 @@ public class ConsultasSQL {
         } catch (Exception e) {
         }
     }
+
     public void GuardarGanancia(int codigoventa, double monto_neto, double iva, double impuesto_adicional, double total) {
         try {
             PreparedStatement pst = this.cn.prepareStatement("INSERT INTO ganancias(cod_venta,monto_neto,iva,impuesto_adicional,total) VALUES (?,?,?,?,?)");

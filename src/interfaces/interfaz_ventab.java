@@ -52,7 +52,6 @@ public class interfaz_ventab extends javax.swing.JInternalFrame {
         BtnCancelar = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
         BtnCerrar = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
         cbocantidad = new javax.swing.JComboBox<>();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -108,7 +107,7 @@ public class interfaz_ventab extends javax.swing.JInternalFrame {
             }
         });
 
-        BtnCancelar.setText("CANCELAR");
+        BtnCancelar.setText("LIMPIAR");
         BtnCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BtnCancelarActionPerformed(evt);
@@ -117,14 +116,12 @@ public class interfaz_ventab extends javax.swing.JInternalFrame {
 
         jLabel6.setText("CANTIDAD:");
 
-        BtnCerrar.setText("CERRAR");
+        BtnCerrar.setText("Salir");
         BtnCerrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BtnCerrarActionPerformed(evt);
             }
         });
-
-        jButton4.setText("TICK DE BUENO");
 
         cbocantidad.setEnabled(false);
 
@@ -149,9 +146,7 @@ public class interfaz_ventab extends javax.swing.JInternalFrame {
                 .addComponent(BtnAceptar, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(BtnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
-                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 183, Short.MAX_VALUE)
                 .addComponent(BtnCerrar, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18))
         );
@@ -170,8 +165,7 @@ public class interfaz_ventab extends javax.swing.JInternalFrame {
                         .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(cboCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(BtnCerrar)
-                        .addComponent(jButton4)))
+                        .addComponent(BtnCerrar)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -345,7 +339,13 @@ public class interfaz_ventab extends javax.swing.JInternalFrame {
 
         BtnSalir.setText("SALIR");
 
-        BtnLimpiar.setText("LIMPIAR");
+        BtnLimpiar.setText("CANCELAR VENTA");
+        BtnLimpiar.setEnabled(false);
+        BtnLimpiar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnLimpiarActionPerformed(evt);
+            }
+        });
 
         BtnGuardar.setText("GUARDAR");
         BtnGuardar.setEnabled(false);
@@ -514,6 +514,7 @@ public class interfaz_ventab extends javax.swing.JInternalFrame {
             cbocantidad.removeAllItems();
             cbocantidad.setEnabled(false);
             BtnGuardar.setEnabled(true);
+            BtnCancelar.setEnabled(true);
         }
     }//GEN-LAST:event_BtnAceptarActionPerformed
 
@@ -546,6 +547,10 @@ public class interfaz_ventab extends javax.swing.JInternalFrame {
         txtcodigo.setText(String.valueOf(numero));
         BtnGuardar.setEnabled(false);
     }//GEN-LAST:event_BtnGuardarActionPerformed
+
+    private void BtnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnLimpiarActionPerformed
+        
+    }//GEN-LAST:event_BtnLimpiarActionPerformed
     private void cargar() {
         try {
             Statement st = this.cn.createStatement();
@@ -584,7 +589,6 @@ public class interfaz_ventab extends javax.swing.JInternalFrame {
     private javax.swing.JButton BtnSalir;
     private javax.swing.JComboBox<String> cboCategoria;
     private javax.swing.JComboBox<String> cbocantidad;
-    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
