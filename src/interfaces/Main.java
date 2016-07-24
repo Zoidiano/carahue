@@ -6,6 +6,11 @@
 package interfaces;
 
 import java.awt.Dimension;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
+import javax.swing.Timer;
 
 /**
  *
@@ -17,6 +22,9 @@ public class Main extends javax.swing.JFrame {
     public Main() {
         this.setExtendedState(MAXIMIZED_BOTH);
         initComponents();
+        Calendar cal=Calendar.getInstance();
+        String fechas = cal.get(cal.DATE)+"/"+cal.get(cal.MONTH)+"/"+cal.get(cal.YEAR);
+        this.fecha.setText(fechas);
     }
         
     /**
@@ -31,13 +39,17 @@ public class Main extends javax.swing.JFrame {
         Contenedor = new javax.swing.JDesktopPane();
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        lb_user = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
-        jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
+        hh = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        mm = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        ss = new javax.swing.JLabel();
+        fecha = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         Slider1 = new javax.swing.JMenu();
         llama_interfaz_principal = new javax.swing.JMenuItem();
@@ -52,6 +64,7 @@ public class Main extends javax.swing.JFrame {
         llama_interfaz_informes = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(56, 98, 127));
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
                 formWindowOpened(evt);
@@ -66,16 +79,24 @@ public class Main extends javax.swing.JFrame {
         );
         ContenedorLayout.setVerticalGroup(
             ContenedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 218, Short.MAX_VALUE)
+            .addGap(0, 211, Short.MAX_VALUE)
         );
 
+        jPanel1.setBackground(new java.awt.Color(56, 98, 127));
+        jPanel1.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(56, 98, 127)));
         jPanel1.setForeground(new java.awt.Color(102, 204, 255));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/usuario.png"))); // NOI18N
-        jLabel1.setText("NOMBRE USUARIO");
+        jPanel2.setBackground(new java.awt.Color(56, 98, 127));
 
+        lb_user.setForeground(new java.awt.Color(255, 255, 255));
+        lb_user.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/usuario.png"))); // NOI18N
+        lb_user.setText("NOMBRE USUARIO");
+
+        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("|");
 
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("CARGO");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -84,71 +105,105 @@ public class Main extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1)
+                .addComponent(lb_user)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel3)
-                .addContainerGap(42, Short.MAX_VALUE))
+                .addContainerGap(26, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
+                    .addComponent(lb_user)
                     .addComponent(jLabel2)
                     .addComponent(jLabel3))
                 .addGap(0, 11, Short.MAX_VALUE))
         );
 
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fecha.png"))); // NOI18N
-        jLabel4.setText("FECHA");
+        jPanel3.setBackground(new java.awt.Color(56, 98, 127));
 
+        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("|");
 
-        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/hora.png"))); // NOI18N
-        jLabel6.setText("HORA");
+        hh.setForeground(new java.awt.Color(255, 255, 255));
+        hh.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/hora.png"))); // NOI18N
+        hh.setText("00");
+
+        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel7.setText(":");
+
+        mm.setForeground(new java.awt.Color(255, 255, 255));
+        mm.setText("00");
+
+        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel9.setText(":");
+
+        ss.setForeground(new java.awt.Color(255, 255, 255));
+        ss.setText("00");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel5)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel6)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(hh)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel7)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(mm)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel9)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(ss)
+                .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
                     .addComponent(jLabel5)
-                    .addComponent(jLabel6))
+                    .addComponent(hh)
+                    .addComponent(jLabel7)
+                    .addComponent(mm)
+                    .addComponent(jLabel9)
+                    .addComponent(ss))
                 .addGap(0, 11, Short.MAX_VALUE))
         );
+
+        fecha.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        fecha.setForeground(new java.awt.Color(255, 255, 255));
+        fecha.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/fecha.png"))); // NOI18N
+        fecha.setText("FECHA");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 155, Short.MAX_VALUE)
+                .addComponent(fecha)
+                .addGap(18, 18, 18)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(fecha)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jPanel3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
         );
 
         jMenuBar1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -257,14 +312,14 @@ public class Main extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(Contenedor)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(Contenedor, javax.swing.GroupLayout.Alignment.TRAILING)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(Contenedor)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
@@ -348,6 +403,9 @@ public class Main extends javax.swing.JFrame {
         Contenedor.removeAll();
         Contenedor.updateUI();
         Contenedor.add(il);
+        
+        timer=new Timer(1000,new cronometro());
+        timer.start();
     }//GEN-LAST:event_formWindowOpened
 
     private void llamaUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_llamaUsuariosActionPerformed
@@ -381,7 +439,22 @@ public class Main extends javax.swing.JFrame {
         Contenedor.updateUI();
         Contenedor.add(Form);
     }//GEN-LAST:event_jMenuItem1ActionPerformed
-
+        public class cronometro implements ActionListener
+    {
+        public void actionPerformed(ActionEvent evt)
+        {
+            GregorianCalendar tiempo = new GregorianCalendar();
+            int hora,minutos,segundos;
+            hora= tiempo.get(Calendar.HOUR);
+            minutos=tiempo.get(Calendar.MINUTE);
+            segundos=tiempo.get(Calendar.SECOND);
+            
+            hh.setText(String.valueOf(hora));
+            mm.setText(String.valueOf(minutos));
+            ss.setText(String.valueOf(segundos));
+        }
+    }
+    private Timer timer;
 
     /**
      * @param args the command line arguments
@@ -424,22 +497,26 @@ public class Main extends javax.swing.JFrame {
     public static javax.swing.JMenu Slider2;
     public static javax.swing.JMenu Slider3;
     public static javax.swing.JMenu Slider4;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel fecha;
+    private javax.swing.JLabel hh;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JLabel lb_user;
     private javax.swing.JMenuItem llamaCasayPesca;
     private javax.swing.JMenuItem llamaLibreria;
     private javax.swing.JMenuItem llamaUsuarios;
     private javax.swing.JMenuItem llamaVestuario;
     private javax.swing.JMenuItem llama_interfaz_informes;
     private javax.swing.JMenuItem llama_interfaz_principal;
+    private javax.swing.JLabel mm;
+    private javax.swing.JLabel ss;
     // End of variables declaration//GEN-END:variables
 }
