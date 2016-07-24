@@ -399,7 +399,7 @@ public class Main extends javax.swing.JFrame {
         this.add(il);
         Dimension desktopSize = this.getSize();
         Dimension FrameSize= il.getSize();
-        il.setLocation((desktopSize.width - FrameSize.width)/2, (desktopSize.height-FrameSize.height)/2);
+        il.setLocation((desktopSize.width - FrameSize.width)/2, (desktopSize.height-FrameSize.height)/2-60);
         Contenedor.removeAll();
         Contenedor.updateUI();
         Contenedor.add(il);
@@ -434,7 +434,7 @@ public class Main extends javax.swing.JFrame {
         this.add(Form);
         Dimension desktopSize = this.getSize();
         Dimension FrameSize= Form.getSize();
-        Form.setLocation((desktopSize.width - FrameSize.width)/2, (desktopSize.height-FrameSize.height)/2);
+        Form.setLocation((desktopSize.width - FrameSize.width)/2, ((desktopSize.height-FrameSize.height)/2)-40);
         Contenedor.removeAll();
         Contenedor.updateUI();
         Contenedor.add(Form);
@@ -449,7 +449,7 @@ public class Main extends javax.swing.JFrame {
             minutos=tiempo.get(Calendar.MINUTE);
             segundos=tiempo.get(Calendar.SECOND);
             
-            hh.setText(String.valueOf(hora));
+            hh.setText((String.valueOf(hora-1)));
             mm.setText(String.valueOf(minutos));
             ss.setText(String.valueOf(segundos));
         }
