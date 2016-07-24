@@ -32,6 +32,7 @@ public class Main extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         Slider1 = new javax.swing.JMenu();
         llama_interfaz_principal = new javax.swing.JMenuItem();
+        jMenuItem1 = new javax.swing.JMenuItem();
         Slider2 = new javax.swing.JMenu();
         llamaLibreria = new javax.swing.JMenuItem();
         llamaVestuario = new javax.swing.JMenuItem();
@@ -77,6 +78,15 @@ public class Main extends javax.swing.JFrame {
             }
         });
         Slider1.add(llama_interfaz_principal);
+
+        jMenuItem1.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F, java.awt.event.InputEvent.CTRL_MASK));
+        jMenuItem1.setText("Generar Venta Factura");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        Slider1.add(jMenuItem1);
 
         jMenuBar1.add(Slider1);
 
@@ -260,6 +270,18 @@ public class Main extends javax.swing.JFrame {
         Contenedor.add(il);
     }//GEN-LAST:event_Slider1ActionPerformed
 
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        interfaz_ventaf Form = new interfaz_ventaf();
+        Form.setVisible(true);
+        this.add(Form);
+        Dimension desktopSize = this.getSize();
+        Dimension FrameSize= Form.getSize();
+        Form.setLocation((desktopSize.width - FrameSize.width)/2, (desktopSize.height-FrameSize.height)/2);
+        Contenedor.removeAll();
+        Contenedor.updateUI();
+        Contenedor.add(Form);
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
 
     /**
      * @param args the command line arguments
@@ -303,6 +325,7 @@ public class Main extends javax.swing.JFrame {
     public static javax.swing.JMenu Slider3;
     public static javax.swing.JMenu Slider4;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem llamaCasayPesca;
     private javax.swing.JMenuItem llamaLibreria;
     private javax.swing.JMenuItem llamaUsuarios;
