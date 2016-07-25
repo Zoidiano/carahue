@@ -2,6 +2,7 @@ package metodos;
 
 import conexion.conectar;
 import interfaces.interfaz_inventario1;
+import interfaces.interfaz_inventario_administracion;
 import interfaces.interfaz_principal;
 import interfaces.interfaz_usuarios2;
 import interfaces.interfaz_ventab;
@@ -114,6 +115,7 @@ public class ConsultasSQL {
         } catch (Exception ex) {
         }
     }
+
     public void Eliminarventas(String valor) {
         try {
             PreparedStatement pst = this.cn.prepareStatement("DELETE FROM ordenes_pedido WHERE  cod_venta='" + valor + "'");
@@ -123,6 +125,7 @@ public class ConsultasSQL {
         } catch (Exception ex) {
         }
     }
+
     public void CargarTablausuarios(int numero, String campo) {
         DefaultTableModel modelo = new DefaultTableModel();
         modelo.addColumn("Codigo");
@@ -257,9 +260,9 @@ public class ConsultasSQL {
             JOptionPane.showMessageDialog(null, ex);
         }
     }
-    public void DevolverStock(int cantidad, String nombre)
-    {
-          try {
+
+    public void DevolverStock(int cantidad, String nombre) {
+        try {
             PreparedStatement pst = this.cn.prepareStatement("UPDATE productos SET cantidad=cantidad+? WHERE NOM_producto=?;");
             pst.setInt(1, cantidad);
             pst.setString(2, nombre);
@@ -269,7 +272,22 @@ public class ConsultasSQL {
         }
     }
 
-    public void CargarTablaproductos(int numero, String campo) {
+    public boolean validarNombre(String nombre,String categoria) {
+        boolean validar = false;
+        try {
+            Statement st = this.cn.createStatement();
+            ResultSet rs = st.executeQuery("SELECT nom_producto from productos where nom_producto='" + nombre+ "' AND categoria='"+categoria+"';");
+            while (rs.next()) {
+                validar = true;
+            }
+            
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, ex);
+        }
+        return validar;
+    }
+
+    public void CargarTablaproductos(int numero, String campo,int num_interno) {
         DefaultTableModel modelo = new DefaultTableModel();
         modelo.addColumn("Codigo");
         modelo.addColumn("Nombre Producto");
@@ -306,7 +324,11 @@ public class ConsultasSQL {
                 datos[7] = rs.getString(8);
                 modelo.addRow(datos);
             }
+            if(num_interno==1)
+                interfaz_inventario_administracion.tbproductos.setModel(modelo);
+            else
             interfaz_inventario1.tbproductos.setModel(modelo);
+            
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(null, ex);
         }
@@ -372,7 +394,7 @@ public class ConsultasSQL {
                 while (rs.next()) {
                     guardarRecuperacion(rs.getString(1), rs.getString(2));
                 }
-                
+
             } else {
                 String[] datos = new String[5];
                 Statement st = this.cn.createStatement();
@@ -392,215 +414,7 @@ public class ConsultasSQL {
             JOptionPane.showMessageDialog(null, ex);
         }
     }
-//
-//    public void CargarTablaFactura(int numero, String campo)
-//    {
-//        DefaultTableModel modelo = new DefaultTableModel();
-//        modelo.addColumn("Codigo");
-//        modelo.addColumn("Rut");
-//        modelo.addColumn("Nombre");
-//        modelo.addColumn("Giro");
-//        modelo.addColumn("Telefono");
-//        modelo.addColumn("Region");
-//        modelo.addColumn("Ciudad");
-//        modelo.addColumn("Direccion");
-//        switch(numero){
-//            case 1:CadSql="SELECT * FROM factura";
-//                break;
-//            case 2:CadSql="SELECT * FROM factura where rut="+campo+";";
-//                break;
-//            case 3:CadSql="SELECT * FROM factura where nombre_factura like '%"+campo+"%';";
-//                break;    
-//        }
-//        try
-//        {
-//            String[] datos = new String[8];
-//            Statement st = this.cn.createStatement();
-//            ResultSet rs = st.executeQuery(CadSql);
-//             while (rs.next())
-//          {
-//            datos[0] = rs.getString(1);
-//            datos[1] = rs.getString(2);
-//            datos[2] = rs.getString(3);
-//            datos[3] = rs.getString(4);
-//            datos[4] = rs.getString(5);
-//            datos[5] = rs.getString(6);
-//            datos[6] = rs.getString(7);
-//            datos[7] = rs.getString(8);
-//            modelo.addRow(datos);
-//          }
-//            mostrar_busqueda.tbfactura.setModel(modelo);
-//            int[] anchos = {50, 100, 130, 150, 100, 140, 100, 124};
-//            for(int i = 0; i < mostrar_busqueda.tbfactura.getColumnCount(); i++) {
-//                mostrar_busqueda.tbfactura.getColumnModel().getColumn(i).setPreferredWidth(anchos[i]);
-//            }
-//        }
-//        catch(Exception ex)
-//        {
-//            JOptionPane.showMessageDialog(null, ex);
-//        }
-//    }
-//    public void CargarTablaDePedidos(int numero,String campo)
-//    {
-//        DefaultTableModel modelo = new DefaultTableModel();
-//        modelo.addColumn("Codigo");
-//        modelo.addColumn("Rut");
-//        modelo.addColumn("Estado");
-//        modelo.addColumn("Progreso");
-//        modelo.addColumn("Fecha de Termino");
-//        modelo.addColumn("Descripcion");
-//        switch(numero){
-//            case 1:CadSql="SELECT * FROM pedidos";
-//                break;
-//            case 2:CadSql="SELECT * FROM pedidos where rut_cliente="+campo+";";
-//                break;
-//        }
-//        try
-//        {
-//            String[] datos = new String[6];
-//            Statement st = this.cn.createStatement();
-//            ResultSet rs = st.executeQuery(CadSql);
-//             while (rs.next())
-//          {
-//            datos[0] = rs.getString(1);
-//            datos[1] = rs.getString(2);
-//            datos[2] = rs.getString(3);
-//            datos[3] = rs.getString(4);
-//            datos[4] = rs.getString(5);
-//            datos[5] = rs.getString(6);
-//            modelo.addRow(datos);
-//          }
-//            mostrar_busqueda.tbpedidos.setModel(modelo);
-//        }
-//        catch(Exception ex)
-//        {
-//            JOptionPane.showMessageDialog(null, ex);
-//        }
-//    }
-//    public void MostrarDatosCliente(String valor)
-//  {
-//      
-//      CadSql="SELECT * FROM clientes where rut="+valor+";";
-//      try{
-//        Statement st = this.cn.createStatement();
-//        ResultSet rs = st.executeQuery(CadSql);
-//         while (rs.next())
-//          {
-//              muestra.txtCli1.setText(rs.getString(1));
-//              muestra.txtCli2.setText(rs.getString(2));
-//              muestra.txtCli3.setText(rs.getString(3));
-//          }
-//      }catch(Exception ex){}
-//  }
-//    public void MostrarDatosFactura(String valor, int numero)
-//  {
-//      switch(numero)
-//      {
-//          case 1:CadSql="SELECT * FROM factura where rut="+valor+";";
-//          break;
-//          case 2:CadSql="SELECT * FROM factura where codigo="+valor+";";
-//          break;
-//      }
-//            try{
-//        Statement st = this.cn.createStatement();
-//        ResultSet rs = st.executeQuery(CadSql);
-//        if(numero==1){
-//         while (rs.next())
-//          {
-//              muestra.txtFact1.setText(rs.getString(1));
-//              muestra.txtFact2.setText(rs.getString(2));
-//              muestra.txtFact3.setText(rs.getString(3));
-//              muestra.txtFact4.setText(rs.getString(4));
-//              muestra.txtFact5.setText(rs.getString(5));
-//              muestra.txtFact6.setText(rs.getString(6));
-//              muestra.txtFact7.setText(rs.getString(7));
-//              muestra.txtFact8.setText(rs.getString(8));
-//          }
-//        }else if(numero==2)
-//        {
-//            //rut,nombre,telefono,ciudad,region,direccion
-//            while (rs.next())
-//          {
-//              interfaz_principal.txtRutFactura.setText(rs.getString(2));
-//              interfaz_principal.txtNombre_Factura.setText(rs.getString(3));
-//              interfaz_principal.txtTelefonoFactura.setText(rs.getString(4));
-//              interfaz_principal.txtGiroFactura.setText(rs.getString(5));
-//              //interfaz_principal.cboCiudadFactura.setText(rs.getString(6));
-//              //interfaz_principal.cboRegionFactura.setText(rs.getString(7));
-//              interfaz_principal.txtDireccion.setText(rs.getString(8));
-//          }
-//        }
-//      }catch(Exception ex){}
-//  }
-//    public void MostrarDatosPedido(String valor,int numero)
-//  {
-//       CadSql="SELECT * FROM pedidos where codigo="+Integer.parseInt(valor)+";";
-//            try{
-//        Statement st = this.cn.createStatement();
-//        ResultSet rs = st.executeQuery(CadSql);
-//        if(numero==1){
-//         while (rs.next())
-//          {
-//              muestra.txtPed1.setText(rs.getString(1));
-//              muestra.txtPed2.setText(rs.getString(2));
-//              muestra.txtPed3.setText(rs.getString(3));
-//              muestra.txtPed4.setText(rs.getString(4));
-//              muestra.txtPed5.setText(rs.getString(5));
-//              muestra.txtPed6.setText(rs.getString(6));
-//          }
-//        }else if(numero==2)
-//        {
-//           while (rs.next())
-//          {
-//              //codigo,rut,estado,progreso,fecha,descripcion
-//              interfaz_principal.txtRutCliente.setText(rs.getString(2));
-//              ConsultarRut(rs.getString(2),1);
-//              interfaz_principal.txtEstadoCliente.setText(rs.getString(3));
-//              interfaz_principal.txtProgresoCliente.setText(rs.getString(4));
-//              interfaz_principal.txtFechaTerminoCliente.setText(rs.getString(5));
-//              interfaz_principal.txtDescripcionCliente.setText(rs.getString(6));
-//          }
-//        }
-//      }catch(Exception ex){}
-//  }
-//    public void filtrar(int numero)
-//    {
-//        DefaultTableModel modelo = new DefaultTableModel();
-//        modelo.addColumn("Codigo");
-//        modelo.addColumn("Rut");
-//        modelo.addColumn("Estado");
-//        modelo.addColumn("Progreso");
-//        modelo.addColumn("Fecha de Termino");
-//        modelo.addColumn("Descripcion");
-//        switch(numero)
-//        {
-//            case 1:CadSql="SELECT * FROM `pedidos` WHERE `progreso` = 'TRABAJANDO';";
-//                break;
-//            case 2:CadSql="SELECT * FROM pedidos where 'progreso' = 'TERMINADO';";
-//                break;
-//            case 3:CadSql="SELECT * FROM `pedidos` WHERE `estado` = 'PAGADO'";
-//                break;
-//            case 4:CadSql="SELECT * FROM `pedidos` WHERE `estado` = 'NO PAGADO'";
-//                break;
-//        }
-//        try{
-//            String[] datos = new String[6];
-//            Statement st = this.cn.createStatement();
-//            ResultSet rs = st.executeQuery(CadSql);
-//             while (rs.next())
-//          {
-//            datos[0] = rs.getString(1);
-//            datos[1] = rs.getString(2);
-//            datos[2] = rs.getString(3);
-//            datos[3] = rs.getString(4);
-//            datos[4] = rs.getString(5);
-//            datos[5] = rs.getString(6);
-//            modelo.addRow(datos);
-//          }
-//            mostrar_busqueda.tbpedidos.setModel(modelo);
-//        }
-//      catch(Exception ex){}
-//    }
+
 //    public void EliminarCliente(String valor)
 //    {
 //        try{

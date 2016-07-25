@@ -25,6 +25,8 @@ public class Main extends javax.swing.JFrame {
         Calendar cal = Calendar.getInstance();
         String fechas = cal.get(cal.DATE) + "/" + cal.get(cal.MONTH) + "/" + cal.get(cal.YEAR);
         this.fecha.setText(fechas);
+        
+        
     }
 
     /**
@@ -58,6 +60,7 @@ public class Main extends javax.swing.JFrame {
         llamaLibreria = new javax.swing.JMenuItem();
         llamaVestuario = new javax.swing.JMenuItem();
         llamaCasayPesca = new javax.swing.JMenuItem();
+        jMenuItem2 = new javax.swing.JMenuItem();
         Slider3 = new javax.swing.JMenu();
         llamaUsuarios = new javax.swing.JMenuItem();
         Slider4 = new javax.swing.JMenu();
@@ -274,6 +277,15 @@ public class Main extends javax.swing.JFrame {
         });
         Slider2.add(llamaCasayPesca);
 
+        jMenuItem2.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_4, java.awt.event.InputEvent.CTRL_MASK));
+        jMenuItem2.setText("Administracion Inventario");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
+        Slider2.add(jMenuItem2);
+
         jMenuBar1.add(Slider2);
 
         Slider3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/usuarios.png"))); // NOI18N
@@ -453,6 +465,18 @@ public class Main extends javax.swing.JFrame {
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
         cerrar();
     }//GEN-LAST:event_formWindowClosing
+
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        interfaz_inventario_administracion Form = new interfaz_inventario_administracion();
+        Form.setVisible(true);
+        this.add(Form);
+        Dimension desktopSize = this.getSize();
+        Dimension FrameSize = Form.getSize();
+        Form.setLocation((desktopSize.width - FrameSize.width) / 2, ((desktopSize.height - FrameSize.height) / 2) - 40);
+        Contenedor.removeAll();
+        Contenedor.updateUI();
+        Contenedor.add(Form);
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
     public class cronometro implements ActionListener {
 
         public void actionPerformed(ActionEvent evt) {
@@ -531,6 +555,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
