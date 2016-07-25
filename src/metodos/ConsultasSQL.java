@@ -114,7 +114,15 @@ public class ConsultasSQL {
         } catch (Exception ex) {
         }
     }
-
+    public void Eliminarventas(String valor) {
+        try {
+            PreparedStatement pst = this.cn.prepareStatement("DELETE FROM ordenes_pedido WHERE  cod_venta='" + valor + "'");
+            pst.executeUpdate();
+            pst = this.cn.prepareStatement("DELETE FROM ventas WHERE  cod_venta='" + valor + "'");
+            pst.executeUpdate();
+        } catch (Exception ex) {
+        }
+    }
     public void CargarTablausuarios(int numero, String campo) {
         DefaultTableModel modelo = new DefaultTableModel();
         modelo.addColumn("Codigo");
@@ -238,37 +246,28 @@ public class ConsultasSQL {
             JOptionPane.showMessageDialog(null, ex);
         }
     }
-//    public void GuardarPedido()
-//    {
-//       try
-//        {
-//          PreparedStatement pst = this.cn.prepareStatement("INSERT INTO pedidos(rut_cliente,estado,progreso,fecha_de_termino,descripcion) VALUES (?,?,?,?,?)"); 
-//          pst.setString(1, interfaz_principal.txtRutCliente.getText());
-//          pst.setString(2, interfaz_principal.txtEstadoCliente.getText());
-//          pst.setString(3, interfaz_principal.txtProgresoCliente.getText());
-//          pst.setString(4, interfaz_principal.txtFechaTerminoCliente.getText());
-//          pst.setString(5, interfaz_principal.txtDescripcionCliente.getText());
-//          pst.executeUpdate();
-//        }
-//        catch (Exception e){
-//        JOptionPane.showMessageDialog(null, e);}    
-//    }
-//    public void GuardarFactura()
-//    {
-//       try
-//        {
-//          PreparedStatement pst = this.cn.prepareStatement("INSERT INTO factura(rut,nombre_factura,giro,telefono,ciudad,region,direccion) VALUES (?,?,?,?,?,?,?)");
-//          pst.setString(1, interfaz_principal.txtRutFactura.getText());
-//          pst.setString(2, interfaz_principal.txtNombre_Factura.getText());
-//          pst.setString(3, interfaz_principal.txtGiroFactura.getText());
-//          pst.setString(4, interfaz_principal.txtTelefonoFactura.getText());
-//          pst.setString(5, interfaz_principal.cboCiudadFactura.getSelectedItem().toString());
-//          pst.setString(6, interfaz_principal.cboRegionFactura.getSelectedItem().toString());
-//          pst.setString(7, interfaz_principal.txtDireccion.getText());
-//          pst.executeUpdate();
-//        }
-//        catch (Exception e){}    
-//    }
+
+    public void guardarRecuperacion(String id, String cantidad) {
+        try {
+            PreparedStatement pst = this.cn.prepareStatement("INSERT INTO recuperacion(id_recuperacion,cantidad) VALUES (?,?)");
+            pst.setString(0, id);
+            pst.setString(1, cantidad);
+            pst.executeUpdate();
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, ex);
+        }
+    }
+    public void DevolverStock(int cantidad, String nombre)
+    {
+          try {
+            PreparedStatement pst = this.cn.prepareStatement("UPDATE productos SET cantidad=cantidad+? WHERE NOM_producto=?;");
+            pst.setInt(1, cantidad);
+            pst.setString(2, nombre);
+            pst.executeUpdate();
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, ex);
+        }
+    }
 
     public void CargarTablaproductos(int numero, String campo) {
         DefaultTableModel modelo = new DefaultTableModel();
@@ -328,7 +327,6 @@ public class ConsultasSQL {
                 CadSql = "";
                 break;
         }
-        JOptionPane.showMessageDialog(null, CadSql);
         try {
             String[] datos = new String[5];
             Statement st = this.cn.createStatement();
@@ -362,20 +360,34 @@ public class ConsultasSQL {
             case 2:
                 CadSql = "SELECT cod_producto, nom_producto, descripcion, cantidad, valor_individual_venta FROM productos where nom_producto like'%" + campo + "%' AND categoria='" + campo2 + "';";
                 break;
+            case 3:
+                CadSql = "select id_producto, cantidad from productos where categoria='" + campo + "';";
+                break;
         }
         try {
-            String[] datos = new String[5];
-            Statement st = this.cn.createStatement();
-            ResultSet rs = st.executeQuery(CadSql);
-            while (rs.next()) {
-                datos[0] = rs.getString(1);
-                datos[1] = rs.getString(2);
-                datos[2] = rs.getString(3);
-                datos[3] = rs.getString(4);
-                datos[4] = rs.getString(5);
-                modelo.addRow(datos);
+            if (numero == 3) {
+                String[] datos = new String[2];
+                Statement st = this.cn.createStatement();
+                ResultSet rs = st.executeQuery(CadSql);
+                while (rs.next()) {
+                    guardarRecuperacion(rs.getString(1), rs.getString(2));
+                }
+                
+            } else {
+                String[] datos = new String[5];
+                Statement st = this.cn.createStatement();
+                ResultSet rs = st.executeQuery(CadSql);
+                while (rs.next()) {
+                    datos[0] = rs.getString(1);
+                    datos[1] = rs.getString(2);
+                    datos[2] = rs.getString(3);
+                    datos[3] = rs.getString(4);
+                    datos[4] = rs.getString(5);
+                    modelo.addRow(datos);
+                }
             }
             interfaz_ventab.tbproductosListado.setModel(modelo);
+
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(null, ex);
         }

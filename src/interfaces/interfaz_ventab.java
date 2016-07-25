@@ -338,6 +338,11 @@ public class interfaz_ventab extends javax.swing.JInternalFrame {
         );
 
         BtnSalir.setText("SALIR");
+        BtnSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnSalirActionPerformed(evt);
+            }
+        });
 
         BtnLimpiar.setText("CANCELAR VENTA");
         BtnLimpiar.setEnabled(false);
@@ -492,14 +497,17 @@ public class interfaz_ventab extends javax.swing.JInternalFrame {
         } else if (cbocantidad.getSelectedItem() == null) {
 
         } else {
+
             int fila = this.tbproductosListado.getSelectedRow();
             int cantidad = Integer.parseInt(cbocantidad.getSelectedItem().toString());
             int stock = Integer.parseInt(tbproductosListado.getValueAt(fila, 3).toString());
             int precio_individual = Integer.parseInt(tbproductosListado.getValueAt(fila, 4).toString());
             int cantidad2 = stock - cantidad;
             int precio = cantidad * precio_individual;
+
             nombre();
-            sql.NuevaVenta(cod_venta, cantidad, precio_individual, precio, Integer.parseInt(nombre), cboCategoria.getSelectedItem().toString(), cantidad2);
+
+            sql.NuevaVenta(Integer.parseInt(txtcodigo.getText()), cantidad, precio_individual, precio, Integer.parseInt(nombre), cboCategoria.getSelectedItem().toString(), cantidad2);
             sql.CargarTablaListadoProductos(1, cboCategoria.getSelectedItem().toString(), "");
             sql.CargarTablaCompra(1, txtcodigo.getText());
 
@@ -514,7 +522,7 @@ public class interfaz_ventab extends javax.swing.JInternalFrame {
             cbocantidad.removeAllItems();
             cbocantidad.setEnabled(false);
             BtnGuardar.setEnabled(true);
-            BtnCancelar.setEnabled(true);
+            BtnLimpiar.setEnabled(true);
         }
     }//GEN-LAST:event_BtnAceptarActionPerformed
 
@@ -542,15 +550,27 @@ public class interfaz_ventab extends javax.swing.JInternalFrame {
             modelo.removeRow(0);
         }
         JOptionPane.showMessageDialog(null, "Guardado Correctamente");
-        sql.GuardarGanancia(Integer.parseInt(txtcodigo.getText()),Double.parseDouble(txtMontoNeto.getText()), Double.parseDouble(txtIVA.getText()), Double.parseDouble(txtImpuestoAdicional.getText()), Double.parseDouble(txtTotal.getText()));
+        sql.GuardarGanancia(Integer.parseInt(txtcodigo.getText()), Double.parseDouble(txtMontoNeto.getText()), Double.parseDouble(txtIVA.getText()), Double.parseDouble(txtImpuestoAdicional.getText()), Double.parseDouble(txtTotal.getText()));
         int numero = Integer.parseInt(txtcodigo.getText()) + 1;
         txtcodigo.setText(String.valueOf(numero));
         BtnGuardar.setEnabled(false);
+        txtMontoNeto.setText("0");
+        txtIVA.setText("0");
+        txtImpuestoAdicional.setText("0");
+        txtTotal.setText("0");
     }//GEN-LAST:event_BtnGuardarActionPerformed
 
     private void BtnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnLimpiarActionPerformed
-        
+        volver();
     }//GEN-LAST:event_BtnLimpiarActionPerformed
+
+    private void BtnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSalirActionPerformed
+        try {
+            volver();
+            dispose();
+        } catch (Exception e) {
+        }
+    }//GEN-LAST:event_BtnSalirActionPerformed
     private void cargar() {
         try {
             Statement st = this.cn.createStatement();
@@ -579,7 +599,21 @@ public class interfaz_ventab extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(null, ex);
         }
     }
-
+    
+    private void volver() {
+        try {
+            DefaultTableModel modelo = (DefaultTableModel) tbventa.getModel();
+            int filas = tbventa.getRowCount();
+            for (int i = 0; filas > i; i++) {
+                sql.DevolverStock(Integer.parseInt(tbventa.getValueAt(0, 2).toString()), tbventa.getValueAt(0, 0).toString());
+                modelo.removeRow(0);
+            }
+            sql.CargarTablaListadoProductos(1, cboCategoria.getSelectedItem().toString(), "");
+            sql.Eliminarventas(txtcodigo.getText().toString());
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, ex);
+        }
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtnAceptar;
     private javax.swing.JButton BtnCancelar;

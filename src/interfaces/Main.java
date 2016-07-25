@@ -10,6 +10,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
+import javax.swing.JOptionPane;
 import javax.swing.Timer;
 
 /**
@@ -18,15 +19,14 @@ import javax.swing.Timer;
  */
 public class Main extends javax.swing.JFrame {
 
-
     public Main() {
         this.setExtendedState(MAXIMIZED_BOTH);
         initComponents();
-        Calendar cal=Calendar.getInstance();
-        String fechas = cal.get(cal.DATE)+"/"+cal.get(cal.MONTH)+"/"+cal.get(cal.YEAR);
+        Calendar cal = Calendar.getInstance();
+        String fechas = cal.get(cal.DATE) + "/" + cal.get(cal.MONTH) + "/" + cal.get(cal.YEAR);
         this.fecha.setText(fechas);
     }
-        
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -66,6 +66,12 @@ public class Main extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(56, 98, 127));
         addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosed(java.awt.event.WindowEvent evt) {
+                formWindowClosed(evt);
+            }
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
             public void windowOpened(java.awt.event.WindowEvent evt) {
                 formWindowOpened(evt);
             }
@@ -328,11 +334,11 @@ public class Main extends javax.swing.JFrame {
 
     private void llamaLibreriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_llamaLibreriaActionPerformed
         interfaz_inventario1 Form = new interfaz_inventario1();
-        Form.CargarTablas(2,"LIBRERIA");
+        Form.CargarTablas(2, "LIBRERIA");
         this.add(Form);
         Dimension desktopSize = this.getSize();
-        Dimension FrameSize= Form.getSize();
-        Form.setLocation((desktopSize.width - FrameSize.width)/2, (desktopSize.height-FrameSize.height)/2);        
+        Dimension FrameSize = Form.getSize();
+        Form.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.height) / 2);
         Form.setVisible(true);
         Contenedor.removeAll();
         Contenedor.updateUI();
@@ -341,12 +347,12 @@ public class Main extends javax.swing.JFrame {
 
     private void llamaVestuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_llamaVestuarioActionPerformed
         interfaz_inventario1 Form = new interfaz_inventario1();
-        Form.CargarTablas(2,"VESTUARIO");
+        Form.CargarTablas(2, "VESTUARIO");
         Form.setVisible(true);
         this.add(Form);
         Dimension desktopSize = this.getSize();
-        Dimension FrameSize= Form.getSize();
-        Form.setLocation((desktopSize.width - FrameSize.width)/2, (desktopSize.height-FrameSize.height)/2);
+        Dimension FrameSize = Form.getSize();
+        Form.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.height) / 2);
         Contenedor.removeAll();
         Contenedor.updateUI();
         Contenedor.add(Form);
@@ -354,12 +360,12 @@ public class Main extends javax.swing.JFrame {
 
     private void llamaCasayPescaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_llamaCasayPescaActionPerformed
         interfaz_inventario1 Form = new interfaz_inventario1();
-        Form.CargarTablas(2,"CASA Y PESCA");
+        Form.CargarTablas(2, "CASA Y PESCA");
         Form.setVisible(true);
         this.add(Form);
         Dimension desktopSize = this.getSize();
-        Dimension FrameSize= Form.getSize();
-        Form.setLocation((desktopSize.width - FrameSize.width)/2, (desktopSize.height-FrameSize.height)/2);
+        Dimension FrameSize = Form.getSize();
+        Form.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.height) / 2);
         Contenedor.removeAll();
         Contenedor.updateUI();
         Contenedor.add(Form);
@@ -370,8 +376,8 @@ public class Main extends javax.swing.JFrame {
         Form.setVisible(true);
         this.add(Form);
         Dimension desktopSize = this.getSize();
-        Dimension FrameSize= Form.getSize();
-        Form.setLocation((desktopSize.width - FrameSize.width)/2, (desktopSize.height-FrameSize.height)/2);
+        Dimension FrameSize = Form.getSize();
+        Form.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.height) / 2);
         Contenedor.removeAll();
         Contenedor.updateUI();
         Contenedor.add(Form);
@@ -382,8 +388,8 @@ public class Main extends javax.swing.JFrame {
         Form.setVisible(true);
         this.add(Form);
         Dimension desktopSize = this.getSize();
-        Dimension FrameSize= Form.getSize();
-        Form.setLocation((desktopSize.width - FrameSize.width)/2, (desktopSize.height-FrameSize.height)/2);
+        Dimension FrameSize = Form.getSize();
+        Form.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.height) / 2);
         Contenedor.removeAll();
         Contenedor.updateUI();
         Contenedor.add(Form);
@@ -394,34 +400,34 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_Slider3ActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-    interfaz_login il = new interfaz_login();
+        interfaz_login il = new interfaz_login();
         il.setVisible(true);
         this.add(il);
         Dimension desktopSize = this.getSize();
-        Dimension FrameSize= il.getSize();
-        il.setLocation((desktopSize.width - FrameSize.width)/2, (desktopSize.height-FrameSize.height)/2-60);
+        Dimension FrameSize = il.getSize();
+        il.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.height) / 2 - 60);
         Contenedor.removeAll();
         Contenedor.updateUI();
         Contenedor.add(il);
-        
-        timer=new Timer(1000,new cronometro());
+
+        timer = new Timer(1000, new cronometro());
         timer.start();
     }//GEN-LAST:event_formWindowOpened
 
     private void llamaUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_llamaUsuariosActionPerformed
-    interfaz_usuarios2 Form = new interfaz_usuarios2();
+        interfaz_usuarios2 Form = new interfaz_usuarios2();
         Form.setVisible(true);
         this.add(Form);
         Dimension desktopSize = this.getSize();
-        Dimension FrameSize= Form.getSize();
-        Form.setLocation((desktopSize.width - FrameSize.width)/2, (desktopSize.height-FrameSize.height)/2);
+        Dimension FrameSize = Form.getSize();
+        Form.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.height) / 2);
         Contenedor.removeAll();
         Contenedor.updateUI();
         Contenedor.add(Form);
     }//GEN-LAST:event_llamaUsuariosActionPerformed
 
     private void Slider1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Slider1ActionPerformed
-    interfaz_ventab il = new interfaz_ventab();
+        interfaz_ventab il = new interfaz_ventab();
         il.setVisible(true);
         Contenedor.removeAll();
         Contenedor.updateUI();
@@ -433,25 +439,44 @@ public class Main extends javax.swing.JFrame {
         Form.setVisible(true);
         this.add(Form);
         Dimension desktopSize = this.getSize();
-        Dimension FrameSize= Form.getSize();
-        Form.setLocation((desktopSize.width - FrameSize.width)/2, ((desktopSize.height-FrameSize.height)/2)-40);
+        Dimension FrameSize = Form.getSize();
+        Form.setLocation((desktopSize.width - FrameSize.width) / 2, ((desktopSize.height - FrameSize.height) / 2) - 40);
         Contenedor.removeAll();
         Contenedor.updateUI();
         Contenedor.add(Form);
     }//GEN-LAST:event_jMenuItem1ActionPerformed
-        public class cronometro implements ActionListener
-    {
-        public void actionPerformed(ActionEvent evt)
-        {
+
+    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
+        cerrar();
+    }//GEN-LAST:event_formWindowClosed
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        cerrar();
+    }//GEN-LAST:event_formWindowClosing
+    public class cronometro implements ActionListener {
+
+        public void actionPerformed(ActionEvent evt) {
             GregorianCalendar tiempo = new GregorianCalendar();
-            int hora,minutos,segundos;
-            hora= tiempo.get(Calendar.HOUR);
-            minutos=tiempo.get(Calendar.MINUTE);
-            segundos=tiempo.get(Calendar.SECOND);
-            
-            hh.setText((String.valueOf(hora-1)));
+            int hora, minutos, segundos;
+            hora = tiempo.get(Calendar.HOUR);
+            minutos = tiempo.get(Calendar.MINUTE);
+            segundos = tiempo.get(Calendar.SECOND);
+
+            hh.setText((String.valueOf(hora - 1)));
             mm.setText(String.valueOf(minutos));
             ss.setText(String.valueOf(segundos));
+        }
+    }
+
+    private void cerrar() {
+        Object[] opciones = {"Aceptar", "Cancelar"};
+        int eleccion = JOptionPane.showOptionDialog(rootPane, "En realidad desea realizar cerrar la aplicacion", "Mensaje de Confirmacion",
+                JOptionPane.YES_NO_OPTION,
+                JOptionPane.QUESTION_MESSAGE, null, opciones, "Aceptar");
+        if (eleccion == JOptionPane.YES_OPTION) {
+            System.exit(0);
+        } else {
+            
         }
     }
     private Timer timer;
