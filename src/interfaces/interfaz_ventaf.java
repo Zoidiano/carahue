@@ -110,7 +110,7 @@ public class interfaz_ventaf extends javax.swing.JInternalFrame {
         jLabel14.setText("Fecha de Emisión:");
 
         fecha_factura.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        fecha_factura.setText("00-00-0000");
+        fecha_factura.setText("00/00/0000");
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);

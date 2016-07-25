@@ -251,6 +251,7 @@ public class Main extends javax.swing.JFrame {
         Slider2.setEnabled(false);
 
         llamaLibreria.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_1, java.awt.event.InputEvent.CTRL_MASK));
+        llamaLibreria.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/libreria.png"))); // NOI18N
         llamaLibreria.setText("Inventario Libreria");
         llamaLibreria.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -260,6 +261,7 @@ public class Main extends javax.swing.JFrame {
         Slider2.add(llamaLibreria);
 
         llamaVestuario.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_2, java.awt.event.InputEvent.CTRL_MASK));
+        llamaVestuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/vestuario.png"))); // NOI18N
         llamaVestuario.setText("Inventario Vestuario");
         llamaVestuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -269,6 +271,7 @@ public class Main extends javax.swing.JFrame {
         Slider2.add(llamaVestuario);
 
         llamaCasayPesca.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_3, java.awt.event.InputEvent.CTRL_MASK));
+        llamaCasayPesca.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/pesca.png"))); // NOI18N
         llamaCasayPesca.setText("Inventario Casa y Pesca");
         llamaCasayPesca.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -278,6 +281,7 @@ public class Main extends javax.swing.JFrame {
         Slider2.add(llamaCasayPesca);
 
         jMenuItem2.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_4, java.awt.event.InputEvent.CTRL_MASK));
+        jMenuItem2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/inventario.png"))); // NOI18N
         jMenuItem2.setText("Administracion Inventario");
         jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -389,7 +393,7 @@ public class Main extends javax.swing.JFrame {
         this.add(Form);
         Dimension desktopSize = this.getSize();
         Dimension FrameSize = Form.getSize();
-        Form.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.height) / 2);
+        Form.setLocation((desktopSize.width - FrameSize.width) / 2, ((desktopSize.height - FrameSize.height) / 2)-50);
         Contenedor.removeAll();
         Contenedor.updateUI();
         Contenedor.add(Form);
