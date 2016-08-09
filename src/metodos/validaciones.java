@@ -1,6 +1,5 @@
 package metodos;
 
-import interfaces.interfaz_principal;
 import javax.swing.JOptionPane;
 
 /*

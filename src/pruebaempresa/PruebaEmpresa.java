@@ -1,7 +1,6 @@
 package pruebaempresa;
 
 import interfaces.Main;
-import interfaces.interfaz_principal;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.UIManager;

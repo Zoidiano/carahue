@@ -3,7 +3,6 @@ package metodos;
 import conexion.conectar;
 import interfaces.interfaz_inventario1;
 import interfaces.interfaz_inventario_administracion;
-import interfaces.interfaz_principal;
 import interfaces.interfaz_usuarios2;
 import interfaces.interfaz_ventab;
 //import interfaces.mostrar_busqueda;
@@ -41,6 +40,25 @@ public class ConsultasSQL {
             } catch (Exception ex) {
                 JOptionPane.showMessageDialog(null, ex);
             }
+            return Consulta;
+        }
+    }
+
+    public String ConsultarNombre(String usuario) {
+        {
+            String Consulta = "vacio";
+            try {
+                CadSql = "select user from usuarios where user='" + usuario + "';";
+                Statement st = this.cn.createStatement();
+                ResultSet rs = st.executeQuery(CadSql);
+
+                while (rs.next()) {
+                    Consulta = rs.getString(1);
+                }
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(null, ex);
+            }
+
             return Consulta;
         }
     }
@@ -101,6 +119,7 @@ public class ConsultasSQL {
             pst.setString(4, nombre);
             pst.setString(5, tipo);
             pst.executeUpdate();
+            JOptionPane.showMessageDialog(null, "Usuario Creado Correctamente");
 
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e);
@@ -157,6 +176,23 @@ public class ConsultasSQL {
                 modelo.addRow(datos);
             }
             interfaz_usuarios2.tbUsuarios.setModel(modelo);
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, ex);
+        }
+    }
+
+    public void ModProducto(String valor, String usuario, String contrasena, String nombre, String tipo) {
+
+        try {
+            PreparedStatement pst = this.cn.prepareStatement("UPDATE usuarios SET cod_user=?, user=?, password=?, nombre=?, tipo=? WHERE cod_user=?;");
+            pst.setString(1, valor);
+            pst.setString(2, usuario);
+            pst.setString(3, contrasena);
+            pst.setString(4, nombre);
+            pst.setString(5, tipo);
+            pst.setString(6, valor);
+            pst.executeUpdate();
+            CargarTablausuarios(1, "");
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(null, ex);
         }
@@ -226,6 +262,23 @@ public class ConsultasSQL {
         }
     }
 
+    public void IngresarProductos(int cod_producto, String nombre, String descripcion, String categoria, int cantidad, int costo_individual, int venta_individual, String fecha) {
+        try {
+            PreparedStatement pst = this.cn.prepareStatement("INSERT INTO productos(cod_producto,nom_producto,descripcion,categoria,cantidad,valor_individual_producto,fecha_ingreso,valor_individual_venta) VALUES (?,?,?,?,?,?,?,?)");
+            pst.setInt(1, cod_producto);
+            pst.setString(2, nombre);
+            pst.setString(3, descripcion);
+            pst.setString(4, categoria);
+            pst.setInt(5, cantidad);
+            pst.setInt(6, costo_individual);
+            pst.setString(7, fecha);
+            pst.setInt(8, venta_individual);
+            pst.executeUpdate();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+        }
+    }
+
     public void GuardarGanancia(int codigoventa, double monto_neto, double iva, double impuesto_adicional, double total) {
         try {
             PreparedStatement pst = this.cn.prepareStatement("INSERT INTO ganancias(cod_venta,monto_neto,iva,impuesto_adicional,total) VALUES (?,?,?,?,?)");
@@ -272,41 +325,50 @@ public class ConsultasSQL {
         }
     }
 
-    public boolean validarNombre(String nombre,String categoria) {
+    public void EliminarProducto(String nombre, String categoria) {
+        try {
+            PreparedStatement pst = this.cn.prepareStatement("DELETE FROM productos where nom_producto='" + nombre + "' AND categoria='" + categoria + "';");
+            pst.executeUpdate();
+            CargarTablaproductos(1, "", 0);
+        } catch (Exception ex) {
+        }
+    }
+
+    public boolean validarNombre(String nombre, String categoria) {
         boolean validar = false;
         try {
             Statement st = this.cn.createStatement();
-            ResultSet rs = st.executeQuery("SELECT nom_producto from productos where nom_producto='" + nombre+ "' AND categoria='"+categoria+"';");
+            ResultSet rs = st.executeQuery("SELECT nom_producto from productos where nom_producto='" + nombre + "' AND categoria='" + categoria + "';");
             while (rs.next()) {
                 validar = true;
             }
-            
+
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(null, ex);
         }
         return validar;
     }
 
-    public void CargarTablaproductos(int numero, String campo,int num_interno) {
+    public void CargarTablaproductos(int numero, String campo, int num_interno) {
         DefaultTableModel modelo = new DefaultTableModel();
         modelo.addColumn("Codigo");
         modelo.addColumn("Nombre Producto");
         modelo.addColumn("Descripción");
         modelo.addColumn("Categoria");
         modelo.addColumn("Cantidad");
-        modelo.addColumn("Valor Producto");
+        modelo.addColumn("Valor Adquisicion");
         modelo.addColumn("Fecha LLegada");
-        modelo.addColumn("Num_Factura");
+        modelo.addColumn("Valor Venta");
         //Recordar cambiar tamaños
         switch (numero) {
             case 1:
-                CadSql = "SELECT cod_producto, nom_producto, descripcion, categoria, cantidad, valor_producto, fecha_ingreso, num_factura FROM productos;";
+                CadSql = "SELECT cod_producto, nom_producto, descripcion, categoria, cantidad, valor_individual_producto, fecha_ingreso, valor_individual_venta FROM productos;";
                 break;
             case 2:
-                CadSql = "SELECT cod_producto, nom_producto, descripcion, categoria, cantidad, valor_producto, fecha_ingreso, num_factura FROM productos where categoria='" + campo + "';";
+                CadSql = "SELECT cod_producto, nom_producto, descripcion, categoria, cantidad, valor_individual_producto, fecha_ingreso, valor_individual_venta FROM productos where categoria='" + campo + "';";
                 break;
             case 3:
-                CadSql = "SELECT cod_producto, nom_producto, descripcion, categoria, cantidad, valor_producto, fecha_ingreso, num_factura FROM productos where nom_producto like'%" + campo + "%';";
+                CadSql = "SELECT cod_producto, nom_producto, descripcion, categoria, cantidad, valor_individual_producto, fecha_ingreso, valor_individual_venta FROM productos where nom_producto like'%" + campo + "%';";
                 break;
         }
         try {
@@ -324,13 +386,13 @@ public class ConsultasSQL {
                 datos[7] = rs.getString(8);
                 modelo.addRow(datos);
             }
-            if(num_interno==1)
+            if (num_interno == 1) {
                 interfaz_inventario_administracion.tbproductos.setModel(modelo);
-            else
-            interfaz_inventario1.tbproductos.setModel(modelo);
-            
+            } else {
+                interfaz_inventario1.tbproductos.setModel(modelo);
+            }
         } catch (Exception ex) {
-            JOptionPane.showMessageDialog(null, ex);
+
         }
     }
 

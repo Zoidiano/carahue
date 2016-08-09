@@ -546,7 +546,7 @@ public class interfaz_ventab extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_BtnAceptarActionPerformed
 
     private void BtnCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCerrarActionPerformed
-
+        
     }//GEN-LAST:event_BtnCerrarActionPerformed
 
     private void cboCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboCategoriaActionPerformed
@@ -580,14 +580,23 @@ public class interfaz_ventab extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_BtnGuardarActionPerformed
 
     private void BtnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnLimpiarActionPerformed
+        BtnGuardar.setEnabled(false);
         volver();
     }//GEN-LAST:event_BtnLimpiarActionPerformed
 
     private void BtnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSalirActionPerformed
-        try {
+        try{
+        if(tbventa.getValueAt(0,0).toString()=="")
+        {
+            dispose();
+        }else
+        {
+            
             volver();
             dispose();
-        } catch (Exception e) {
+        }
+        }catch(Exception ex){
+        dispose();
         }
     }//GEN-LAST:event_BtnSalirActionPerformed
     private void cargar() {
