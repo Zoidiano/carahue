@@ -46,6 +46,8 @@ public class JPanelModUsuarios extends javax.swing.JPanel {
         jLabel4 = new javax.swing.JLabel();
         txtpass = new javax.swing.JPasswordField();
         jLabel1 = new javax.swing.JLabel();
+        btnAceptar1 = new javax.swing.JButton();
+        txtRespuesta = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(88, 147, 191));
         setBorder(javax.swing.BorderFactory.createTitledBorder(""));
@@ -142,6 +144,17 @@ public class JPanelModUsuarios extends javax.swing.JPanel {
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("MODIFICAR:");
 
+        btnAceptar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/limpiar.png"))); // NOI18N
+        btnAceptar1.setText("LIMPIAR");
+        btnAceptar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAceptar1ActionPerformed(evt);
+            }
+        });
+
+        txtRespuesta.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        txtRespuesta.setForeground(new java.awt.Color(255, 255, 255));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -150,28 +163,35 @@ public class JPanelModUsuarios extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(btnAceptar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnCancelar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addComponent(jLabel1))
-                .addContainerGap(33, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(btnAceptar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(btnCancelar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(btnAceptar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addComponent(jLabel1))
+                        .addGap(0, 23, Short.MAX_VALUE))
+                    .addComponent(txtRespuesta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(52, 52, 52)
                         .addComponent(btnAceptar)
-                        .addGap(17, 17, 17)
-                        .addComponent(btnCancelar))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(53, Short.MAX_VALUE))
+                        .addComponent(btnAceptar1)
+                        .addGap(10, 10, 10)
+                        .addComponent(btnCancelar))
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(txtRespuesta, javax.swing.GroupLayout.DEFAULT_SIZE, 25, Short.MAX_VALUE)
+                .addGap(17, 17, 17))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -179,14 +199,14 @@ public class JPanelModUsuarios extends javax.swing.JPanel {
         String nombre = txtNombres.getText(), usuario = txtUsuario.getText(), contrasena = txtpass.getText(), tipo = cboTipo.getSelectedItem().toString();
         
         if (nombre.equals("") || usuario.equals("") || contrasena.equals("")) {
-            JOptionPane.showMessageDialog(null, "Alguno de los campos necesarios se encuentra vacio");
+            txtRespuesta.setText("Alguno de los campos necesarios se encuentra vacio");
         } else {
              try {
             int fila = interfaz_usuarios2.tbUsuarios.getSelectedRow();
             String cod = interfaz_usuarios2.tbUsuarios.getValueAt(fila, 0).toString();
                 if (fila != -1) {
                         sql.ModUsuarios(cod,usuario,contrasena,nombre,tipo);
-                        JOptionPane.showMessageDialog(null, "Usuario Modificado correctamente");
+                        txtRespuesta.setText("Usuario Modificado correctamente");
                         sql.CargarTablausuarios(1, cod);
                 }else
                 {
@@ -215,9 +235,17 @@ public class JPanelModUsuarios extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_btnCancelarActionPerformed
 
+    private void btnAceptar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptar1ActionPerformed
+    txtNombres.setText("");
+    txtUsuario.setText("");
+    txtpass.setText("");
+    txtNombres.isFocusable();
+    }//GEN-LAST:event_btnAceptar1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAceptar;
+    private javax.swing.JButton btnAceptar1;
     private javax.swing.JButton btnCancelar;
     private javax.swing.JComboBox<String> cboTipo;
     private javax.swing.JLabel jLabel1;
@@ -227,6 +255,7 @@ public class JPanelModUsuarios extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     public static javax.swing.JTextField txtNombres;
+    private javax.swing.JLabel txtRespuesta;
     public static javax.swing.JTextField txtUsuario;
     public static javax.swing.JPasswordField txtpass;
     // End of variables declaration//GEN-END:variables

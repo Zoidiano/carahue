@@ -43,7 +43,7 @@ public class Main extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         lb_user = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        lbCARGO = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         hh = new javax.swing.JLabel();
@@ -105,8 +105,8 @@ public class Main extends javax.swing.JFrame {
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("|");
 
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("CARGO");
+        lbCARGO.setForeground(new java.awt.Color(255, 255, 255));
+        lbCARGO.setText("CARGO");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -118,7 +118,7 @@ public class Main extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel3)
+                .addComponent(lbCARGO)
                 .addContainerGap(26, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -127,7 +127,7 @@ public class Main extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lb_user)
                     .addComponent(jLabel2)
-                    .addComponent(jLabel3))
+                    .addComponent(lbCARGO))
                 .addGap(0, 11, Short.MAX_VALUE))
         );
 
@@ -471,6 +471,7 @@ public class Main extends javax.swing.JFrame {
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
         interfaz_inventario_administracion Form = new interfaz_inventario_administracion();
+        Form.CargarTablas(1, "");
         Form.setVisible(true);
         this.add(Form);
         Dimension desktopSize = this.getSize();
@@ -552,7 +553,6 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JLabel fecha;
     private javax.swing.JLabel hh;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel9;
@@ -562,6 +562,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JLabel lbCARGO;
     private javax.swing.JLabel lb_user;
     private javax.swing.JMenuItem llamaCasayPesca;
     private javax.swing.JMenuItem llamaLibreria;

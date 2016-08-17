@@ -577,6 +577,8 @@ public class interfaz_ventab extends javax.swing.JInternalFrame {
         txtIVA.setText("0");
         txtImpuestoAdicional.setText("0");
         txtTotal.setText("0");
+        JOptionPane.showMessageDialog(null, "Imprimiendo");
+        
     }//GEN-LAST:event_BtnGuardarActionPerformed
 
     private void BtnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnLimpiarActionPerformed
