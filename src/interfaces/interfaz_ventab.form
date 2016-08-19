@@ -178,7 +178,7 @@
         <Component class="javax.swing.JButton" name="BtnCerrar">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/imagenes/close2.png"/>
+              <Image iconType="3" name="/imagenes/salir.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Salir"/>
           </Properties>
@@ -238,9 +238,6 @@
               <Color blue="cc" green="0" red="0" type="rgb"/>
             </Property>
             <Property name="horizontalAlignment" type="int" value="0"/>
-            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/imagenes/carro compra.png"/>
-            </Property>
             <Property name="text" type="java.lang.String" value="SISTEMA DE VENTAS"/>
           </Properties>
         </Component>
@@ -690,7 +687,7 @@
                   <Font name="Tahoma" size="12" style="0"/>
                 </Property>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/imagenes/close32.png"/>
+                  <Image iconType="3" name="/imagenes/salir32.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="SALIR"/>
               </Properties>

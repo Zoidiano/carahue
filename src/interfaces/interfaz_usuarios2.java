@@ -64,7 +64,7 @@ public class interfaz_usuarios2 extends javax.swing.JInternalFrame {
 
         jPanel3.setBackground(new java.awt.Color(88, 147, 191));
 
-        btnEliminar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/close32.png"))); // NOI18N
+        btnEliminar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/salir32.png"))); // NOI18N
         btnEliminar1.setText("SALIR");
         btnEliminar1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
