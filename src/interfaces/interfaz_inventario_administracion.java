@@ -30,8 +30,7 @@ public class interfaz_inventario_administracion extends javax.swing.JInternalFra
     public interfaz_inventario_administracion() {
         initComponents();
         txtFecha.setText(fechas);
-    }
-
+    }    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -41,6 +40,8 @@ public class interfaz_inventario_administracion extends javax.swing.JInternalFra
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tbproductos = new javax.swing.JTable();
         jPanel1 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
@@ -73,12 +74,48 @@ public class interfaz_inventario_administracion extends javax.swing.JInternalFra
         btnEliminar = new javax.swing.JButton();
         btnSalir = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tbproductos = new javax.swing.JTable();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        tbproductos1 = new javax.swing.JTable();
         jPanel3 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(56, 98, 127));
+
+        tbproductos.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null}
+            },
+            new String [] {
+                "Codigo", "Nombre Producto", "Descripción", "Categoria", "Cantidad", "Valor Adquisicion", "Fecha llegada", "Valor Venta"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tbproductos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tbproductosMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(tbproductos);
+        if (tbproductos.getColumnModel().getColumnCount() > 0) {
+            tbproductos.getColumnModel().getColumn(0).setResizable(false);
+            tbproductos.getColumnModel().getColumn(1).setResizable(false);
+            tbproductos.getColumnModel().getColumn(2).setResizable(false);
+            tbproductos.getColumnModel().getColumn(3).setResizable(false);
+            tbproductos.getColumnModel().getColumn(4).setResizable(false);
+            tbproductos.getColumnModel().getColumn(5).setResizable(false);
+            tbproductos.getColumnModel().getColumn(6).setResizable(false);
+            tbproductos.getColumnModel().getColumn(7).setResizable(false);
+        }
 
         jPanel1.setBackground(new java.awt.Color(88, 147, 191));
 
@@ -392,7 +429,7 @@ public class interfaz_inventario_administracion extends javax.swing.JInternalFra
         jPanel2.setBackground(new java.awt.Color(88, 147, 191));
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(255, 255, 255))); // NOI18N
 
-        tbproductos.setModel(new javax.swing.table.DefaultTableModel(
+        tbproductos1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null, null},
@@ -403,12 +440,12 @@ public class interfaz_inventario_administracion extends javax.swing.JInternalFra
                 "Codigo", "Nombre Producto", "Descripción", "Categoria", "Cantidad", "Valor Adquisicion", "Fecha llegada", "Valor Venta"
             }
         ));
-        tbproductos.addMouseListener(new java.awt.event.MouseAdapter() {
+        tbproductos1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tbproductosMouseClicked(evt);
             }
         });
-        jScrollPane1.setViewportView(tbproductos);
+        jScrollPane3.setViewportView(tbproductos1);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -416,14 +453,14 @@ public class interfaz_inventario_administracion extends javax.swing.JInternalFra
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 656, Short.MAX_VALUE)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 656, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1)
+                .addComponent(jScrollPane3)
                 .addContainerGap())
         );
 
@@ -720,7 +757,9 @@ public class interfaz_inventario_administracion extends javax.swing.JInternalFra
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     public static javax.swing.JTable tbproductos;
+    public static javax.swing.JTable tbproductos1;
     private javax.swing.JTextField txtCantidad;
     private javax.swing.JTextField txtCostoIndividual;
     private javax.swing.JTextField txtCostoTotal;
