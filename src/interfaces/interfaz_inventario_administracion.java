@@ -423,8 +423,8 @@ public class interfaz_inventario_administracion extends javax.swing.JInternalFra
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jScrollPane1)
+                .addContainerGap())
         );
 
         jPanel3.setBackground(new java.awt.Color(255, 153, 0));
@@ -469,7 +469,7 @@ public class interfaz_inventario_administracion extends javax.swing.JInternalFra
                 .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
@@ -539,7 +539,11 @@ public class interfaz_inventario_administracion extends javax.swing.JInternalFra
             JOptionPane.showMessageDialog(null, "Alguno de los campos se encuentra vacio");
         } else if (CompararPrecios()) {
             JOptionPane.showMessageDialog(null, "El costo debe ser menor al precio venta");
-        } else {
+        } else if (sql.validarNombre(txtNombre.getText(), cboCategoria.getSelectedItem().toString()))
+        {
+            JOptionPane.showMessageDialog(null, "El nombre que intenta usar ya se encuentra ocupado");
+        }
+        else {
             sql.IngresarProductos(4, txtNombre.getText(), txtDescripcion.getText(), cboCategoria.getSelectedItem().toString(), Integer.parseInt(txtCantidad.getText()), costo_individual, precio_individual, txtFecha.getText());
             CargarTablas(2, cboCategoria.getSelectedItem().toString());
         }
@@ -569,6 +573,7 @@ public class interfaz_inventario_administracion extends javax.swing.JInternalFra
                 if (JOptionPane.OK_OPTION == resp) {
                     sql.EliminarProducto(nombre, categoria);
                     JOptionPane.showMessageDialog(null, "Producto eliminado Correctamente");
+                    CargarTablas(1, "");
                 }
             } else {
                 JOptionPane.showMessageDialog(null, "Seleccione un elemento de la tabla");

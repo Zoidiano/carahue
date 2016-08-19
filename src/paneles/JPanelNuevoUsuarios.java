@@ -196,13 +196,11 @@ public class JPanelNuevoUsuarios extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
-
         String nombre = txtNombres.getText().toUpperCase(), usuario = txtUsuario.getText().toUpperCase(), contraseña = txtpass.getText().toUpperCase(), tipo = cboTipo.getSelectedItem().toString();
-
         if (nombre.equals("") || usuario.equals("") || contraseña.equals("")) {
             txtRespuesta.setText("ALGUNO DE LOS CAMPOS NECESARIOS SE ENCUENTRA VACIO");
         } else {
-            if (sql.ConsultarNombre(txtNombres.getText()).equals("vacio")) {
+            if (sql.ConsultarNombre(txtNombres.getText()).equals("")) {
                 txtRespuesta.setText("EL NOMBRE DE USUARIO SE ENCUENTRA OCUPADO");
                 LimpiarNombre();
             } else {

@@ -46,9 +46,26 @@ public class ConsultasSQL {
 
     public String ConsultarNombre(String usuario) {
         {
-            String Consulta = "vacio";
+            String Consulta = "";
             try {
                 CadSql = "select user from usuarios where user='" + usuario + "';";
+                Statement st = this.cn.createStatement();
+                ResultSet rs = st.executeQuery(CadSql);
+                while (rs.next()) {
+                    Consulta = rs.getString(1);
+                }
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(null, ex);
+            }
+
+            return Consulta;
+        }
+    }
+        public String ConsultarNombreConUser(String usuario) {
+        {
+            String Consulta = "";
+            try {
+                CadSql = "select nombre from usuarios where user='" + usuario + "';";
                 Statement st = this.cn.createStatement();
                 ResultSet rs = st.executeQuery(CadSql);
 
@@ -348,7 +365,7 @@ public class ConsultasSQL {
         }
         return validar;
     }
-
+    
     public void CargarTablaproductos(int numero, String campo, int num_interno) {
         DefaultTableModel modelo = new DefaultTableModel();
         modelo.addColumn("Codigo");
@@ -403,6 +420,8 @@ public class ConsultasSQL {
         modelo.addColumn("Cantidad");
         modelo.addColumn("Precio");
         modelo.addColumn("Valor");
+        
+        
         switch (numero) {
             case 1:
                 CadSql = "select p.nom_producto, p.descripcion, v.cantidad, p.valor_individual_venta, v.precio from productos p, ventas v where p.id_producto=v.cod_producto AND v.cod_venta='" + campo + "';";

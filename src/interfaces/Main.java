@@ -17,6 +17,7 @@ import javax.swing.Timer;
  *
  * @author Zoidiano
  */
+
 public class Main extends javax.swing.JFrame {
 
     public Main() {
@@ -25,10 +26,7 @@ public class Main extends javax.swing.JFrame {
         Calendar cal = Calendar.getInstance();
         String fechas = cal.get(cal.DATE) + "/" + cal.get(cal.MONTH) + "/" + cal.get(cal.YEAR);
         this.fecha.setText(fechas);
-        
-        
     }
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -551,7 +549,7 @@ public class Main extends javax.swing.JFrame {
     public static javax.swing.JMenu Slider3;
     public static javax.swing.JMenu Slider4;
     private javax.swing.JLabel fecha;
-    private javax.swing.JLabel hh;
+    public static javax.swing.JLabel hh;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel7;
@@ -562,15 +560,15 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JLabel lbCARGO;
-    private javax.swing.JLabel lb_user;
+    public static javax.swing.JLabel lbCARGO;
+    public static javax.swing.JLabel lb_user;
     private javax.swing.JMenuItem llamaCasayPesca;
     private javax.swing.JMenuItem llamaLibreria;
     private javax.swing.JMenuItem llamaUsuarios;
     private javax.swing.JMenuItem llamaVestuario;
     private javax.swing.JMenuItem llama_interfaz_informes;
     private javax.swing.JMenuItem llama_interfaz_principal;
-    private javax.swing.JLabel mm;
-    private javax.swing.JLabel ss;
+    public static javax.swing.JLabel mm;
+    public static javax.swing.JLabel ss;
     // End of variables declaration//GEN-END:variables
 }

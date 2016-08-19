@@ -5,10 +5,25 @@
  */
 package interfaces;
 
+import br.com.adilson.util.Extenso;
+import br.com.adilson.util.PrinterMatrix;
 import conexion.conectar;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.Calendar;
+import java.util.Date;
+import static javax.management.Query.lt;
+import javax.print.Doc;
+import javax.print.DocFlavor;
+import javax.print.DocPrintJob;
+import javax.print.PrintService;
+import javax.print.PrintServiceLookup;
+import javax.print.SimpleDoc;
+import javax.print.attribute.HashPrintRequestAttributeSet;
+import javax.print.attribute.PrintRequestAttributeSet;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import metodos.ConsultasSQL;
@@ -562,7 +577,7 @@ public class interfaz_ventab extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_BtnAceptarActionPerformed
 
     private void BtnCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCerrarActionPerformed
-        
+
     }//GEN-LAST:event_BtnCerrarActionPerformed
 
     private void cboCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboCategoriaActionPerformed
@@ -585,6 +600,7 @@ public class interfaz_ventab extends javax.swing.JInternalFrame {
             modelo.removeRow(0);
         }
         JOptionPane.showMessageDialog(null, "Guardado Correctamente");
+        imprimirFactura();
         sql.GuardarGanancia(Integer.parseInt(txtcodigo.getText()), Double.parseDouble(txtMontoNeto.getText()), Double.parseDouble(txtIVA.getText()), Double.parseDouble(txtImpuestoAdicional.getText()), Double.parseDouble(txtTotal.getText()));
         int numero = Integer.parseInt(txtcodigo.getText()) + 1;
         txtcodigo.setText(String.valueOf(numero));
@@ -593,8 +609,9 @@ public class interfaz_ventab extends javax.swing.JInternalFrame {
         txtIVA.setText("0");
         txtImpuestoAdicional.setText("0");
         txtTotal.setText("0");
-        JOptionPane.showMessageDialog(null, "Imprimiendo");
         
+        
+
     }//GEN-LAST:event_BtnGuardarActionPerformed
 
     private void BtnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnLimpiarActionPerformed
@@ -608,18 +625,16 @@ public class interfaz_ventab extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_BtnLimpiarActionPerformed
 
     private void BtnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSalirActionPerformed
-        try{
-        if(tbventa.getValueAt(0,0).toString()=="")
-        {
+        try {
+            if (tbventa.getValueAt(0, 0).toString() == "") {
+                dispose();
+            } else {
+
+                volver();
+                dispose();
+            }
+        } catch (Exception ex) {
             dispose();
-        }else
-        {
-            
-            volver();
-            dispose();
-        }
-        }catch(Exception ex){
-        dispose();
         }
     }//GEN-LAST:event_BtnSalirActionPerformed
     private void cargar() {
@@ -650,7 +665,7 @@ public class interfaz_ventab extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(null, ex);
         }
     }
-    
+
     private void volver() {
         try {
             DefaultTableModel modelo = (DefaultTableModel) tbventa.getModel();
@@ -664,6 +679,82 @@ public class interfaz_ventab extends javax.swing.JInternalFrame {
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(null, ex);
         }
+    }
+
+    void imprimirFactura() {
+
+        PrinterMatrix printer = new PrinterMatrix();
+        String nombrevendedor = sql.ConsultarNombreConUser(Main.lb_user.getText());
+        Extenso e = new Extenso();
+        java.util.Date fecha = new Date();
+        e.setNumber(101.85);
+        //Definir el tamanho del papel para la impresion  aca 25 lineas y 80 columnas
+        printer.setOutSize(60, 80);
+        //Imprimir * de la 2da linea a 25 en la columna 1;
+        // printer.printCharAtLin(2, 25, 1, "*");
+        //Imprimir * 1ra linea de la columa de 1 a 80
+        printer.printCharAtCol(1, 1, 80, "=");
+        //Imprimir Encabezado nombre del La EMpresa
+        printer.printTextWrap(2, 2, 30, 80, "BOLETA DE VENTA");
+        //printer.printTextWrap(linI, linE, colI, colE, null);
+        printer.printTextWrap(2, 3, 1, 22, "Num. Boleta : " + txtcodigo.getText());
+        printer.printTextWrap(2, 3, 25, 55, "Fecha de Emision: " + fecha);
+        printer.printTextWrap(2, 3, 60, 80, "Hora: " + "Hoy");
+        printer.printTextWrap(3, 4, 1, 80, "Vendedor.  : " + nombrevendedor);
+        printer.printCharAtCol(5, 1, 80, "=");
+        printer.printTextWrap(6, 1, 1, 80, "Nombre            Descripcion                   Cant.      P.Unit.      P.Total");
+        printer.printCharAtCol(8, 1, 80, "-");
+        int filas = tbventa.getRowCount();
+            for (int i = 0; i < filas; i++) {
+                printer.printTextWrap(8 + i, 10, 1, 80,tbventa.getValueAt(i, 0).toString() + "|"+ tbventa.getValueAt(i, 1).toString() + "| "+ tbventa.getValueAt(i, 2).toString() + "| "+ tbventa.getValueAt(i, 3).toString() + "|"+ tbventa.getValueAt(i, 4).toString());
+            }
+        printer.printCharAtCol(filas + 1, 1, 80, "=");
+        printer.printTextWrap(filas + 1, filas + 2, 1, 80, "TOTAL A PAGAR " + txtTotal.getText());
+//        if (filas > 15) {
+//            printer.printCharAtCol(filas + 1, 1, 80, "=");
+//            
+//            printer.printCharAtCol(filas + 2, 1, 80, "=");
+//            printer.printTextWrap(filas + 2, filas + 3, 1, 80, "Esta boleta no tiene valor fiscal, solo para uso interno.: + Descripciones........");
+//        } else {
+//            printer.printCharAtCol(25, 1, 80, "=");
+//            printer.printTextWrap(26, 26, 1, 80, "TOTAL A PAGAR " + txtVentaTotal.getText());
+//            printer.printCharAtCol(27, 1, 80, "=");
+//            printer.printTextWrap(27, 28, 1, 80, "Esta boleta no tiene valor fiscal, solo para uso interno.: + Descripciones........");
+//        }
+        printer.toFile("impresion.txt");
+
+        
+        
+        FileInputStream inputStream = null;
+        try {
+            inputStream = new FileInputStream("impresion.txt");
+        } catch (FileNotFoundException ex) {
+            ex.printStackTrace();
+        }
+        if (inputStream == null) {
+            return;
+        }
+
+        DocFlavor docFormat = DocFlavor.INPUT_STREAM.AUTOSENSE;
+        Doc document = new SimpleDoc(inputStream, docFormat, null);
+
+        PrintRequestAttributeSet attributeSet = new HashPrintRequestAttributeSet();
+
+        PrintService defaultPrintService = PrintServiceLookup.lookupDefaultPrintService();
+
+        if (defaultPrintService != null) {
+            DocPrintJob printJob = defaultPrintService.createPrintJob();
+            try {
+                printJob.print(document, attributeSet);
+
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
+        } else {
+            System.err.println("No existen impresoras instaladas");
+        }
+
+        //inputStream.close();
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtnAceptar;
