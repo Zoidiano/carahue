@@ -84,6 +84,7 @@ public class interfaz_ventab extends javax.swing.JInternalFrame {
         jPanel1.setBackground(new java.awt.Color(88, 147, 191));
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("CATEGORIA:");
 
         cboCategoria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "LIBRERIA", "VESTUARIO", "CASA Y PESCA" }));
@@ -94,6 +95,7 @@ public class interfaz_ventab extends javax.swing.JInternalFrame {
         });
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("NOMBRE:");
 
         txtNombre.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -119,6 +121,7 @@ public class interfaz_ventab extends javax.swing.JInternalFrame {
         });
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("CANTIDAD:");
 
         BtnCerrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/salir.png"))); // NOI18N
@@ -200,7 +203,7 @@ public class interfaz_ventab extends javax.swing.JInternalFrame {
         );
 
         jPanel3.setBackground(new java.awt.Color(88, 147, 191));
-        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "LISTADO DE PRODUCTOS", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 12), new java.awt.Color(255, 255, 255))); // NOI18N
+        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "LISTADO DE PRODUCTOS", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12), new java.awt.Color(255, 255, 255))); // NOI18N
 
         tbproductosListado.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -238,7 +241,7 @@ public class interfaz_ventab extends javax.swing.JInternalFrame {
         );
 
         jPanel4.setBackground(new java.awt.Color(88, 147, 191));
-        jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "VENTA", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 12), new java.awt.Color(255, 255, 255))); // NOI18N
+        jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "VENTA", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 12), new java.awt.Color(255, 255, 255))); // NOI18N
 
         tbventa.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -255,40 +258,52 @@ public class interfaz_ventab extends javax.swing.JInternalFrame {
 
         jPanel5.setBackground(new java.awt.Color(88, 147, 191));
 
-        jLabel7.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel7.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("MONTO NETO:");
 
-        jLabel8.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel8.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setText("$");
 
-        jLabel9.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel9.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
         jLabel9.setText("IVA 19%:");
 
-        jLabel10.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel10.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(255, 255, 255));
         jLabel10.setText("$");
 
-        jLabel11.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel11.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(255, 255, 255));
         jLabel11.setText("IMPUESTO ADICIONAL:");
 
-        jLabel12.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel12.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel12.setForeground(new java.awt.Color(255, 255, 255));
         jLabel12.setText("$");
 
-        jLabel13.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel13.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel13.setForeground(new java.awt.Color(255, 255, 255));
         jLabel13.setText("TOTAL:");
 
-        jLabel14.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel14.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel14.setForeground(new java.awt.Color(255, 255, 255));
         jLabel14.setText("$");
 
-        txtTotal.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        txtTotal.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        txtTotal.setForeground(new java.awt.Color(255, 255, 255));
         txtTotal.setText("0");
 
-        txtImpuestoAdicional.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        txtImpuestoAdicional.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        txtImpuestoAdicional.setForeground(new java.awt.Color(255, 255, 255));
         txtImpuestoAdicional.setText("0");
 
-        txtMontoNeto.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        txtMontoNeto.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        txtMontoNeto.setForeground(new java.awt.Color(255, 255, 255));
         txtMontoNeto.setText("0");
 
-        txtIVA.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        txtIVA.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        txtIVA.setForeground(new java.awt.Color(255, 255, 255));
         txtIVA.setText("0");
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
@@ -409,9 +424,11 @@ public class interfaz_ventab extends javax.swing.JInternalFrame {
         );
 
         jLabel15.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel15.setForeground(new java.awt.Color(255, 255, 255));
         jLabel15.setText("CODIGO:");
 
         txtcodigo.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        txtcodigo.setForeground(new java.awt.Color(255, 255, 255));
         txtcodigo.setText("X");
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
@@ -582,6 +599,11 @@ public class interfaz_ventab extends javax.swing.JInternalFrame {
 
     private void BtnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnLimpiarActionPerformed
         BtnGuardar.setEnabled(false);
+        BtnLimpiar.setEnabled(false);
+        txtMontoNeto.setText("0");
+        txtIVA.setText("0");
+        txtImpuestoAdicional.setText("0");
+        txtTotal.setText("0");
         volver();
     }//GEN-LAST:event_BtnLimpiarActionPerformed
 
