@@ -353,7 +353,7 @@ public class Main extends javax.swing.JFrame {
         this.add(Form);
         Dimension desktopSize = this.getSize();
         Dimension FrameSize = Form.getSize();
-        Form.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.height) / 2);
+        Form.setLocation((desktopSize.width - FrameSize.width) / 2, ((desktopSize.height - FrameSize.height) / 2)-50);
         Form.setVisible(true);
         Contenedor.removeAll();
         Contenedor.updateUI();
@@ -367,7 +367,7 @@ public class Main extends javax.swing.JFrame {
         this.add(Form);
         Dimension desktopSize = this.getSize();
         Dimension FrameSize = Form.getSize();
-        Form.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.height) / 2);
+        Form.setLocation((desktopSize.width - FrameSize.width) / 2, ((desktopSize.height - FrameSize.height) / 2)-50);
         Contenedor.removeAll();
         Contenedor.updateUI();
         Contenedor.add(Form);
@@ -380,7 +380,7 @@ public class Main extends javax.swing.JFrame {
         this.add(Form);
         Dimension desktopSize = this.getSize();
         Dimension FrameSize = Form.getSize();
-        Form.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.height) / 2);
+        Form.setLocation((desktopSize.width - FrameSize.width) / 2, ((desktopSize.height - FrameSize.height) / 2)-50);
         Contenedor.removeAll();
         Contenedor.updateUI();
         Contenedor.add(Form);
@@ -476,7 +476,7 @@ public class Main extends javax.swing.JFrame {
         this.add(Form);
         Dimension desktopSize = this.getSize();
         Dimension FrameSize = Form.getSize();
-        Form.setLocation((desktopSize.width - FrameSize.width) / 2, ((desktopSize.height - FrameSize.height) / 2) - 40);
+        Form.setLocation((desktopSize.width - FrameSize.width) / 2, ((desktopSize.height - FrameSize.height) / 2) - 50);
         Contenedor.removeAll();
         Contenedor.updateUI();
         Contenedor.add(Form);
@@ -490,7 +490,7 @@ public class Main extends javax.swing.JFrame {
             minutos = tiempo.get(Calendar.MINUTE);
             segundos = tiempo.get(Calendar.SECOND);
 
-            hh.setText((String.valueOf(hora - 1)));
+            hh.setText(String.valueOf(hora));
             mm.setText(String.valueOf(minutos));
             ss.setText(String.valueOf(segundos));
         }
