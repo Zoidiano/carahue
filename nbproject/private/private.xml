@@ -5,18 +5,16 @@
             <url>src/paneles/JPanelNuevoUsuarios.java</url>
             <bookmark id="1">
                 <name/>
-                <line>213</line>
+                <line>211</line>
                 <key/>
             </bookmark>
         </file>
     </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Zoidiano/Documents/GitHub/carahue/src/interfaces/interfaz_inventario1.java</file>
             <file>file:/C:/Users/Zoidiano/Documents/GitHub/carahue/src/interfaces/interfaz_usuarios2.java</file>
-            <file>file:/C:/Users/Zoidiano/Documents/GitHub/carahue/src/interfaces/Main.java</file>
             <file>file:/C:/Users/Zoidiano/Documents/GitHub/carahue/src/interfaces/interfaz_inventario_administracion.java</file>
-            <file>file:/C:/Users/Zoidiano/Documents/GitHub/carahue/src/pruebaempresa/PruebaEmpresa.java</file>
+            <file>file:/C:/Users/Zoidiano/Documents/GitHub/carahue/src/metodos/ConsultasSQL.java</file>
         </group>
     </open-files>
 </project-private>

@@ -225,10 +225,13 @@ public class interfaz_login extends javax.swing.JInternalFrame  {
                 Main.Slider2.setEnabled(true);
                 Main.Slider3.setEnabled(true);
                 Main.Slider4.setEnabled(true);
+                Main.lb_user.setText(txtUsuario.getText());
+                Main.lbCARGO.setText("Administrador");
                 
             }else if(sql.Consultatipo(txtUsuario.getText()).equals("Ventas"))
             {
                 Main.Slider1.setEnabled(true);
+                Main.lbCARGO.setText("Ventas");
             }
             
         }else

@@ -30,8 +30,7 @@ public class interfaz_inventario_administracion extends javax.swing.JInternalFra
     public interfaz_inventario_administracion() {
         initComponents();
         txtFecha.setText(fechas);
-    }
-
+    }    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -85,13 +84,31 @@ public class interfaz_inventario_administracion extends javax.swing.JInternalFra
             new String [] {
                 "Codigo", "Nombre Producto", "Descripción", "Categoria", "Cantidad", "Valor Adquisicion", "Fecha llegada", "Valor Venta"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         tbproductos.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tbproductosMouseClicked(evt);
             }
         });
         jScrollPane1.setViewportView(tbproductos);
+        if (tbproductos.getColumnModel().getColumnCount() > 0) {
+            tbproductos.getColumnModel().getColumn(0).setResizable(false);
+            tbproductos.getColumnModel().getColumn(1).setResizable(false);
+            tbproductos.getColumnModel().getColumn(2).setResizable(false);
+            tbproductos.getColumnModel().getColumn(3).setResizable(false);
+            tbproductos.getColumnModel().getColumn(4).setResizable(false);
+            tbproductos.getColumnModel().getColumn(5).setResizable(false);
+            tbproductos.getColumnModel().getColumn(6).setResizable(false);
+            tbproductos.getColumnModel().getColumn(7).setResizable(false);
+        }
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel2.setText("CATEGORIA:");
@@ -463,7 +480,11 @@ public class interfaz_inventario_administracion extends javax.swing.JInternalFra
             JOptionPane.showMessageDialog(null, "Alguno de los campos se encuentra vacio");
         } else if (CompararPrecios()) {
             JOptionPane.showMessageDialog(null, "El costo debe ser menor al precio venta");
-        } else {
+        } else if (sql.validarNombre(txtNombre.getText(), cboCategoria.getSelectedItem().toString()))
+        {
+            JOptionPane.showMessageDialog(null, "El nombre que intenta usar ya se encuentra ocupado");
+        }
+        else {
             sql.IngresarProductos(4, txtNombre.getText(), txtDescripcion.getText(), cboCategoria.getSelectedItem().toString(), Integer.parseInt(txtCantidad.getText()), costo_individual, precio_individual, txtFecha.getText());
             CargarTablas(2, cboCategoria.getSelectedItem().toString());
         }
@@ -493,6 +514,7 @@ public class interfaz_inventario_administracion extends javax.swing.JInternalFra
                 if (JOptionPane.OK_OPTION == resp) {
                     sql.EliminarProducto(nombre, categoria);
                     JOptionPane.showMessageDialog(null, "Producto eliminado Correctamente");
+                    CargarTablas(1, "");
                 }
             } else {
                 JOptionPane.showMessageDialog(null, "Seleccione un elemento de la tabla");
