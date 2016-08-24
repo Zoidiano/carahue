@@ -592,8 +592,8 @@ public class interfaz_inventario_administracion extends javax.swing.JInternalFra
 
     private void tbproductosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbproductosMouseClicked
         try {
-            int fila = this.tbproductos.getSelectedRow();
-            int numero = Integer.parseInt(tbproductos.getValueAt(fila, 0).toString());
+            int fila = this.tbproductos1.getSelectedRow();
+            int numero = Integer.parseInt(tbproductos1.getValueAt(fila, 0).toString());
             setearCampos(numero, fila);
         } catch (Exception ex) {
 
@@ -602,9 +602,9 @@ public class interfaz_inventario_administracion extends javax.swing.JInternalFra
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
         try {
-            int fila = this.tbproductos.getSelectedRow();
-            String nombre = this.tbproductos.getValueAt(fila, 1).toString();
-            String categoria = this.tbproductos.getValueAt(fila, 3).toString();
+            int fila = this.tbproductos1.getSelectedRow();
+            String nombre = this.tbproductos1.getValueAt(fila, 1).toString();
+            String categoria = this.tbproductos1.getValueAt(fila, 3).toString();
             if (fila != -1) {
                 int resp = JOptionPane.showConfirmDialog(null, "Esta seguro que desea eliminar el producto?");
                 if (JOptionPane.OK_OPTION == resp) {
@@ -684,14 +684,14 @@ public class interfaz_inventario_administracion extends javax.swing.JInternalFra
     }
 
     private void setearCampos(int codigo, int fila) {
-        txtNombre.setText(tbproductos.getValueAt(fila, 1).toString());
-        txtDescripcion.setText(tbproductos.getValueAt(fila, 2).toString());
-        txtCantidad.setText(tbproductos.getValueAt(fila, 4).toString());
-        txtCostoIndividual.setText(tbproductos.getValueAt(fila, 5).toString());
-        txtPrecioIndividual.setText(tbproductos.getValueAt(fila, 7).toString());
-        int cantidad=Integer.parseInt(tbproductos.getValueAt(fila, 4).toString());
-        int costototal=Integer.parseInt(tbproductos.getValueAt(fila, 5).toString())*cantidad;
-        int preciototal=Integer.parseInt(tbproductos.getValueAt(fila, 7).toString())*cantidad;
+        txtNombre.setText(tbproductos1.getValueAt(fila, 1).toString());
+        txtDescripcion.setText(tbproductos1.getValueAt(fila, 2).toString());
+        txtCantidad.setText(tbproductos1.getValueAt(fila, 4).toString());
+        txtCostoIndividual.setText(tbproductos1.getValueAt(fila, 5).toString());
+        txtPrecioIndividual.setText(tbproductos1.getValueAt(fila, 7).toString());
+        int cantidad=Integer.parseInt(tbproductos1.getValueAt(fila, 4).toString());
+        int costototal=Integer.parseInt(tbproductos1.getValueAt(fila, 5).toString())*cantidad;
+        int preciototal=Integer.parseInt(tbproductos1.getValueAt(fila, 7).toString())*cantidad;
         txtCostoTotal.setText(String.valueOf(costototal));
         txtPrecioTotal.setText(String.valueOf(preciototal));
     }

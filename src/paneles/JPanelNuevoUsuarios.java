@@ -200,12 +200,12 @@ public class JPanelNuevoUsuarios extends javax.swing.JPanel {
         if (nombre.equals("") || usuario.equals("") || contraseña.equals("")) {
             txtRespuesta.setText("ALGUNO DE LOS CAMPOS NECESARIOS SE ENCUENTRA VACIO");
         } else {
-            if (sql.ConsultarNombre(txtNombres.getText()).equals("")) {
-                txtRespuesta.setText("EL NOMBRE DE USUARIO SE ENCUENTRA OCUPADO");
-                LimpiarNombre();
-            } else {
+            if (sql.ConsultarNombre(txtUsuario.getText()).equals("")) { 
                 sql.GuardarUsuario(tipo, nombre, usuario, contraseña);
                 sql.CargarTablausuarios(1, "");
+            } else {
+                txtRespuesta.setText("EL NOMBRE DE USUARIO SE ENCUENTRA OCUPADO");
+                LimpiarNombre();
             }
             try {
 
@@ -245,6 +245,7 @@ public class JPanelNuevoUsuarios extends javax.swing.JPanel {
         txtUsuario.setText("");
         txtpass.setText("");
         txtNombres.requestFocus();
+        txtRespuesta.setText("");
 
     }
 

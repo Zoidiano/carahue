@@ -1,17 +1,17 @@
 ================================================================================
- TOTAL A PAGAR 892.5                                                            
- Num. Boleta : 50        Fecha de Emision: Fri Aug 19 0     Hora: Hoy           
+                              BOLETA DE VENTA                                   
+ Num. Boleta : 86        Fecha de Emision: 24/7/2016        Hora: Hoy           
  Vendedor.  : Lucas Jara Espinoza                                               
 ================================================================================
                                                                                 
  Nombre            Descripcion                   Cant.      P.Unit.      P.Total
 --------------------------------------------------------------------------------
                                                                                 
-                                                                                
-                                                                                
-                                                                                
-                                                                                
-                                                                                
+ CUADERNOS|cuadernos universita| 1| 750|750                                     
+ PINCELES|PACK DE 12 PINCELES| 1| 750|750                                       
+ PINCELES|PACK DE 12 PINCELES| 1| 750|750                                       
+================================================================================
+ TOTAL A PAGAR 2677.5                                                           
                                                                                 
                                                                                 
                                                                                 

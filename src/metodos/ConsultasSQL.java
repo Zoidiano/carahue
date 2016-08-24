@@ -47,6 +47,7 @@ public class ConsultasSQL {
     public String ConsultarNombre(String usuario) {
         {
             String Consulta = "";
+            
             try {
                 CadSql = "select user from usuarios where user='" + usuario + "';";
                 Statement st = this.cn.createStatement();
@@ -403,8 +404,9 @@ public class ConsultasSQL {
                 datos[7] = rs.getString(8);
                 modelo.addRow(datos);
             }
+            JOptionPane.showMessageDialog(null,num_interno);
             if (num_interno == 1) {
-                interfaz_inventario_administracion.tbproductos.setModel(modelo);
+                interfaz_inventario_administracion.tbproductos1.setModel(modelo);
             } else {
                 interfaz_inventario1.tbproductos.setModel(modelo);
             }

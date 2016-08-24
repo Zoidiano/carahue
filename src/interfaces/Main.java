@@ -548,7 +548,7 @@ public class Main extends javax.swing.JFrame {
     public static javax.swing.JMenu Slider2;
     public static javax.swing.JMenu Slider3;
     public static javax.swing.JMenu Slider4;
-    private javax.swing.JLabel fecha;
+    public static javax.swing.JLabel fecha;
     public static javax.swing.JLabel hh;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel5;

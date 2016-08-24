@@ -231,6 +231,7 @@ public class interfaz_login extends javax.swing.JInternalFrame  {
             }else if(sql.Consultatipo(txtUsuario.getText()).equals("Ventas"))
             {
                 Main.Slider1.setEnabled(true);
+                Main.lb_user.setText(txtUsuario.getText());
                 Main.lbCARGO.setText("Ventas");
             }
             

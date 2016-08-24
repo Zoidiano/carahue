@@ -355,7 +355,7 @@ public class interfaz_usuarios2 extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_BtnLimpiarActionPerformed
 
     private void btnEliminar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminar1ActionPerformed
-        // TODO add your handling code here:
+        dispose(); 
     }//GEN-LAST:event_btnEliminar1ActionPerformed
 
       public void desabilitar()
