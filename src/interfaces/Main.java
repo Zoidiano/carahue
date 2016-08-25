@@ -397,15 +397,15 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_llama_interfaz_principalActionPerformed
 
     private void llama_interfaz_informesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_llama_interfaz_informesActionPerformed
-        interfaz_informes Form = new interfaz_informes();
-        Form.setVisible(true);
-        this.add(Form);
-        Dimension desktopSize = this.getSize();
-        Dimension FrameSize = Form.getSize();
-        Form.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.height) / 2);
-        Contenedor.removeAll();
-        Contenedor.updateUI();
-        Contenedor.add(Form);
+//        interfaz_informes Form = new interfaz_informes();
+//        Form.setVisible(true);
+//        this.add(Form);
+//        Dimension desktopSize = this.getSize();
+//        Dimension FrameSize = Form.getSize();
+//        Form.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.height) / 2);
+//        Contenedor.removeAll();
+//        Contenedor.updateUI();
+//        Contenedor.add(Form);
     }//GEN-LAST:event_llama_interfaz_informesActionPerformed
 
     private void Slider3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Slider3ActionPerformed

@@ -547,7 +547,6 @@ public class interfaz_ventab extends javax.swing.JInternalFrame {
         } else if (cbocantidad.getSelectedItem() == null) {
 
         } else {
-
             int fila = this.tbproductosListado.getSelectedRow();
             int cantidad = Integer.parseInt(cbocantidad.getSelectedItem().toString());
             int stock = Integer.parseInt(tbproductosListado.getValueAt(fila, 3).toString());
@@ -573,6 +572,7 @@ public class interfaz_ventab extends javax.swing.JInternalFrame {
             cbocantidad.setEnabled(false);
             BtnGuardar.setEnabled(true);
             BtnLimpiar.setEnabled(true);
+            cboCategoria.setEnabled(false);
         }
     }//GEN-LAST:event_BtnAceptarActionPerformed
 
@@ -621,6 +621,7 @@ public class interfaz_ventab extends javax.swing.JInternalFrame {
     private void BtnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnLimpiarActionPerformed
         BtnGuardar.setEnabled(false);
         BtnLimpiar.setEnabled(false);
+        cboCategoria.setEnabled(true);
         txtMontoNeto.setText("0");
         txtIVA.setText("0");
         txtImpuestoAdicional.setText("0");
@@ -716,8 +717,8 @@ public class interfaz_ventab extends javax.swing.JInternalFrame {
         printer.printCharAtCol(filas + 10, 1, 80, "=");
         printer.printTextWrap(filas + 10, filas + 2, 1, 80, "TOTAL A PAGAR " + txtTotal.getText());
         
-        // printer.printCharAtCol(filas + 2, 1, 80, "=");
-        // printer.printTextWrap(filas + 2, filas + 3, 1, 80, "Esta boleta no tiene valor fiscal, solo para uso interno.");
+        // printer.printCharAtCol(filas + 11, 1, 80, "=");
+        // printer.printTextWrap(filas + 11, filas + 3, 1, 80, "Esta boleta no tiene valor fiscal, solo para uso interno.");
 
 //        if (filas > 15) {
 //            printer.printCharAtCol(filas + 1, 1, 80, "=");

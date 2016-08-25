@@ -62,6 +62,23 @@ public class ConsultasSQL {
             return Consulta;
         }
     }
+    public String Consultaultimo() {
+        {
+            String Consulta = "";
+            
+            try {
+                CadSql = "SELECT cod_producto FROM `productos` order by cod_producto desc limit 1;";
+                Statement st = this.cn.createStatement();
+                ResultSet rs = st.executeQuery(CadSql);
+                while (rs.next()) {
+                    Consulta = rs.getString(1);
+                }
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(null, ex);
+            }
+            return Consulta;
+        }
+    }
         public String ConsultarNombreConUser(String usuario) {
         {
             String Consulta = "";
@@ -199,18 +216,18 @@ public class ConsultasSQL {
         }
     }
 
-    public void ModProducto(String valor, String usuario, String contrasena, String nombre, String tipo) {
-
+    public void ModInventario(String nombre, String cantidad, String costo_individual,String precio_individual, String descripcion,String categoria) {
         try {
-            PreparedStatement pst = this.cn.prepareStatement("UPDATE usuarios SET cod_user=?, user=?, password=?, nombre=?, tipo=? WHERE cod_user=?;");
-            pst.setString(1, valor);
-            pst.setString(2, usuario);
-            pst.setString(3, contrasena);
-            pst.setString(4, nombre);
-            pst.setString(5, tipo);
-            pst.setString(6, valor);
+            PreparedStatement pst = this.cn.prepareStatement("UPDATE productos SET nom_producto=?, cantidad=?, valor_individual_producto=?, valor_individual_venta=?, descripcion=? WHERE nom_producto=? AND categoria=?;");
+            pst.setString(1, nombre);
+            pst.setString(2, cantidad);
+            pst.setString(3, costo_individual);
+            pst.setString(4, precio_individual);
+            pst.setString(5, descripcion);
+            pst.setString(6, nombre);
+            pst.setString(7, categoria);
             pst.executeUpdate();
-            CargarTablausuarios(1, "");
+            
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(null, ex);
         }
@@ -404,7 +421,6 @@ public class ConsultasSQL {
                 datos[7] = rs.getString(8);
                 modelo.addRow(datos);
             }
-            JOptionPane.showMessageDialog(null,num_interno);
             if (num_interno == 1) {
                 interfaz_inventario_administracion.tbproductos1.setModel(modelo);
             } else {
@@ -422,17 +438,19 @@ public class ConsultasSQL {
         modelo.addColumn("Cantidad");
         modelo.addColumn("Precio");
         modelo.addColumn("Valor");
-        
+        JOptionPane.showMessageDialog(null, "llegue1");
         
         switch (numero) {
             case 1:
                 CadSql = "select p.nom_producto, p.descripcion, v.cantidad, p.valor_individual_venta, v.precio from productos p, ventas v where p.id_producto=v.cod_producto AND v.cod_venta='" + campo + "';";
+                 JOptionPane.showMessageDialog(null, "llegue2");
                 break;
             case 2:
                 CadSql = "";
                 break;
         }
         try {
+             JOptionPane.showMessageDialog(null, "llegue3");
             String[] datos = new String[5];
             Statement st = this.cn.createStatement();
             ResultSet rs = st.executeQuery(CadSql);
@@ -443,8 +461,10 @@ public class ConsultasSQL {
                 datos[3] = rs.getString(4);
                 datos[4] = rs.getString(5);
                 modelo.addRow(datos);
+                 JOptionPane.showMessageDialog(null, "llegue4");
             }
             interfaz_ventab.tbventa.setModel(modelo);
+             JOptionPane.showMessageDialog(null, "llegue5");
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(null, ex);
         }
