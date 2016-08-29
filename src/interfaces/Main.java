@@ -21,17 +21,20 @@ import nicon.notify.core.Notification;
  *
  * @author Zoidiano
  */
-public class Main extends javax.swing.JFrame {
 
-    Timer timer = new Timer(10000, new ActionListener() {
+
+public class Main extends javax.swing.JFrame {
+    
+    Timer timer = new Timer(1800000, new ActionListener() {
         public void actionPerformed(ActionEvent e) {
-            if (1 == 1) {
-                ConsultasSQL sql = new ConsultasSQL();
+            ConsultasSQL sql= new ConsultasSQL();
+            if (sql.ComprobarProductos()) {
                 try {
                     UIManager.setLookAndFeel(new NimbusLookAndFeel());
-                    Notification.showConfirm("Notificacion con NiconNotify", "Hola amigos esta es mi notificacion personalizada", Notification.NICON_DARK_THEME, true, 10000);
-
-//El metodo showConfirm() puede variar con esto me refiero a que puedes solo mostrar el mensaje o bien puedes mandar mensaje, el tema que prefieras , si se reproduce un sonido o no y tambien por cuanto tiempo se mostrara, este ultimo es el que muestro en el ejemplo.
+                    sql.Stockcero();
+                    Notification.showConfirm("Advertencia", "No tenemos Stock de: "+dato, Notification.NICON_DARK_THEME, true, 1800000);
+                    
+                //El metodo showConfirm() puede variar con esto me refiero a que puedes solo mostrar el mensaje o bien puedes mandar mensaje, el tema que prefieras , si se reproduce un sonido o no y tambien por cuanto tiempo se mostrara, este ultimo es el que muestro en el ejemplo.
                 } catch (Exception ex) {
                     System.err.println("error: " + ex.getCause());
                 }
@@ -39,14 +42,16 @@ public class Main extends javax.swing.JFrame {
         }
 
     });
-
+public static String dato="";
     public Main() {
         this.setExtendedState(MAXIMIZED_BOTH);
         initComponents();
+        String dato="";
         Calendar cal = Calendar.getInstance();
         String fechas = cal.get(cal.DATE) + "/" + (cal.get(Calendar.MONTH) + 1) + "/" + cal.get(cal.YEAR);
         this.fecha.setText(fechas);
         timer.start();
+        
     }
 
     /**
@@ -257,7 +262,7 @@ public class Main extends javax.swing.JFrame {
         });
 
         llama_interfaz_principal.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_V, java.awt.event.InputEvent.CTRL_MASK));
-        llama_interfaz_principal.setText("Generar Venta");
+        llama_interfaz_principal.setText("Generar Venta Boleta");
         llama_interfaz_principal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 llama_interfaz_principalActionPerformed(evt);
@@ -395,6 +400,7 @@ public class Main extends javax.swing.JFrame {
     private void llamaVestuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_llamaVestuarioActionPerformed
         interfaz_inventario1 Form = new interfaz_inventario1();
         Form.CargarTablas(2, "VESTUARIO");
+        Form.categoria = "VESTUARIO";
         Form.setVisible(true);
         this.add(Form);
         Dimension desktopSize = this.getSize();
@@ -408,6 +414,7 @@ public class Main extends javax.swing.JFrame {
     private void llamaCasayPescaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_llamaCasayPescaActionPerformed
         interfaz_inventario1 Form = new interfaz_inventario1();
         Form.CargarTablas(2, "CASA Y PESCA");
+        Form.categoria = "CASA Y PESCA";
         Form.setVisible(true);
         this.add(Form);
         Dimension desktopSize = this.getSize();

@@ -63,9 +63,9 @@ public class interfaz_inventario_administracion extends javax.swing.JInternalFra
         jLabel13 = new javax.swing.JLabel();
         txtCostoIndividual = new javax.swing.JTextField();
         jLabel14 = new javax.swing.JLabel();
-        txtPrecioTotal = new javax.swing.JTextField();
-        jLabel15 = new javax.swing.JLabel();
         txtPrecioIndividual = new javax.swing.JTextField();
+        jLabel15 = new javax.swing.JLabel();
+        txtPrecioTotal = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         txtDescripcion = new javax.swing.JTextArea();
@@ -81,6 +81,10 @@ public class interfaz_inventario_administracion extends javax.swing.JInternalFra
         jLabel5 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(56, 98, 127));
+        setClosable(true);
+        setIconifiable(true);
+        setMaximizable(true);
+        setResizable(true);
 
         tbproductos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -179,6 +183,7 @@ public class interfaz_inventario_administracion extends javax.swing.JInternalFra
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
         jLabel9.setText("CANTIDAD:");
 
+        txtCantidad.setText("0");
         txtCantidad.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 txtCantidadFocusLost(evt);
@@ -200,6 +205,7 @@ public class interfaz_inventario_administracion extends javax.swing.JInternalFra
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setText("COSTO:   $");
 
+        txtCostoTotal.setText("0");
         txtCostoTotal.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 txtCostoTotalFocusLost(evt);
@@ -221,14 +227,15 @@ public class interfaz_inventario_administracion extends javax.swing.JInternalFra
         jLabel14.setForeground(new java.awt.Color(255, 255, 255));
         jLabel14.setText("PRECIO VENTA:  $");
 
-        txtPrecioTotal.addFocusListener(new java.awt.event.FocusAdapter() {
+        txtPrecioIndividual.setText("0");
+        txtPrecioIndividual.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
-                txtPrecioTotalFocusLost(evt);
+                txtPrecioIndividualFocusLost(evt);
             }
         });
-        txtPrecioTotal.addKeyListener(new java.awt.event.KeyAdapter() {
+        txtPrecioIndividual.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtPrecioTotalKeyTyped(evt);
+                txtPrecioIndividualKeyTyped(evt);
             }
         });
 
@@ -236,7 +243,7 @@ public class interfaz_inventario_administracion extends javax.swing.JInternalFra
         jLabel15.setForeground(new java.awt.Color(255, 255, 255));
         jLabel15.setText("PRECIO TOTAL:");
 
-        txtPrecioIndividual.setEnabled(false);
+        txtPrecioTotal.setEnabled(false);
 
         jLabel11.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(255, 255, 255));
@@ -337,11 +344,11 @@ public class interfaz_inventario_administracion extends javax.swing.JInternalFra
                             .addGroup(jPanel4Layout.createSequentialGroup()
                                 .addComponent(jLabel14)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtPrecioTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtPrecioIndividual, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtPrecioIndividual)))
+                                .addComponent(txtPrecioTotal)))
                         .addContainerGap())
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -393,9 +400,9 @@ public class interfaz_inventario_administracion extends javax.swing.JInternalFra
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtPrecioTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtPrecioIndividual, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtPrecioIndividual, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtPrecioTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -573,13 +580,13 @@ public class interfaz_inventario_administracion extends javax.swing.JInternalFra
         }
     }//GEN-LAST:event_txtCostoTotalKeyTyped
 
-    private void txtPrecioTotalKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPrecioTotalKeyTyped
+    private void txtPrecioIndividualKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPrecioIndividualKeyTyped
         char c = evt.getKeyChar();
         if (Character.isLetter(c)) {
             getToolkit().beep();
             evt.consume();
         }
-    }//GEN-LAST:event_txtPrecioTotalKeyTyped
+    }//GEN-LAST:event_txtPrecioIndividualKeyTyped
 
     private void btnIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarActionPerformed
         if (ValidarVacios()) {
@@ -589,13 +596,13 @@ public class interfaz_inventario_administracion extends javax.swing.JInternalFra
         } else if (sql.validarNombre(txtNombre.getText(), cboCategoria.getSelectedItem().toString())) {
             JOptionPane.showMessageDialog(null, "El nombre que intenta usar ya se encuentra ocupado");
         } else {
-            if(Integer.parseInt(txtCantidad.getText())==0 || Integer.parseInt(txtCostoIndividual.getText())==0 || Integer.parseInt(txtPrecioIndividual.getText())==0)
+            if(Integer.parseInt(txtCantidad.getText())==0 || Integer.parseInt(txtCostoIndividual.getText())==0 || Integer.parseInt(txtPrecioTotal.getText())==0)
             {
             JOptionPane.showMessageDialog(null, "Alguno de los datos ingresados tiene valor 0");
             }else
             {
             int ultimo_numero=Integer.parseInt(sql.Consultaultimo())+1;
-            sql.IngresarProductos(ultimo_numero, txtNombre.getText(), txtDescripcion.getText(), cboCategoria.getSelectedItem().toString(), Integer.parseInt(txtCantidad.getText()), Integer.parseInt(txtCostoIndividual.getText()), Integer.parseInt(txtPrecioIndividual.getText()), txtFecha.getText());
+            sql.IngresarProductos(ultimo_numero, txtNombre.getText(), txtDescripcion.getText(), cboCategoria.getSelectedItem().toString(), Integer.parseInt(txtCantidad.getText()), Integer.parseInt(txtCostoIndividual.getText()), Integer.parseInt(txtPrecioTotal.getText()), txtFecha.getText());
             
             CargarTablas(2, cboCategoria.getSelectedItem().toString());
             }
@@ -644,7 +651,7 @@ public class interfaz_inventario_administracion extends javax.swing.JInternalFra
         } else if (CompararPrecios()) {
             JOptionPane.showMessageDialog(null, "El costo debe ser menor al precio venta");
         } else if (sql.validarNombre(txtNombre.getText(), cboCategoria.getSelectedItem().toString())) {
-           sql.ModInventario(txtNombre.getText(), txtCantidad.getText(), txtCostoIndividual.getText(), txtPrecioIndividual.getText(),txtDescripcion.getText(), cboCategoria.getSelectedItem().toString());
+           sql.ModInventario(txtNombre.getText(), txtCantidad.getText(), txtCostoIndividual.getText(), txtPrecioTotal.getText(),txtDescripcion.getText(), cboCategoria.getSelectedItem().toString());
             CargarTablas(1, "");
         } else {
             JOptionPane.showMessageDialog(null, "El producto no se encuentra registrado");
@@ -662,34 +669,34 @@ public class interfaz_inventario_administracion extends javax.swing.JInternalFra
         }
     }//GEN-LAST:event_txtCostoTotalFocusLost
 
-    private void txtPrecioTotalFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtPrecioTotalFocusLost
+    private void txtPrecioIndividualFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtPrecioIndividualFocusLost
         if (txtCantidad.getText().equals("") || txtPrecioIndividual.getText().equals("")) {
             //campos vacio    
         } else {
             int valor1 = Integer.parseInt(txtPrecioIndividual.getText().toString());
             int valor2 = Integer.parseInt(txtCantidad.getText().toString());
             precio_total = (valor1) * (valor2);
-            txtCostoTotal.setText(String.valueOf(precio_total));
+            txtPrecioTotal.setText(String.valueOf(precio_total));
         }
-    }//GEN-LAST:event_txtPrecioTotalFocusLost
+    }//GEN-LAST:event_txtPrecioIndividualFocusLost
 
     private void txtCantidadFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtCantidadFocusLost
-        if (txtCantidad.getText().equals("") || txtCostoTotal.getText().equals("")) {
-            //campos vacio    
-        } else {
-            int valor1 = Integer.parseInt(txtCostoTotal.getText().toString());
-            int valor2 = Integer.parseInt(txtCantidad.getText().toString());
-            costo_individual = (valor1) / (valor2);
-            txtCostoIndividual.setText(String.valueOf(costo_individual));
-        }
-        if (txtCantidad.getText().equals("") || txtPrecioIndividual.getText().equals("")) {
-
-        }  else {
-            int valor1 = Integer.parseInt(txtPrecioIndividual.getText().toString());
-            int valor2 = Integer.parseInt(txtCantidad.getText().toString());
-            precio_total = (valor1) * (valor2);
-            txtCostoTotal.setText(String.valueOf(precio_total));
-        }
+//        if (txtCantidad.getText().equals("") || txtCostoTotal.getText().equals("")) {
+//            //campos vacio    
+//        } else {
+//            int valor1 = Integer.parseInt(txtCostoTotal.getText().toString());
+//            int valor2 = Integer.parseInt(txtCantidad.getText().toString());
+//            costo_individual = (valor1) / (valor2);
+//            txtCostoIndividual.setText(String.valueOf(costo_individual));
+//        }
+//        if (txtCantidad.getText().equals("") || txtPrecioIndividual.getText().equals("")) {
+//
+//        }  else {
+//            int valor1 = Integer.parseInt(txtPrecioIndividual.getText().toString());
+//            int valor2 = Integer.parseInt(txtCantidad.getText().toString());
+//            precio_total = (valor1) * (valor2);
+//            txtCostoTotal.setText(String.valueOf(precio_total));
+//        }
     }//GEN-LAST:event_txtCantidadFocusLost
 
     private void cboCategoriaBusquedaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cboCategoriaBusquedaMouseClicked
@@ -697,7 +704,7 @@ public class interfaz_inventario_administracion extends javax.swing.JInternalFra
     }//GEN-LAST:event_cboCategoriaBusquedaMouseClicked
     private boolean CompararPrecios() {
         boolean validar = false;
-        if (Integer.parseInt(txtCostoIndividual.getText().toString()) > Integer.parseInt(txtPrecioIndividual.getText().toString())) {
+        if (Integer.parseInt(txtCostoIndividual.getText().toString()) > Integer.parseInt(txtPrecioTotal.getText().toString())) {
             validar = true;
         }
         return validar;
@@ -710,17 +717,17 @@ public class interfaz_inventario_administracion extends javax.swing.JInternalFra
         txtCantidad.setText(tbproductos1.getValueAt(fila, 4).toString());
         txtCostoIndividual.setText(tbproductos1.getValueAt(fila, 5).toString());
         
-        txtPrecioIndividual.setText(tbproductos1.getValueAt(fila, 7).toString());
+        txtPrecioTotal.setText(tbproductos1.getValueAt(fila, 7).toString());
         int cantidad = Integer.parseInt(tbproductos1.getValueAt(fila, 4).toString());
         int costototal = Integer.parseInt(tbproductos1.getValueAt(fila, 5).toString()) * cantidad;
         int preciototal = Integer.parseInt(tbproductos1.getValueAt(fila, 7).toString()) * cantidad;
         txtCostoTotal.setText(String.valueOf(costototal));
-        txtPrecioTotal.setText(String.valueOf(preciototal));
+        txtPrecioIndividual.setText(String.valueOf(preciototal));
     }
 
     private boolean ValidarVacios() {
         boolean validar = false;
-        if (txtNombre.getText().equals("") || txtCantidad.getText().equals("") || txtCostoTotal.getText().equals("") || txtPrecioTotal.getText().equals("") || txtDescripcion.getText().equals("")) {
+        if (txtNombre.getText().equals("") || txtCantidad.getText().equals("") || txtCostoTotal.getText().equals("") || txtPrecioIndividual.getText().equals("") || txtDescripcion.getText().equals("")) {
             validar = true;
         } else {
 
@@ -733,8 +740,8 @@ public class interfaz_inventario_administracion extends javax.swing.JInternalFra
         txtCantidad.setText("");
         txtCostoTotal.setText("");
         txtCostoIndividual.setText("");
-        txtPrecioTotal.setText("");
         txtPrecioIndividual.setText("");
+        txtPrecioTotal.setText("");
         txtDescripcion.setText("");
     }
 

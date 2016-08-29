@@ -96,6 +96,11 @@ public class interfaz_ventab extends javax.swing.JInternalFrame {
         jLabel15 = new javax.swing.JLabel();
         txtcodigo = new javax.swing.JLabel();
 
+        setClosable(true);
+        setIconifiable(true);
+        setMaximizable(true);
+        setResizable(true);
+
         jPanel1.setBackground(new java.awt.Color(88, 147, 191));
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
@@ -606,7 +611,7 @@ public class interfaz_ventab extends javax.swing.JInternalFrame {
 
     private void BtnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnGuardarActionPerformed
   
-//        imprimirFactura();
+        imprimirFactura();
         sql.GuardarGanancia(Integer.parseInt(txtcodigo.getText()), Double.parseDouble(txtMontoNeto.getText()), Double.parseDouble(txtIVA.getText()), Double.parseDouble(txtImpuestoAdicional.getText()), Double.parseDouble(txtTotal.getText()));
         
         int numero = Integer.parseInt(txtcodigo.getText()) + 1;

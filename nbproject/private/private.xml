@@ -12,8 +12,10 @@
     </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Zoidiano/Documents/GitHub/carahue/src/interfaces/interfaz_inventario1.java</file>
+            <file>file:/C:/Users/Zoidiano/Documents/GitHub/carahue/src/paneles/JPanelModUsuarios.java</file>
+            <file>file:/C:/Users/Zoidiano/Documents/GitHub/carahue/src/interfaces/ImprimirFactura.java</file>
             <file>file:/C:/Users/Zoidiano/Documents/GitHub/carahue/src/interfaces/interfaz_credito.java</file>
+            <file>file:/C:/Users/Zoidiano/Documents/GitHub/carahue/src/interfaces/interfaz_ventab.java</file>
             <file>file:/C:/Users/Zoidiano/Documents/GitHub/carahue/src/interfaces/interfaz_reportes.java</file>
             <file>file:/C:/Users/Zoidiano/Documents/GitHub/carahue/src/conexion/conectar.java</file>
             <file>file:/C:/Users/Zoidiano/Documents/GitHub/carahue/src/metodos/ConsultasSQL.java</file>
@@ -24,8 +26,8 @@
             <file>file:/C:/Users/Zoidiano/Documents/GitHub/carahue/src/interfaces/Main.java</file>
             <file>file:/C:/Users/Zoidiano/Documents/GitHub/carahue/src/interfaces/interfaz_inventario_administracion.java</file>
             <file>file:/C:/Users/Zoidiano/Documents/GitHub/carahue/src/pruebaempresa/PruebaEmpresa.java</file>
-            <file>file:/C:/Users/Zoidiano/Documents/GitHub/carahue/src/interfaces/interfaz_ventaf.java</file>
             <file>file:/C:/Users/Zoidiano/Documents/GitHub/carahue/src/metodos/validaciones.java</file>
+            <file>file:/C:/Users/Zoidiano/Documents/GitHub/carahue/src/interfaces/interfaz_ventaf.java</file>
         </group>
     </open-files>
 </project-private>

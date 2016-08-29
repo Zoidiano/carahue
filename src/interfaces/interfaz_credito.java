@@ -38,6 +38,11 @@ public class interfaz_credito extends javax.swing.JInternalFrame {
         btnEliminar3 = new javax.swing.JButton();
         jInternalFrame2 = new javax.swing.JInternalFrame();
 
+        setClosable(true);
+        setIconifiable(true);
+        setMaximizable(true);
+        setResizable(true);
+
         jInternalFrame1.setBackground(new java.awt.Color(88, 147, 191));
         jInternalFrame1.setVisible(true);
 
@@ -151,7 +156,7 @@ public class interfaz_credito extends javax.swing.JInternalFrame {
             jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jInternalFrame1Layout.createSequentialGroup()
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 48, Short.MAX_VALUE))
+                .addGap(0, 68, Short.MAX_VALUE))
         );
 
         jInternalFrame2.setBackground(new java.awt.Color(88, 147, 191));
@@ -165,7 +170,7 @@ public class interfaz_credito extends javax.swing.JInternalFrame {
         );
         jInternalFrame2Layout.setVerticalGroup(
             jInternalFrame2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 527, Short.MAX_VALUE)
+            .addGap(0, 547, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
