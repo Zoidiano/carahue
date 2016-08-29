@@ -1,8 +1,10 @@
 package metodos;
 
 import conexion.conectar;
+import interfaces.Main;
 import interfaces.interfaz_inventario1;
 import interfaces.interfaz_inventario_administracion;
+import interfaces.interfaz_reportes;
 import interfaces.interfaz_usuarios2;
 import interfaces.interfaz_ventab;
 //import interfaces.mostrar_busqueda;
@@ -12,10 +14,12 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Calendar;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumnModel;
+import paneles.JPanelVentasHoy;
 
 /*
  * @author Lucas Jara Espinoza
@@ -25,7 +29,8 @@ public class ConsultasSQL {
 
     private String CadSql = "";
     private int verificador = 0;
-
+        Calendar cal = Calendar.getInstance();
+        String fechas = cal.get(cal.DATE) + "/" + cal.get(cal.MONTH) + "/" + cal.get(cal.YEAR);
     public boolean ConsultaUsuario(String usuario, String contraseña) {
         {
             boolean Consulta = false;
@@ -271,12 +276,13 @@ public class ConsultasSQL {
 
     public void NuevaVenta(int cod_venta, int cantidad, int valor, int precio, int cod_producto, String categoria, int cantidad2) {
         try {
-            PreparedStatement pst = this.cn.prepareStatement("INSERT INTO ventas(cod_venta,cod_producto,cantidad,valor,precio) VALUES (?,?,?,?,?)");
+            PreparedStatement pst = this.cn.prepareStatement("INSERT INTO ventas(cod_venta,cod_producto,cantidad,valor,precio,fecha) VALUES (?,?,?,?,?,?)");
             pst.setInt(1, cod_venta);
             pst.setInt(2, cod_producto);
             pst.setInt(3, cantidad);
             pst.setInt(4, valor);
             pst.setInt(5, precio);
+            pst.setString(6,fechas);
             pst.executeUpdate();
             GuardarOrdenVenta(cod_venta, cod_producto, precio);
             StockProductos(cod_producto, cantidad2, categoria);
@@ -316,12 +322,14 @@ public class ConsultasSQL {
 
     public void GuardarGanancia(int codigoventa, double monto_neto, double iva, double impuesto_adicional, double total) {
         try {
-            PreparedStatement pst = this.cn.prepareStatement("INSERT INTO ganancias(cod_venta,monto_neto,iva,impuesto_adicional,total) VALUES (?,?,?,?,?)");
+            
+            PreparedStatement pst = this.cn.prepareStatement("INSERT INTO ganancias(cod_venta,monto_neto,iva,impuesto_adicional,total,fecha) VALUES (?,?,?,?,?,?)");
             pst.setInt(1, codigoventa);
             pst.setDouble(2, monto_neto);
             pst.setDouble(3, iva);
             pst.setDouble(4, impuesto_adicional);
             pst.setDouble(5, total);
+            pst.setString(6, fechas);
             pst.executeUpdate();
         } catch (Exception e) {
         }
@@ -364,7 +372,7 @@ public class ConsultasSQL {
         try {
             PreparedStatement pst = this.cn.prepareStatement("DELETE FROM productos where nom_producto='" + nombre + "' AND categoria='" + categoria + "';");
             pst.executeUpdate();
-            CargarTablaproductos(1, "", 0);
+            CargarTablaproductos(1, "","", 0);
         } catch (Exception ex) {
         }
     }
@@ -384,7 +392,7 @@ public class ConsultasSQL {
         return validar;
     }
     
-    public void CargarTablaproductos(int numero, String campo, int num_interno) {
+    public void CargarTablaproductos(int numero, String campo,String categoria, int num_interno) {
         DefaultTableModel modelo = new DefaultTableModel();
         modelo.addColumn("Codigo");
         modelo.addColumn("Nombre Producto");
@@ -403,7 +411,7 @@ public class ConsultasSQL {
                 CadSql = "SELECT cod_producto, nom_producto, descripcion, categoria, cantidad, valor_individual_producto, fecha_ingreso, valor_individual_venta FROM productos where categoria='" + campo + "';";
                 break;
             case 3:
-                CadSql = "SELECT cod_producto, nom_producto, descripcion, categoria, cantidad, valor_individual_producto, fecha_ingreso, valor_individual_venta FROM productos where nom_producto like'%" + campo + "%';";
+                CadSql = "SELECT cod_producto, nom_producto, descripcion, categoria, cantidad, valor_individual_producto, fecha_ingreso, valor_individual_venta FROM productos where nom_producto like'%" + campo + "%' AND categoria='" + categoria + "';";
                 break;
         }
         try {
@@ -430,7 +438,52 @@ public class ConsultasSQL {
 
         }
     }
+public void CargarTablaVentas(String fecha) {
+        DefaultTableModel modelo = new DefaultTableModel();
+        modelo.addColumn("CodigoVenta");
+        modelo.addColumn("Fecha");
+        modelo.addColumn("Total");
+        //Recordar cambiar tamaños
+                CadSql = "SELECT cod_venta, fecha, total FROM ganancias where fecha='" + fecha + "';";
+        try {
+            String[] datos = new String[3];
+            Statement st = this.cn.createStatement();
+            ResultSet rs = st.executeQuery(CadSql);
+            while (rs.next()) {
+                datos[0] = rs.getString(1);
+                datos[1] = rs.getString(2);
+                datos[2] = rs.getString(3);
+                modelo.addRow(datos);
+            }
+                JPanelVentasHoy.tbVentasHoy.setModel(modelo);
+        } catch (Exception ex) {
 
+        }
+    }
+    public void CargarTablaVentasDetalle(String codigo) {
+        DefaultTableModel modelo = new DefaultTableModel();
+        modelo.addColumn("CodigoProducto");
+        modelo.addColumn("Producto");
+        modelo.addColumn("Cantidad");
+        modelo.addColumn("Total");
+        //Recordar cambiar tamaños
+            CadSql = "SELECT p.cod_producto, p.nom_producto, v.cantidad, v.precio from productos p, ventas v where v.cod_producto=p.cod_producto and v.cod_venta='" + codigo + "';";
+        try {
+            String[] datos = new String[4];
+            Statement st = this.cn.createStatement();
+            ResultSet rs = st.executeQuery(CadSql);
+            while (rs.next()) {
+                datos[0] = rs.getString(1);
+                datos[1] = rs.getString(2);
+                datos[2] = rs.getString(3);
+                datos[3] = rs.getString(4);
+                modelo.addRow(datos);
+            }
+                JPanelVentasHoy.tbVentasHoyDetalles.setModel(modelo);
+        } catch (Exception ex) {
+
+        }
+    }
     public void CargarTablaCompra(int numero, String campo) {
         DefaultTableModel modelo = new DefaultTableModel();
         modelo.addColumn("Nombre");
@@ -438,19 +491,15 @@ public class ConsultasSQL {
         modelo.addColumn("Cantidad");
         modelo.addColumn("Precio");
         modelo.addColumn("Valor");
-        JOptionPane.showMessageDialog(null, "llegue1");
-        
         switch (numero) {
             case 1:
                 CadSql = "select p.nom_producto, p.descripcion, v.cantidad, p.valor_individual_venta, v.precio from productos p, ventas v where p.id_producto=v.cod_producto AND v.cod_venta='" + campo + "';";
-                 JOptionPane.showMessageDialog(null, "llegue2");
                 break;
             case 2:
                 CadSql = "";
                 break;
         }
         try {
-             JOptionPane.showMessageDialog(null, "llegue3");
             String[] datos = new String[5];
             Statement st = this.cn.createStatement();
             ResultSet rs = st.executeQuery(CadSql);
@@ -461,10 +510,8 @@ public class ConsultasSQL {
                 datos[3] = rs.getString(4);
                 datos[4] = rs.getString(5);
                 modelo.addRow(datos);
-                 JOptionPane.showMessageDialog(null, "llegue4");
             }
             interfaz_ventab.tbventa.setModel(modelo);
-             JOptionPane.showMessageDialog(null, "llegue5");
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(null, ex);
         }

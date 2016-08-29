@@ -406,7 +406,7 @@ public class interfaz_ventab extends javax.swing.JInternalFrame {
 
         BtnGuardar.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         BtnGuardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/guardar32.png"))); // NOI18N
-        BtnGuardar.setText("GUARDAR");
+        BtnGuardar.setText("EMITIR BOLETA");
         BtnGuardar.setEnabled(false);
         BtnGuardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -557,13 +557,15 @@ public class interfaz_ventab extends javax.swing.JInternalFrame {
             nombre();
 
             sql.NuevaVenta(Integer.parseInt(txtcodigo.getText()), cantidad, precio_individual, precio, Integer.parseInt(nombre), cboCategoria.getSelectedItem().toString(), cantidad2);
+            
             sql.CargarTablaListadoProductos(1, cboCategoria.getSelectedItem().toString(), "");
+            
             sql.CargarTablaCompra(1, txtcodigo.getText());
 
             monto_neto = Double.parseDouble(txtMontoNeto.getText()) + precio;
             txtMontoNeto.setText(String.valueOf(monto_neto));
 
-            monto_iva = Double.parseDouble(txtMontoNeto.getText()) * valor_iva / 100.0;
+            monto_iva = 0;
             txtIVA.setText(String.valueOf(monto_iva));
             total = monto_neto + monto_iva;
             txtTotal.setText(String.valueOf(total));
@@ -603,9 +605,10 @@ public class interfaz_ventab extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_BtnCancelarActionPerformed
 
     private void BtnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnGuardarActionPerformed
-        JOptionPane.showMessageDialog(null, "Guardado Correctamente");
-        imprimirFactura();
+  
+//        imprimirFactura();
         sql.GuardarGanancia(Integer.parseInt(txtcodigo.getText()), Double.parseDouble(txtMontoNeto.getText()), Double.parseDouble(txtIVA.getText()), Double.parseDouble(txtImpuestoAdicional.getText()), Double.parseDouble(txtTotal.getText()));
+        
         int numero = Integer.parseInt(txtcodigo.getText()) + 1;
         txtcodigo.setText(String.valueOf(numero));
         BtnGuardar.setEnabled(false);

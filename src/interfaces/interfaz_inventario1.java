@@ -17,7 +17,7 @@ import metodos.ConsultasSQL;
 public class interfaz_inventario1 extends javax.swing.JInternalFrame {
 
     public static ConsultasSQL sql= new ConsultasSQL();
-    
+    static String categoria="";
     public interfaz_inventario1() {
         initComponents();    
     }
@@ -37,14 +37,7 @@ public class interfaz_inventario1 extends javax.swing.JInternalFrame {
         jPanel4 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         txtNombre = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
-        cboCategoria = new javax.swing.JComboBox<>();
-        BtnAceptarCategoria = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
-        BtnAceptarCategoria1 = new javax.swing.JButton();
-        BtnAceptarCategoria2 = new javax.swing.JButton();
-        BtnAceptarCategoria3 = new javax.swing.JButton();
-        BtnAceptarCategoria4 = new javax.swing.JButton();
         jPanel6 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
@@ -52,6 +45,11 @@ public class interfaz_inventario1 extends javax.swing.JInternalFrame {
         tbproductos = new javax.swing.JTable();
 
         setBackground(new java.awt.Color(56, 98, 127));
+        setClosable(true);
+        setIconifiable(true);
+        setMaximizable(true);
+        setResizable(true);
+        setFrameIcon(null);
 
         jPanel1.setBackground(new java.awt.Color(88, 147, 191));
 
@@ -91,41 +89,15 @@ public class interfaz_inventario1 extends javax.swing.JInternalFrame {
             }
         });
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("Categoria:");
-
-        cboCategoria.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        cboCategoria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "SELECCIONE", "LIBRERIA", "VESTUARIO", "CASA Y PESCA" }));
-
-        BtnAceptarCategoria.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/aceptar32.png"))); // NOI18N
-        BtnAceptarCategoria.setText("    ACEPTAR");
-        BtnAceptarCategoria.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnAceptarCategoriaActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel4Layout.createSequentialGroup()
-                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(cboCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel4Layout.createSequentialGroup()
-                                .addComponent(jLabel3)
-                                .addGap(18, 18, 18)
-                                .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGap(21, 21, 21)
-                        .addComponent(BtnAceptarCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap()
+                .addComponent(jLabel3)
+                .addGap(18, 18, 18)
+                .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(29, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
@@ -135,75 +107,21 @@ public class interfaz_inventario1 extends javax.swing.JInternalFrame {
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cboCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(18, 18, 18)
-                .addComponent(BtnAceptarCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel5.setBackground(new java.awt.Color(88, 147, 191));
         jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(255, 255, 255))); // NOI18N
 
-        BtnAceptarCategoria1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/aceptar32.png"))); // NOI18N
-        BtnAceptarCategoria1.setText("MENOR A 100");
-        BtnAceptarCategoria1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnAceptarCategoria1ActionPerformed(evt);
-            }
-        });
-
-        BtnAceptarCategoria2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/aceptar32.png"))); // NOI18N
-        BtnAceptarCategoria2.setText("MENOR A 50");
-        BtnAceptarCategoria2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnAceptarCategoria2ActionPerformed(evt);
-            }
-        });
-
-        BtnAceptarCategoria3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/aceptar32.png"))); // NOI18N
-        BtnAceptarCategoria3.setText("MENOR ");
-        BtnAceptarCategoria3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnAceptarCategoria3ActionPerformed(evt);
-            }
-        });
-
-        BtnAceptarCategoria4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/aceptar32.png"))); // NOI18N
-        BtnAceptarCategoria4.setText("MENOR A 1000");
-        BtnAceptarCategoria4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnAceptarCategoria4ActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(BtnAceptarCategoria4, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(BtnAceptarCategoria1, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(BtnAceptarCategoria2, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(BtnAceptarCategoria3, javax.swing.GroupLayout.PREFERRED_SIZE, 259, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGap(0, 317, Short.MAX_VALUE)
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(BtnAceptarCategoria3, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(BtnAceptarCategoria2, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(BtnAceptarCategoria1, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(BtnAceptarCategoria4, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(16, Short.MAX_VALUE))
+            .addGap(0, 0, Short.MAX_VALUE)
         );
 
         jPanel6.setBackground(new java.awt.Color(255, 153, 0));
@@ -234,15 +152,13 @@ public class interfaz_inventario1 extends javax.swing.JInternalFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                    .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
+            .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -250,10 +166,11 @@ public class interfaz_inventario1 extends javax.swing.JInternalFrame {
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         jPanel2.setBackground(new java.awt.Color(88, 147, 191));
@@ -286,7 +203,7 @@ public class interfaz_inventario1 extends javax.swing.JInternalFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 527, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -314,56 +231,21 @@ public class interfaz_inventario1 extends javax.swing.JInternalFrame {
     private void txtNombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombreKeyTyped
         CargarTablas(3, txtNombre.getText().toString());
     }//GEN-LAST:event_txtNombreKeyTyped
-
-    private void BtnAceptarCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAceptarCategoriaActionPerformed
-        if(cboCategoria.getSelectedIndex()>0){
-        CargarTablas(2, cboCategoria.getSelectedItem().toString());
-        }else if(cboCategoria.getSelectedIndex()==0)
-        {
-        CargarTablas(1,"");
-        }
-        else{
-            CargarTablas(1,"");
-        }
-    }//GEN-LAST:event_BtnAceptarCategoriaActionPerformed
-
-    private void BtnAceptarCategoria1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAceptarCategoria1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_BtnAceptarCategoria1ActionPerformed
-
-    private void BtnAceptarCategoria2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAceptarCategoria2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_BtnAceptarCategoria2ActionPerformed
-
-    private void BtnAceptarCategoria3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAceptarCategoria3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_BtnAceptarCategoria3ActionPerformed
-
-    private void BtnAceptarCategoria4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAceptarCategoria4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_BtnAceptarCategoria4ActionPerformed
     
     public static void CargarTablas(int numero,String dato)
     {
         switch(numero)
         {
-            case 1: sql.CargarTablaproductos(1, "",0);
+            case 1: sql.CargarTablaproductos(1, "","",0);
                 break;
-            case 2: sql.CargarTablaproductos(2, dato,0);
+            case 2: sql.CargarTablaproductos(2, dato,"",0);
                 break;
-            case 3: sql.CargarTablaproductos(3, dato,0);
+            case 3: sql.CargarTablaproductos(3, dato,categoria,0);
                 break;
         }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton BtnAceptarCategoria;
-    private javax.swing.JButton BtnAceptarCategoria1;
-    private javax.swing.JButton BtnAceptarCategoria2;
-    private javax.swing.JButton BtnAceptarCategoria3;
-    private javax.swing.JButton BtnAceptarCategoria4;
-    private javax.swing.JComboBox<String> cboCategoria;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel7;

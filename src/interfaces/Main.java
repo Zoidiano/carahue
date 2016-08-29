@@ -12,21 +12,43 @@ import java.util.Calendar;
 import java.util.GregorianCalendar;
 import javax.swing.JOptionPane;
 import javax.swing.Timer;
+import metodos.ConsultasSQL;
+import javax.swing.UIManager;
+import javax.swing.plaf.nimbus.NimbusLookAndFeel;
+import nicon.notify.core.Notification;
 
 /**
  *
  * @author Zoidiano
  */
-
 public class Main extends javax.swing.JFrame {
+
+    Timer timer = new Timer(10000, new ActionListener() {
+        public void actionPerformed(ActionEvent e) {
+            if (1 == 1) {
+                ConsultasSQL sql = new ConsultasSQL();
+                try {
+                    UIManager.setLookAndFeel(new NimbusLookAndFeel());
+                    Notification.showConfirm("Notificacion con NiconNotify", "Hola amigos esta es mi notificacion personalizada", Notification.NICON_DARK_THEME, true, 10000);
+
+//El metodo showConfirm() puede variar con esto me refiero a que puedes solo mostrar el mensaje o bien puedes mandar mensaje, el tema que prefieras , si se reproduce un sonido o no y tambien por cuanto tiempo se mostrara, este ultimo es el que muestro en el ejemplo.
+                } catch (Exception ex) {
+                    System.err.println("error: " + ex.getCause());
+                }
+            }
+        }
+
+    });
 
     public Main() {
         this.setExtendedState(MAXIMIZED_BOTH);
         initComponents();
         Calendar cal = Calendar.getInstance();
-        String fechas = cal.get(cal.DATE) + "/" + cal.get(cal.MONTH) + "/" + cal.get(cal.YEAR);
+        String fechas = cal.get(cal.DATE) + "/" + (cal.get(Calendar.MONTH) + 1) + "/" + cal.get(cal.YEAR);
         this.fecha.setText(fechas);
+        timer.start();
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -42,6 +64,7 @@ public class Main extends javax.swing.JFrame {
         lb_user = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         lbCARGO = new javax.swing.JLabel();
+        btnSalir = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         hh = new javax.swing.JLabel();
@@ -86,7 +109,7 @@ public class Main extends javax.swing.JFrame {
         );
         ContenedorLayout.setVerticalGroup(
             ContenedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 211, Short.MAX_VALUE)
+            .addGap(0, 210, Short.MAX_VALUE)
         );
 
         jPanel1.setBackground(new java.awt.Color(56, 98, 127));
@@ -106,6 +129,13 @@ public class Main extends javax.swing.JFrame {
         lbCARGO.setForeground(new java.awt.Color(255, 255, 255));
         lbCARGO.setText("CARGO");
 
+        btnSalir.setText("SALIR");
+        btnSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalirActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -117,7 +147,9 @@ public class Main extends javax.swing.JFrame {
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lbCARGO)
-                .addContainerGap(26, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnSalir)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -125,8 +157,9 @@ public class Main extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lb_user)
                     .addComponent(jLabel2)
-                    .addComponent(lbCARGO))
-                .addGap(0, 11, Short.MAX_VALUE))
+                    .addComponent(lbCARGO)
+                    .addComponent(btnSalir))
+                .addGap(0, 7, Short.MAX_VALUE))
         );
 
         jPanel3.setBackground(new java.awt.Color(56, 98, 127));
@@ -194,7 +227,7 @@ public class Main extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 155, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 106, Short.MAX_VALUE)
                 .addComponent(fecha)
                 .addGap(18, 18, 18)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -348,10 +381,11 @@ public class Main extends javax.swing.JFrame {
     private void llamaLibreriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_llamaLibreriaActionPerformed
         interfaz_inventario1 Form = new interfaz_inventario1();
         Form.CargarTablas(2, "LIBRERIA");
+        Form.categoria = "LIBRERIA";
         this.add(Form);
         Dimension desktopSize = this.getSize();
         Dimension FrameSize = Form.getSize();
-        Form.setLocation((desktopSize.width - FrameSize.width) / 2, ((desktopSize.height - FrameSize.height) / 2)-50);
+        Form.setLocation((desktopSize.width - FrameSize.width) / 2, ((desktopSize.height - FrameSize.height) / 2) - 50);
         Form.setVisible(true);
         Contenedor.removeAll();
         Contenedor.updateUI();
@@ -365,7 +399,7 @@ public class Main extends javax.swing.JFrame {
         this.add(Form);
         Dimension desktopSize = this.getSize();
         Dimension FrameSize = Form.getSize();
-        Form.setLocation((desktopSize.width - FrameSize.width) / 2, ((desktopSize.height - FrameSize.height) / 2)-50);
+        Form.setLocation((desktopSize.width - FrameSize.width) / 2, ((desktopSize.height - FrameSize.height) / 2) - 50);
         Contenedor.removeAll();
         Contenedor.updateUI();
         Contenedor.add(Form);
@@ -378,7 +412,7 @@ public class Main extends javax.swing.JFrame {
         this.add(Form);
         Dimension desktopSize = this.getSize();
         Dimension FrameSize = Form.getSize();
-        Form.setLocation((desktopSize.width - FrameSize.width) / 2, ((desktopSize.height - FrameSize.height) / 2)-50);
+        Form.setLocation((desktopSize.width - FrameSize.width) / 2, ((desktopSize.height - FrameSize.height) / 2) - 50);
         Contenedor.removeAll();
         Contenedor.updateUI();
         Contenedor.add(Form);
@@ -390,22 +424,22 @@ public class Main extends javax.swing.JFrame {
         this.add(Form);
         Dimension desktopSize = this.getSize();
         Dimension FrameSize = Form.getSize();
-        Form.setLocation((desktopSize.width - FrameSize.width) / 2, ((desktopSize.height - FrameSize.height) / 2)-50);
+        Form.setLocation((desktopSize.width - FrameSize.width) / 2, ((desktopSize.height - FrameSize.height) / 2) - 50);
         Contenedor.removeAll();
         Contenedor.updateUI();
         Contenedor.add(Form);
     }//GEN-LAST:event_llama_interfaz_principalActionPerformed
 
     private void llama_interfaz_informesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_llama_interfaz_informesActionPerformed
-//        interfaz_informes Form = new interfaz_informes();
-//        Form.setVisible(true);
-//        this.add(Form);
-//        Dimension desktopSize = this.getSize();
-//        Dimension FrameSize = Form.getSize();
-//        Form.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.height) / 2);
-//        Contenedor.removeAll();
-//        Contenedor.updateUI();
-//        Contenedor.add(Form);
+        interfaz_reportes Form = new interfaz_reportes();
+        Form.setVisible(true);
+        this.add(Form);
+        Dimension desktopSize = this.getSize();
+        Dimension FrameSize = Form.getSize();
+        Form.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.height) / 2);
+        Contenedor.removeAll();
+        Contenedor.updateUI();
+        Contenedor.add(Form);
     }//GEN-LAST:event_llama_interfaz_informesActionPerformed
 
     private void Slider3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Slider3ActionPerformed
@@ -433,7 +467,7 @@ public class Main extends javax.swing.JFrame {
         this.add(Form);
         Dimension desktopSize = this.getSize();
         Dimension FrameSize = Form.getSize();
-        Form.setLocation((desktopSize.width - FrameSize.width) / 2, ((desktopSize.height - FrameSize.height) / 2)-50);
+        Form.setLocation((desktopSize.width - FrameSize.width) / 2, ((desktopSize.height - FrameSize.height) / 2) - 50);
         Contenedor.removeAll();
         Contenedor.updateUI();
         Contenedor.add(Form);
@@ -479,6 +513,23 @@ public class Main extends javax.swing.JFrame {
         Contenedor.updateUI();
         Contenedor.add(Form);
     }//GEN-LAST:event_jMenuItem2ActionPerformed
+
+    private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
+        interfaz_login il = new interfaz_login();
+        lb_user.setText("NOMBRE USUARIO");
+        lbCARGO.setText("CARGO");
+        il.setVisible(true);
+        this.add(il);
+        Dimension desktopSize = this.getSize();
+        Dimension FrameSize = il.getSize();
+        il.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.height) / 2 - 60);
+        Contenedor.removeAll();
+        Contenedor.updateUI();
+        Contenedor.add(il);
+
+        timer = new Timer(1000, new cronometro());
+        timer.start();
+    }//GEN-LAST:event_btnSalirActionPerformed
     public class cronometro implements ActionListener {
 
         public void actionPerformed(ActionEvent evt) {
@@ -502,10 +553,9 @@ public class Main extends javax.swing.JFrame {
         if (eleccion == JOptionPane.YES_OPTION) {
             System.exit(0);
         } else {
-            
+
         }
     }
-    private Timer timer;
 
     /**
      * @param args the command line arguments
@@ -548,6 +598,7 @@ public class Main extends javax.swing.JFrame {
     public static javax.swing.JMenu Slider2;
     public static javax.swing.JMenu Slider3;
     public static javax.swing.JMenu Slider4;
+    private javax.swing.JButton btnSalir;
     public static javax.swing.JLabel fecha;
     public static javax.swing.JLabel hh;
     private javax.swing.JLabel jLabel2;
