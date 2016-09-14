@@ -22,7 +22,7 @@ public class interfaz_inventario_administracion extends javax.swing.JInternalFra
 
     public static ConsultasSQL sql = new ConsultasSQL();
     Calendar cal = Calendar.getInstance();
-    String fechas = cal.get(cal.DATE) + "/" + (cal.get(cal.MONTH)+1) + "/" + cal.get(cal.YEAR);
+    String fechas = cal.get(cal.DATE) + "/" + (cal.get(cal.MONTH) + 1) + "/" + cal.get(cal.YEAR);
     static int num_interno = 1;
     int precio_total = 0;
     int costo_individual = 0;
@@ -537,7 +537,15 @@ public class interfaz_inventario_administracion extends javax.swing.JInternalFra
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("NOMBRE:");
 
+        txtNombreBusqueda.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtNombreBusquedaFocusLost(evt);
+            }
+        });
         txtNombreBusqueda.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtNombreBusquedaKeyReleased(evt);
+            }
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtNombreBusquedaKeyTyped(evt);
             }
@@ -666,16 +674,32 @@ public class interfaz_inventario_administracion extends javax.swing.JInternalFra
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtNombreBusquedaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombreBusquedaKeyTyped
-        CargarTablas(3, txtNombreBusqueda.getText());
+        txtCodigoBusqueda.setText("");
+
+        if (txtNombreBusqueda.getText().equals("") && cboCategoriaBusqueda.getSelectedItem().toString().equals("TODAS LAS CATEGORIAS")) {
+            CargarTablas(1, "");
+        } else {
+            CargarTablas(3, txtNombreBusqueda.getText());
+        }
     }//GEN-LAST:event_txtNombreBusquedaKeyTyped
 
     private void cboCategoriaBusquedaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboCategoriaBusquedaActionPerformed
-        if (cboCategoriaBusqueda.getSelectedIndex() > 0) {
-            CargarTablas(2, cboCategoriaBusqueda.getSelectedItem().toString());
-        } else if (cboCategoriaBusqueda.getSelectedIndex() == 0) {
-            CargarTablas(1, "");
+        if (txtNombreBusqueda.getText().equals("") && txtCodigoBusqueda.getText().equals("")) {
+            if (cboCategoriaBusqueda.getSelectedIndex() > 0) {
+                CargarTablas(2, cboCategoriaBusqueda.getSelectedItem().toString());
+            } else if (cboCategoriaBusqueda.getSelectedIndex() == 0) {
+                CargarTablas(1, "");
+            } else {
+                CargarTablas(1, "");
+            }
         } else {
-            CargarTablas(1, "");
+            if(txtNombreBusqueda.getText().equals(""))
+            {
+            CargarTablas(4, txtCodigoBusqueda.getText());
+            }else
+            {
+            CargarTablas(3, txtNombreBusqueda.getText());
+            }
         }
     }//GEN-LAST:event_cboCategoriaBusquedaActionPerformed
 
@@ -695,9 +719,14 @@ public class interfaz_inventario_administracion extends javax.swing.JInternalFra
     }//GEN-LAST:event_cboCategoriaBusquedaMouseClicked
 
     private void txtCodigoBusquedaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCodigoBusquedaKeyTyped
-        if(txtCodigoBusqueda.getText().equals("") && cboCategoriaBusqueda.getSelectedItem().toString().equals("TODAS LAS CATEGORIAS")){CargarTablas(1,"");}
-        else if(txtCodigoBusqueda.getText().equals("")){CargarTablas(2,cboCategoriaBusqueda.getSelectedItem().toString());}
-        else{CargarTablas(4, txtCodigoBusqueda.getText());}
+        txtNombreBusqueda.setText("");
+        if (txtCodigoBusqueda.getText().equals("") && cboCategoriaBusqueda.getSelectedItem().toString().equals("TODAS LAS CATEGORIAS")) {
+            CargarTablas(1, "");
+        } else if (txtCodigoBusqueda.getText().equals("")) {
+            CargarTablas(2, cboCategoriaBusqueda.getSelectedItem().toString());
+        } else {
+            CargarTablas(4, txtCodigoBusqueda.getText());
+        }
     }//GEN-LAST:event_txtCodigoBusquedaKeyTyped
 
     private void txtCodigoProductoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCodigoProductoKeyTyped
@@ -705,7 +734,11 @@ public class interfaz_inventario_administracion extends javax.swing.JInternalFra
     }//GEN-LAST:event_txtCodigoProductoKeyTyped
 
     private void txtCodigoProductoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtCodigoProductoFocusLost
-        
+        if (txtCodigoProducto.getText().equals("")) {
+        } else {
+            String t = txtCodigoProducto.getText().toUpperCase();
+            txtCodigoProducto.setText(t);
+        }
     }//GEN-LAST:event_txtCodigoProductoFocusLost
 
     private void txtNombreProveedorKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombreProveedorKeyTyped
@@ -713,7 +746,11 @@ public class interfaz_inventario_administracion extends javax.swing.JInternalFra
     }//GEN-LAST:event_txtNombreProveedorKeyTyped
 
     private void txtNombreProveedorFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtNombreProveedorFocusLost
-        // TODO add your handling code here:
+        if (txtNombreProveedor.getText().equals("")) {
+        } else {
+            String t = txtNombreProveedor.getText().toUpperCase();
+            txtNombreProveedor.setText(t);
+        }
     }//GEN-LAST:event_txtNombreProveedorFocusLost
 
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
@@ -771,13 +808,13 @@ public class interfaz_inventario_administracion extends javax.swing.JInternalFra
             JOptionPane.showMessageDialog(null, "El costo debe ser menor al precio venta");
         } else if (sql.validarproducto(txtCodigoProducto.getText(), cboCategoria.getSelectedItem().toString())) {
             JOptionPane.showMessageDialog(null, "El codigo de producto que intenta usar ya se encuentra ocupado");
-                txtCodigoProducto.setText("");
+            txtCodigoProducto.setText("");
             txtCodigoProducto.requestFocus();
         } else if (Integer.parseInt(txtCantidad.getText()) == 0 || Integer.parseInt(txtCostoIndividual.getText()) == 0 || Integer.parseInt(txtPrecioTotal.getText()) == 0) {
             JOptionPane.showMessageDialog(null, "Alguno de los datos ingresados tiene valor 0");
         } else {
             //int ultimo_numero=Integer.parseInt(sql.Consultaultimo())+1;
-            sql.IngresarProductos(txtCodigoProducto.getText(), txtNombre.getText(), txtDescripcion.getText(), cboCategoria.getSelectedItem().toString(), Integer.parseInt(txtCantidad.getText()), Integer.parseInt(txtCostoIndividual.getText()), Integer.parseInt(txtPrecioIndividual.getText()), txtFecha.getText(),txtNombreProveedor.getText(),txtNumFactura.getText());
+            sql.IngresarProductos(txtCodigoProducto.getText(), txtNombre.getText(), txtDescripcion.getText(), cboCategoria.getSelectedItem().toString(), Integer.parseInt(txtCantidad.getText()), Integer.parseInt(txtCostoIndividual.getText()), Integer.parseInt(txtPrecioIndividual.getText()), txtFecha.getText(), txtNombreProveedor.getText(), txtNumFactura.getText());
 
             CargarTablas(2, cboCategoria.getSelectedItem().toString());
         }
@@ -840,13 +877,13 @@ public class interfaz_inventario_administracion extends javax.swing.JInternalFra
         }
 
         //        if (txtCantidad.getText().equals("") || txtPrecioIndividual.getText().equals("")) {
-            //
-            //        }  else {
-            //            int valor1 = Integer.parseInt(txtPrecioIndividual.getText().toString());
-            //            int valor2 = Integer.parseInt(txtCantidad.getText().toString());
-            //            precio_total = (valor1) * (valor2);
-            //            txtCostoTotal.setText(String.valueOf(precio_total));
-            //        }
+        //
+        //        }  else {
+        //            int valor1 = Integer.parseInt(txtPrecioIndividual.getText().toString());
+        //            int valor2 = Integer.parseInt(txtCantidad.getText().toString());
+        //            precio_total = (valor1) * (valor2);
+        //            txtCostoTotal.setText(String.valueOf(precio_total));
+        //        }
     }//GEN-LAST:event_txtCantidadFocusLost
 
     private void cboCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboCategoriaActionPerformed
@@ -859,11 +896,11 @@ public class interfaz_inventario_administracion extends javax.swing.JInternalFra
 
     private void txtNombreFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtNombreFocusLost
         if (txtNombre.getText().equals("")) {
-        }else {
+        } else {
             String t = txtNombre.getText().toUpperCase();
             txtNombre.setText(t);
         }
-        
+
     }//GEN-LAST:event_txtNombreFocusLost
 
     private void txtNumFacturaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtNumFacturaFocusLost
@@ -873,6 +910,18 @@ public class interfaz_inventario_administracion extends javax.swing.JInternalFra
     private void txtNumFacturaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNumFacturaKeyTyped
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNumFacturaKeyTyped
+
+    private void txtNombreBusquedaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombreBusquedaKeyReleased
+
+    }//GEN-LAST:event_txtNombreBusquedaKeyReleased
+
+    private void txtNombreBusquedaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtNombreBusquedaFocusLost
+        if (txtNombreBusqueda.getText().equals("")) {
+        } else {
+            String t = txtNombreBusqueda.getText().toUpperCase();
+            txtNombreBusqueda.setText(t);
+        }
+    }//GEN-LAST:event_txtNombreBusquedaFocusLost
     private boolean CompararPrecios() {
         boolean validar = false;
         if (Integer.parseInt(txtCostoIndividual.getText()) > Integer.parseInt(txtPrecioTotal.getText())) {
@@ -981,7 +1030,7 @@ public class interfaz_inventario_administracion extends javax.swing.JInternalFra
     private javax.swing.JTextField txtCostoIndividual;
     private javax.swing.JTextField txtCostoTotal;
     private javax.swing.JTextArea txtDescripcion;
-    private javax.swing.JTextField txtFecha;
+    public static javax.swing.JTextField txtFecha;
     private javax.swing.JTextField txtNombre;
     private javax.swing.JTextField txtNombreBusqueda;
     private javax.swing.JTextField txtNombreProveedor;

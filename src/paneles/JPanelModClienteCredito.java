@@ -54,7 +54,7 @@ public class JPanelModClienteCredito extends javax.swing.JPanel {
         jPanel2.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(51, 0, 255)));
 
         btnagregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/adduser.png"))); // NOI18N
-        btnagregar.setText("AGREGAR");
+        btnagregar.setText("MODIFICAR");
         btnagregar.setEnabled(false);
         btnagregar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -150,8 +150,8 @@ public class JPanelModClienteCredito extends javax.swing.JPanel {
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(btnagregar, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(30, 30, 30)
+                .addComponent(btnagregar)
+                .addGap(24, 24, 24)
                 .addComponent(btnlimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(27, 27, 27)
                 .addComponent(btncancelar)
@@ -210,18 +210,13 @@ public class JPanelModClienteCredito extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btncancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btncancelarActionPerformed
-
+            Main.llama_interfaz_linea_credito.doClick();
     }//GEN-LAST:event_btncancelarActionPerformed
 
     private void btnlimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnlimpiarActionPerformed
         Limpiar();
         desabilitar();
     }//GEN-LAST:event_btnlimpiarActionPerformed
-
-    private void btnagregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnagregarActionPerformed
-
-
-    }//GEN-LAST:event_btnagregarActionPerformed
 
     private void txtRutModFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtRutModFocusLost
         try {
@@ -245,18 +240,32 @@ public class JPanelModClienteCredito extends javax.swing.JPanel {
 
             }
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "No ingrese letras");
             txtRutMod.setText("");
         }
 
     }//GEN-LAST:event_txtRutModFocusLost
 
     private void txtRutModKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtRutModKeyTyped
-        if(txtRutMod.getText().length()>8)
-        {
+        if (txtRutMod.getText().length() > 8) {
             evt.consume();
         }
     }//GEN-LAST:event_txtRutModKeyTyped
+
+    private void btnagregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnagregarActionPerformed
+        if (txtRutMod.getText().equals("") && txtNombreMod.getText().equals("") && txtCantidadMod.getText().equals("") && txtTelefonoMod.getText().equals("") && txtCantidadMod.getText().equals("0")) {
+            JOptionPane.showMessageDialog(null, "Alguno de los campos se encuentra vacio");
+        } else if (sql.ConsultarRutCliente(txtRutMod.getText())) {
+           sql.ModClientes(txtNombreMod.getText(),txtTelefonoMod.getText(),txtCantidadMod.getText(), txtRutMod.getText());
+           Limpiar();
+           desabilitar();
+           JOptionPane.showMessageDialog(null, "Cliente Modificado Correctamente");
+           
+        }else
+        {
+            JOptionPane.showMessageDialog(null, "El Rut Ingresado no se encuentra registrado");
+        }
+    }//GEN-LAST:event_btnagregarActionPerformed
+
     void Limpiar() {
         txtRutMod.setText("");
         txtNombreMod.setText("");

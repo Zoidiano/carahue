@@ -2,6 +2,7 @@ package metodos;
 
 import conexion.conectar;
 import interfaces.Main;
+import interfaces.interfaz_administracion;
 import interfaces.interfaz_inventario1;
 import interfaces.interfaz_inventario_administracion;
 import interfaces.interfaz_reportes;
@@ -20,7 +21,11 @@ import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumnModel;
 import paneles.JPanelBusquedaCliente;
+import paneles.JPanelIngresoAbonos;
+import paneles.JPanelListadoClienteCredito;
+import paneles.JPanelModAbonos;
 import paneles.JPanelModClienteCredito;
+import paneles.reportes.JPanelDiax;
 import paneles.reportes.JPanelVentasHoy;
 import paneles.reportes.JPanelVentasMensual;
 import paneles.reportes.JPanelVentasSemanal;
@@ -36,7 +41,7 @@ public class ConsultasSQL {
     Calendar cal = Calendar.getInstance();
     String fechas = cal.get(cal.DATE) + "/" + (cal.get(cal.MONTH) + 1) + "/" + cal.get(cal.YEAR);
 
-    public boolean ConsultaUsuario(String usuario, String contraseña) {
+    public boolean ConsultaUsuario(String usuario, String contraseña) { //revisado
         {
             boolean Consulta = false;
             try {
@@ -54,17 +59,17 @@ public class ConsultasSQL {
         }
     }
 
-    public boolean ConsultarRutCliente(String rut) {
+    public boolean ConsultarRutCliente(String rut) {    //revisado
         {
             boolean Consulta = false;
             try {
                 CadSql = "select rut from clientes where rut='" + rut + "';";
-                JOptionPane.showMessageDialog(null, CadSql);
+                
                 Statement st = this.cn.createStatement();
                 ResultSet rs = st.executeQuery(CadSql);
-
                 while (rs.next()) {
                     Consulta = true;
+                
                 }
             } catch (Exception ex) {
                 JOptionPane.showMessageDialog(null, ex);
@@ -72,8 +77,43 @@ public class ConsultasSQL {
             return Consulta;
         }
     }
-
-    static public boolean validarRut(String rut) {
+    public boolean ConsultarNombreCliente(String rut) {    //revisado
+        {
+            boolean Consulta = false;
+            try {
+                CadSql = "select nombre from clientes where rut='" + rut + "';";
+                Statement st = this.cn.createStatement();
+                ResultSet rs = st.executeQuery(CadSql);
+                while (rs.next()) {
+                    JPanelModAbonos.txtNombreCliente.setText(rs.getString(1));
+                }
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(null, ex);
+            }
+            return Consulta;
+        }
+    }
+    public boolean ConsultarFechaEntrega(String num_venta) {    //revisado
+        {
+            boolean Consulta = false;
+            try {
+                CadSql = "select fecha_entrega from credito where cod_venta='" + num_venta + "';";
+                Statement st = this.cn.createStatement();
+                ResultSet rs = st.executeQuery(CadSql);
+                while (rs.next()) {
+                    
+                   String fecha=(rs.getString(1));
+                   java.text.SimpleDateFormat formato = new java.text.SimpleDateFormat("dd/MM/yyyy"); 
+                   java.util.Date fechaDate = formato.parse(fecha); 
+                   JPanelModAbonos.txtFechaEntrega.setDate(fechaDate);
+                }
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(null, ex);
+            }
+            return Consulta;
+        }
+    }
+    static public boolean validarRut(String rut) {  //revisado
         int suma = 0;
         String dvR, dvT;
         int[] serie = {2, 3, 4, 5, 6, 7};
@@ -96,7 +136,7 @@ public class ConsultasSQL {
         }
     }
 
-    public String ConsultarNombre(String usuario) {
+    public String ConsultarNombre(String usuario) { //revisado
         {
             String Consulta = "";
 
@@ -115,7 +155,7 @@ public class ConsultasSQL {
         }
     }
 
-    public String Consultaultimo() {
+    public String Consultaultimo() {    //revisado
         {
             String Consulta = "";
 
@@ -133,7 +173,7 @@ public class ConsultasSQL {
         }
     }
 
-    public String ConsultarNombreConUser(String usuario) {
+    public String ConsultarNombreConUser(String usuario) { //revisado
         {
             String Consulta = "";
             try {
@@ -152,7 +192,7 @@ public class ConsultasSQL {
         }
     }
 
-    public String Consultatipo(String usuario) {
+    public String Consultatipo(String usuario) {    //revisado
         {
             String Consulta = "";
             try {
@@ -172,8 +212,8 @@ public class ConsultasSQL {
         }
     }
 
-    public void CargarRegiones() {
-        try {
+    public void CargarRegiones() {  //revisado
+        try {   
             CadSql = "Select des_region from regiones;";
             Statement st = this.cn.createStatement();
             ResultSet rs = st.executeQuery(CadSql);
@@ -185,7 +225,7 @@ public class ConsultasSQL {
         }
     }
 
-    public void CargarCiudad(int campo) {
+    public void CargarCiudad(int campo) {   //revisado
         try {
             CadSql = "SELECT des_ciudad FROM ciudad WHERE cod_provincia =" + campo + ";";
             Statement st = this.cn.createStatement();
@@ -198,7 +238,7 @@ public class ConsultasSQL {
         }
     }
 
-    public void GuardarUsuario(String tipo, String nombre, String usuario, String contraseña) {
+    public void GuardarUsuario(String tipo, String nombre, String usuario, String contraseña) { //revisado
         try {
             PreparedStatement pst = this.cn.prepareStatement("INSERT INTO usuarios(cod_user,user,password,nombre,tipo) VALUES (?,?,?,?,?)");
             pst.setString(1, null);
@@ -214,7 +254,20 @@ public class ConsultasSQL {
         }
     }
 
-    public void GuardarCliente(String nombre, String rut, String telefono, String fecha_ingreso, int cantidad_credito) {
+    public void GuardarCredito(String rut, int num_venta, int abonado, int total, String fecha) { //revisado
+        try {
+            PreparedStatement pst = this.cn.prepareStatement("INSERT INTO credito(rut_cliente,cod_venta,abonado,total,fecha_entrega) VALUES(?,?,?,?,?)");
+            pst.setString(1, rut);
+            pst.setInt(2, num_venta);
+            pst.setInt(3, abonado);
+            pst.setInt(4, total);
+            pst.setString(5, fecha);
+            pst.executeUpdate();
+        } catch (Exception e) {
+        }
+    }
+
+    public void GuardarCliente(String nombre, String rut, String telefono, String fecha_ingreso, int cantidad_credito) {    //revisado
         try {
             PreparedStatement pst = this.cn.prepareStatement("INSERT INTO clientes(nombre,rut,telefono,fecha_ingreso,abono,cantidad_credito) VALUES(?,?,?,?,?,?)");
             pst.setString(1, nombre);
@@ -228,7 +281,7 @@ public class ConsultasSQL {
         }
     }
 
-    public void EliminarUsuario(String valor) {
+    public void EliminarUsuario(String valor) { //revisado
         try {
             PreparedStatement pst = this.cn.prepareStatement("DELETE FROM usuarios WHERE  cod_user='" + valor + "'");
             pst.executeUpdate();
@@ -237,7 +290,7 @@ public class ConsultasSQL {
         }
     }
 
-    public void Eliminarventas(String valor) {
+    public void Eliminarventas(String valor) {  //revisado
         try {
             PreparedStatement pst = this.cn.prepareStatement("DELETE FROM ordenes_pedido WHERE  cod_venta='" + valor + "'");
             pst.executeUpdate();
@@ -247,12 +300,11 @@ public class ConsultasSQL {
         }
     }
 
-    public void SetearCampos(String rut) {
+    public void SetearCampos(String rut) {  //revisado
         CadSql = "SELECT nombre, rut, telefono, cantidad_credito, fecha_ingreso, abono FROM clientes where rut like'%" + rut + "%';";
         try {
             Statement st = this.cn.createStatement();
             ResultSet rs = st.executeQuery(CadSql);
-            JOptionPane.showMessageDialog(null, CadSql);
             while (rs.next()) {
                 JPanelBusquedaCliente.txtNombreCliente.setText(rs.getString(1));
                 JPanelBusquedaCliente.txtRutCliente.setText(rs.getString(2));
@@ -265,12 +317,12 @@ public class ConsultasSQL {
             JOptionPane.showMessageDialog(null, e);
         }
     }
-    public void SetearCamposModCliente(String rut) {
+
+    public void SetearCamposModCliente(String rut) {    //revisado
         CadSql = "SELECT nombre, rut, telefono, cantidad_credito, fecha_ingreso, abono FROM clientes where rut like'%" + rut + "%';";
         try {
             Statement st = this.cn.createStatement();
             ResultSet rs = st.executeQuery(CadSql);
-            JOptionPane.showMessageDialog(null, CadSql);
             while (rs.next()) {
                 JPanelModClienteCredito.txtNombreMod.setText(rs.getString(1));
                 JPanelModClienteCredito.txtRutMod.setText(rs.getString(2));
@@ -282,47 +334,73 @@ public class ConsultasSQL {
             JOptionPane.showMessageDialog(null, e);
         }
     }
-    public void CargarTablaClientes(int numero, String dato) {
+
+    public void CargarTablaClientes(int numero, String dato) {  //revisado
+        int interno = 0;
         DefaultTableModel modelo = new DefaultTableModel();
-        modelo.addColumn("Nombre");
-        modelo.addColumn("Rut");
-        modelo.addColumn("Telefono");
-        modelo.addColumn("Abono");
-        modelo.addColumn("Credito");
         switch (numero) {
             case 1:
-                CadSql = "SELECT nombre, rut, telefono, abono, cantidad_credito FROM clientes;";
+                CadSql = "SELECT nombre, rut, abono, cantidad_credito FROM clientes;";
                 break;
             case 2:
-                CadSql = "SELECT nombre, rut, telefono, abono, cantidad_credito FROM clientes where rut like'%" + dato + "%';";
+                CadSql = "SELECT nombre, rut, abono, cantidad_credito FROM clientes where rut like'%" + dato + "%';";
                 break;
             case 3:
-                CadSql = "SELECT nombre, rut, telefono, abono, cantidad_credito FROM clientes where nombre like'%" + dato + "%';";
+                CadSql = "SELECT nombre, rut, abono, cantidad_credito FROM clientes where nombre like'%" + dato + "%';";
+                break;
+            case 4:
+                CadSql = "SELECT * FROM clientes;";
+                interno = 1;
                 break;
         }
         try {
-            String[] datos = new String[5];
-            Statement st = this.cn.createStatement();
-            ResultSet rs = st.executeQuery(CadSql);
-            while (rs.next()) {
-                datos[0] = rs.getString(1);
-                datos[1] = rs.getString(2);
-                datos[2] = rs.getString(3);
-                datos[3] = rs.getString(4);
-                datos[4] = rs.getString(5);
-                modelo.addRow(datos);
+
+            if (interno == 1) {
+                modelo.addColumn("Codigo");
+                modelo.addColumn("Nombre");
+                modelo.addColumn("Rut");
+                modelo.addColumn("Telefono");
+                modelo.addColumn("Fecha Ingreso");
+                modelo.addColumn("Abono");
+                modelo.addColumn("Credito");
+                String[] datos = new String[7];
+                Statement st = this.cn.createStatement();
+                ResultSet rs = st.executeQuery(CadSql);
+                while (rs.next()) {
+                    datos[0] = rs.getString(1);
+                    datos[1] = rs.getString(2);
+                    datos[2] = rs.getString(3);
+                    datos[3] = rs.getString(4);
+                    datos[4] = rs.getString(5);
+                    datos[5] = rs.getString(6);
+                    datos[6] = rs.getString(7);
+                    modelo.addRow(datos);
+                }
+                JPanelListadoClienteCredito.tblistadoclientescredito.setModel(modelo);
+            } else {
+
+                modelo.addColumn("Nombre");
+                modelo.addColumn("Rut");
+                modelo.addColumn("Abono");
+                modelo.addColumn("Credito");
+                String[] datos = new String[4];
+                Statement st = this.cn.createStatement();
+                ResultSet rs = st.executeQuery(CadSql);
+                while (rs.next()) {
+                    datos[0] = rs.getString(1);
+                    datos[1] = rs.getString(2);
+                    datos[2] = rs.getString(3);
+                    datos[3] = rs.getString(4);
+                    modelo.addRow(datos);
+                }
+                JPanelBusquedaCliente.tbClientes.setModel(modelo);
             }
-            JPanelBusquedaCliente.tbClientes.setModel(modelo);
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(null, ex);
         }
     }
 
-    public void SetearDatosTablaClientes(String rut) {
-
-    }
-
-    public void CargarTablausuarios(int numero, String campo) {
+    public void CargarTablausuarios(int numero, String campo) { //revisado
         DefaultTableModel modelo = new DefaultTableModel();
         modelo.addColumn("Codigo");
         modelo.addColumn("Usuario");
@@ -353,6 +431,20 @@ public class ConsultasSQL {
                 modelo.addRow(datos);
             }
             interfaz_usuarios2.tbUsuarios.setModel(modelo);
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, ex);
+        }
+    }
+
+    public void ModClientes(String nombre, String telefono, String cantidad, String rut) {  //revisado
+        try {
+            PreparedStatement pst = this.cn.prepareStatement("UPDATE clientes SET nombre=?, telefono=?, cantidad_credito=? WHERE rut=?;");
+            pst.setString(1, nombre);
+            pst.setString(2, telefono);
+            pst.setString(3, cantidad);
+            pst.setString(4, rut);
+            pst.executeUpdate();
+
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(null, ex);
         }
@@ -587,13 +679,71 @@ public class ConsultasSQL {
         }
     }
 
+    public void Consultatotalconnum_venta(int num_venta) {
+        try {
+            CadSql = "SELECT total from ganancias where cod_venta='" + num_venta + "';";
+            Statement st = this.cn.createStatement();
+            ResultSet rs = st.executeQuery(CadSql);
+            while (rs.next()) {
+                JPanelIngresoAbonos.txtMontoVenta.setText(rs.getString(1));
+            }
+        } catch (Exception e) {
+        }
+    }
+
+    public void ConsultarCreditoDisponible(String rut, int codigo) {
+        try {
+            CadSql = "SELECT cantidad_credito from clientes where rut='" + rut + "';";
+            Statement st = this.cn.createStatement();
+            ResultSet rs = st.executeQuery(CadSql);
+            while (rs.next()) {
+                if (codigo == 1) {
+                    JPanelIngresoAbonos.txtCreditoDisponible.setText(rs.getString(1));
+                } else {
+                    JPanelModAbonos.txtCreditoDisponible.setText(rs.getString(1));
+                }
+
+            }
+        } catch (Exception e) {
+
+        }
+    }
+
+    public void CargarTablaCreditoCliente(String rut, int codigo) {
+        DefaultTableModel modelo = new DefaultTableModel();
+        modelo.addColumn("NumeroVenta");
+        modelo.addColumn("Abonado");
+        modelo.addColumn("Total");
+        CadSql = "SELECT cod_venta, abonado, total FROM credito WHERE rut_cliente='" + rut + "';";
+        try {
+            
+            String[] datos = new String[3];
+            Statement st = this.cn.createStatement();
+            ResultSet rs = st.executeQuery(CadSql);
+            while (rs.next()) {
+                datos[0] = rs.getString(1);
+                datos[1] = rs.getString(2);
+                datos[2] = rs.getString(3);
+                modelo.addRow(datos);
+            }
+            if (codigo == 1) {
+                JPanelIngresoAbonos.tblistadoclientescredito.setModel(modelo);
+            } else {
+                JPanelModAbonos.tblistadoclientescredito.setModel(modelo);
+            }
+
+        } catch (Exception ex) {
+
+        }
+
+    }
+
     public void CargarTabalasVentasMensuales(int mes, int anio) {
         DefaultTableModel modelo = new DefaultTableModel();
         modelo.addColumn("CodigoVenta");
         modelo.addColumn("Fecha");
         modelo.addColumn("Total");
         CadSql = "SELECT cod_venta, fecha, total FROM ganancias WHERE fecha like'%" + mes + "/" + anio + "%';";
-        JOptionPane.showMessageDialog(null, CadSql);
         try {
             String[] datos = new String[3];
 
@@ -654,7 +804,31 @@ public class ConsultasSQL {
 
         }
     }
-
+public void CargarTablaVentasDiax(String fecha) {
+        DefaultTableModel modelo = new DefaultTableModel();
+        modelo.addColumn("CodigoVenta");
+        modelo.addColumn("Fecha");
+        modelo.addColumn("Total");
+        //Recordar cambiar tamaños
+        CadSql = "SELECT cod_venta, fecha, total FROM ganancias where fecha='" + fecha + "';";
+        try {
+            String[] datos = new String[3];
+            Statement st = this.cn.createStatement();
+            ResultSet rs = st.executeQuery(CadSql);
+            JOptionPane.showMessageDialog(null, CadSql);
+            while (rs.next()) {
+                datos[0] = rs.getString(1);
+                datos[1] = rs.getString(2);
+                datos[2] = rs.getString(3);
+                modelo.addRow(datos);
+            }
+            
+            JPanelDiax.tbVentasHoy.setModel(modelo);
+        } catch (Exception ex) {
+        
+    
+        }
+    }
     public void CargarTablaVentas(String fecha) {
         DefaultTableModel modelo = new DefaultTableModel();
         modelo.addColumn("CodigoVenta");
@@ -666,6 +840,7 @@ public class ConsultasSQL {
             String[] datos = new String[3];
             Statement st = this.cn.createStatement();
             ResultSet rs = st.executeQuery(CadSql);
+            JOptionPane.showMessageDialog(null, CadSql);
             while (rs.next()) {
                 datos[0] = rs.getString(1);
                 datos[1] = rs.getString(2);
@@ -673,8 +848,10 @@ public class ConsultasSQL {
                 modelo.addRow(datos);
             }
             JPanelVentasHoy.tbVentasHoy.setModel(modelo);
+            
         } catch (Exception ex) {
-
+        
+    
         }
     }
 
@@ -706,6 +883,9 @@ public class ConsultasSQL {
                     break;
                 case 3:
                     JPanelVentasMensual.tbVentasHoyDetalles.setModel(modelo);
+                    break;
+                case 4:
+                    JPanelDiax.tbVentasHoyDetalles.setModel(modelo);
                     break;
             }
 
@@ -752,7 +932,19 @@ public class ConsultasSQL {
         } catch (Exception ex) {
         }
     }
-
+    public void ModCredito(int dato1, int dato2, String dato3, int dato4)
+    {
+    try {
+            PreparedStatement pst = this.cn.prepareStatement("UPDATE `credito` SET abonado=?,total=?,fecha_entrega=? WHERE `cod_venta` =?;");
+            pst.setInt(1, dato1);
+            pst.setInt(2, dato2);
+            pst.setString(3, dato3);
+            pst.setInt(4, dato4);
+            pst.executeUpdate();
+        } catch (Exception ex) {
+        }
+    }
+    
     public void CargarTablaCompra(int numero, String campo) {
         DefaultTableModel modelo = new DefaultTableModel();
         modelo.addColumn("Nombre");
@@ -765,7 +957,7 @@ public class ConsultasSQL {
                 CadSql = "select p.nom_producto, p.descripcion, v.cantidad, p.valor_individual_venta, v.precio from productos p, ventas v where p.cod_producto=v.cod_producto AND v.cod_venta='" + campo + "';";
                 break;
             case 2:
-                CadSql = "";
+                CadSql = "select p.nom_producto, p.descripcion, v.cantidad, p.valor_individual_venta, v.precio from productos p, ventas v where p.cod_producto=v.cod_producto AND v.cod_venta='" + campo + "';";
                 break;
         }
         try {
@@ -780,7 +972,7 @@ public class ConsultasSQL {
                 datos[4] = rs.getString(5);
                 modelo.addRow(datos);
             }
-            interfaz_ventab.tbventa.setModel(modelo);
+            if(numero==1){interfaz_ventab.tbventa.setModel(modelo);}else{interfaz_administracion.tblistado.setModel(modelo);}
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(null, ex);
         }
@@ -803,7 +995,7 @@ public class ConsultasSQL {
                 CadSql = "SELECT cod_producto, nom_producto, descripcion, categoria, cantidad, valor_individual_producto, fecha_ingreso, valor_individual_venta, nom_proveedor, num_factura FROM `productos` WHERE `categoria` = '" + categoria + "' AND `cantidad` < 10;";
                 break;
             case 2:
-                CadSql = "SELECT * FROM pedidos where 'progreso' = 'TERMINADO';";
+                CadSql = "SELECT cod_producto, nom_producto, descripcion, categoria, cantidad, valor_individual_producto, fecha_ingreso, valor_individual_venta, nom_proveedor, num_factura FROM `productos` WHERE `categoria` = '" + categoria + "' AND `cantidad` = 0;";
                 break;
         }
         try {
@@ -900,14 +1092,13 @@ public class ConsultasSQL {
         }
     }
 
-//    public void EliminarCliente(String valor)
-//    {
-//        try{
-//            PreparedStatement pst = this.cn.prepareStatement("DELETE FROM Clientes WHERE  rut='" + valor + "'");
-//            pst.executeUpdate();
-//            CargarTablaClientes(1, "");
-//        }catch(Exception ex){}
-//    }
+    public void eliminarcredito(int numero)
+    {
+        try{
+            PreparedStatement pst = this.cn.prepareStatement("DELETE FROM credito WHERE  cod_venta='" + numero + "'");
+            pst.executeUpdate();
+        }catch(Exception ex){}
+    }
 //    public void CancelarFactura(String valor)
 //    {
 //            try{

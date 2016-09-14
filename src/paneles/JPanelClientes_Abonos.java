@@ -5,6 +5,8 @@
  */
 package paneles;
 
+import interfaces.Main;
+
 /**
  *
  * @author Zoidiano
@@ -85,6 +87,11 @@ public class JPanelClientes_Abonos extends javax.swing.JPanel {
         });
 
         BtnSalir.setText("SALIR");
+        BtnSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnSalirActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -188,6 +195,10 @@ public class JPanelClientes_Abonos extends javax.swing.JPanel {
     private void BtnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnModificarActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_BtnModificarActionPerformed
+
+    private void BtnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnSalirActionPerformed
+    Main.llama_interfaz_linea_credito.doClick();
+    }//GEN-LAST:event_BtnSalirActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

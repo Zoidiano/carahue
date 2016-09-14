@@ -220,6 +220,7 @@ public class interfaz_login extends javax.swing.JInternalFrame {
                 Main.Slider3.setEnabled(true);
                 Main.Slider4.setEnabled(true);
                 Main.Slider5.setEnabled(true);
+                Main.Slider6.setEnabled(true);
                 Main.lb_user.setText(txtUsuario.getText());
                 Main.lbCARGO.setText("Administrador");
 

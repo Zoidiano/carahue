@@ -574,14 +574,13 @@ public class interfaz_ventab extends javax.swing.JInternalFrame {
             int precio_individual = Integer.parseInt(tbproductosListado.getValueAt(fila, 4).toString());
             int cantidad2 = stock - cantidad;
             int precio = cantidad * precio_individual;
-            String cod_producto=(tbproductosListado.getValueAt(fila, 0).toString());
+            String cod_producto = (tbproductosListado.getValueAt(fila, 0).toString());
             nombre();
 
-            sql.NuevaVenta(Integer.parseInt(txtcodigo.getText()),cod_producto, cantidad, precio_individual, precio, nombre, cboCategoria.getSelectedItem().toString(), cantidad2);
-            
-            
+            sql.NuevaVenta(Integer.parseInt(txtcodigo.getText()), cod_producto, cantidad, precio_individual, precio, nombre, cboCategoria.getSelectedItem().toString(), cantidad2);
+
             sql.CargarTablaListadoProductos(1, cboCategoria.getSelectedItem().toString(), "");
-            
+
             sql.CargarTablaCompra(1, txtcodigo.getText());
 
             monto_neto = Double.parseDouble(txtMontoNeto.getText()) + precio;
@@ -627,10 +626,11 @@ public class interfaz_ventab extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_BtnCancelarActionPerformed
 
     private void BtnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnGuardarActionPerformed
-  
-        imprimirFactura();
-        sql.GuardarGanancia(Integer.parseInt(txtcodigo.getText()), Double.parseDouble(txtMontoNeto.getText()), Double.parseDouble(txtIVA.getText()), Double.parseDouble(txtImpuestoAdicional.getText()), Double.parseDouble(txtTotal.getText()));
+
+        imprimirFacturaPruebaMenorEscala();
         
+        sql.GuardarGanancia(Integer.parseInt(txtcodigo.getText()), Double.parseDouble(txtMontoNeto.getText()), Double.parseDouble(txtIVA.getText()), Double.parseDouble(txtImpuestoAdicional.getText()), Double.parseDouble(txtTotal.getText()));
+
         int numero = Integer.parseInt(txtcodigo.getText()) + 1;
         txtcodigo.setText(String.valueOf(numero));
         BtnGuardar.setEnabled(false);
@@ -646,11 +646,9 @@ public class interfaz_ventab extends javax.swing.JInternalFrame {
     private void BtnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnLimpiarActionPerformed
         BtnGuardar.setEnabled(false);
         BtnLimpiar.setEnabled(false);
-        if(Main.lbCARGO.getText().equals("Ventas"))
-        {
+        if (Main.lbCARGO.getText().equals("Ventas")) {
             cboCategoria.setEnabled(true);
-        }else if(Main.lbCARGO.getText().equals("Administrador"))
-        {
+        } else if (Main.lbCARGO.getText().equals("Administrador")) {
             cboCategoria.setEnabled(true);
         }
         txtMontoNeto.setText("0");
@@ -729,7 +727,54 @@ public class interfaz_ventab extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(null, ex);
         }
     }
+ void imprimirFacturaPruebaMenorEscala() {
 
+        PrinterMatrix printer = new PrinterMatrix();
+        Extenso e = new Extenso();
+        e.setNumber(101.85);
+        printer.setOutSize(60, 80);
+        printer.printCharAtCol(1, 1, 20, "=");  //COMIENZO LINEA COMPLETA CON ======
+        printer.printCharAtCol(2, 1, 15, "BOLETA DE VENTA");
+        //printer.printTextWrap(2, 2, 10, 40, "BOLETA DE VENTA");
+        printer.printTextLinCol(3, 3, "Num. Boleta : " + txtcodigo.getText());
+        //printer.printTextWrap(3, 3, 1, 22, "Num. Boleta : " + txtcodigo.getText());
+        printer.printTextLinCol(4, 4, "TOTAL A PAGAR: " + txtTotal.getText());
+        //printer.printTextWrap(4, 1, 25, 55, "TOTAL A PAGAR: " + txtTotal.getText());
+        printer.printCharAtCol(5, 1, 20,"=");
+        printer.toFile("impresion.txt");
+//
+//        FileInputStream inputStream = null;
+//        try {
+//            inputStream = new FileInputStream("impresion.txt");
+//        } catch (FileNotFoundException ex) {
+//            ex.printStackTrace();
+//        }
+//        if (inputStream == null) {
+//            return;
+//        }
+//
+//        DocFlavor docFormat = DocFlavor.INPUT_STREAM.AUTOSENSE;
+//        Doc document = new SimpleDoc(inputStream, docFormat, null);
+//
+//        PrintRequestAttributeSet attributeSet = new HashPrintRequestAttributeSet();
+//
+//        PrintService defaultPrintService = PrintServiceLookup.lookupDefaultPrintService();
+//
+//        if (defaultPrintService != null) {
+//            DocPrintJob printJob = defaultPrintService.createPrintJob();
+//            try {
+//                printJob.print(document, attributeSet);
+//
+//            } catch (Exception ex) {
+//                ex.printStackTrace();
+//            }
+//        } else {
+//            
+//            JOptionPane.showMessageDialog(null, "No existen impresoras instaladas");
+//        }
+
+        //inputStream.close();
+    }
     void imprimirFactura() {
 
         PrinterMatrix printer = new PrinterMatrix();
@@ -748,14 +793,13 @@ public class interfaz_ventab extends javax.swing.JInternalFrame {
         printer.printCharAtCol(8, 1, 80, "-");
         int filas = tbventa.getRowCount();
         for (int i = 0; i < filas; i++) {
-        printer.printTextWrap(9 + i, 10, 1, 80, tbventa.getValueAt(i,0).toString()+"|"+tbventa.getValueAt(i,1).toString()+"| "+tbventa.getValueAt(i,2).toString()+"| "+tbventa.getValueAt(i,3).toString()+"|"+ tbventa.getValueAt(i,4).toString());     
+            printer.printTextWrap(9 + i, 10, 1, 80, tbventa.getValueAt(i, 0).toString() + "|" + tbventa.getValueAt(i, 1).toString() + "| " + tbventa.getValueAt(i, 2).toString() + "| " + tbventa.getValueAt(i, 3).toString() + "|" + tbventa.getValueAt(i, 4).toString());
         }
         printer.printCharAtCol(filas + 10, 1, 80, "=");
         printer.printTextWrap(filas + 10, filas + 2, 1, 80, "TOTAL A PAGAR " + txtTotal.getText());
-        
+
         // printer.printCharAtCol(filas + 11, 1, 80, "=");
         // printer.printTextWrap(filas + 11, filas + 3, 1, 80, "Esta boleta no tiene valor fiscal, solo para uso interno.");
-
 //        if (filas > 15) {
 //            printer.printCharAtCol(filas + 1, 1, 80, "=");
 //            
@@ -795,7 +839,7 @@ public class interfaz_ventab extends javax.swing.JInternalFrame {
                 ex.printStackTrace();
             }
         } else {
-            System.err.println("No existen impresoras instaladas");
+            JOptionPane.showMessageDialog(null, "No existen impresoras instaladas");
         }
         //inputStream.close();
     }

@@ -11,6 +11,7 @@ import javax.swing.JOptionPane;
 import metodos.ConsultasSQL;
 import paneles.reportes.JPanelVentasHoy;
 import java.util.Calendar;
+import paneles.reportes.JPanelDiax;
 import paneles.reportes.JPanelVentasMensual;
 import paneles.reportes.JPanelVentasSemanal;
 
@@ -145,7 +146,6 @@ public class interfaz_reportes extends javax.swing.JInternalFrame {
 
         btnEliminar3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/salir32.png"))); // NOI18N
         btnEliminar3.setText("REPORTE DIA X");
-        btnEliminar3.setEnabled(false);
         btnEliminar3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEliminar3ActionPerformed(evt);
@@ -177,8 +177,9 @@ public class interfaz_reportes extends javax.swing.JInternalFrame {
                 .addComponent(btnEliminar1, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnEliminar3, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
-                .addComponent(btnEliminar2, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnEliminar2, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(70, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
@@ -196,7 +197,8 @@ public class interfaz_reportes extends javax.swing.JInternalFrame {
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout jInternalFrame1Layout = new javax.swing.GroupLayout(jInternalFrame1.getContentPane());
@@ -210,8 +212,8 @@ public class interfaz_reportes extends javax.swing.JInternalFrame {
         jInternalFrame1Layout.setVerticalGroup(
             jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jInternalFrame1Layout.createSequentialGroup()
-                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 47, Short.MAX_VALUE))
+                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, 514, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 8, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -227,7 +229,9 @@ public class interfaz_reportes extends javax.swing.JInternalFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jInternalFrame2)
-            .addComponent(jInternalFrame1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jInternalFrame1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
@@ -236,6 +240,7 @@ public class interfaz_reportes extends javax.swing.JInternalFrame {
     private void btnEliminar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminar1ActionPerformed
         JPanelVentasMensual nu=new JPanelVentasMensual();
        sql.CargarTabalasVentasMensuales((cal.get(cal.MONTH)+1), cal.get(cal.YEAR));
+       
         nu.setSize(713,487);
         nu.setLocation(1,1);
         PanelCambianteUsuarios.removeAll();
@@ -349,7 +354,13 @@ public class interfaz_reportes extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnEliminar2ActionPerformed
 
     private void btnEliminar3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminar3ActionPerformed
-        // TODO add your handling code here:
+    JPanelDiax nu=new JPanelDiax();
+        nu.setSize(713,487);
+        nu.setLocation(1,1);
+        PanelCambianteUsuarios.removeAll();
+        PanelCambianteUsuarios.add(nu,BorderLayout.CENTER);
+        PanelCambianteUsuarios.revalidate();
+        PanelCambianteUsuarios.repaint();
     }//GEN-LAST:event_btnEliminar3ActionPerformed
      
 

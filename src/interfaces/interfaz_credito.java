@@ -8,6 +8,9 @@ package interfaces;
 import java.awt.BorderLayout;
 import metodos.ConsultasSQL;
 import paneles.JPanelBusquedaCliente;
+import paneles.JPanelIngresoAbonos;
+import paneles.JPanelListadoClienteCredito;
+import paneles.JPanelModAbonos;
 import paneles.JPanelModClienteCredito;
 import paneles.JPanelNuevoClienteCredito;
 
@@ -43,6 +46,7 @@ public class interfaz_credito extends javax.swing.JInternalFrame {
         BtnUltimosPagos = new javax.swing.JButton();
         BtnBusquedaCliente = new javax.swing.JButton();
         btnAbonos = new javax.swing.JButton();
+        btnAbonos1 = new javax.swing.JButton();
         jInternalFrame2 = new javax.swing.JInternalFrame();
         JPanelcambianteLineaCredito = new javax.swing.JPanel();
 
@@ -70,7 +74,7 @@ public class interfaz_credito extends javax.swing.JInternalFrame {
             }
         });
 
-        BtnRegistroClientes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/modificar32.png"))); // NOI18N
+        BtnRegistroClientes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/aceptar32.png"))); // NOI18N
         BtnRegistroClientes.setText("REGISTRO CLIENTES");
         BtnRegistroClientes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -78,7 +82,7 @@ public class interfaz_credito extends javax.swing.JInternalFrame {
             }
         });
 
-        BtnModCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/adduser32.png"))); // NOI18N
+        BtnModCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/modificar32.png"))); // NOI18N
         BtnModCliente.setText("MODIFICAR CLIENTE");
         BtnModCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -110,11 +114,19 @@ public class interfaz_credito extends javax.swing.JInternalFrame {
             }
         });
 
-        btnAbonos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/salir32.png"))); // NOI18N
-        btnAbonos.setText("ABONOS");
+        btnAbonos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/aceptar32.png"))); // NOI18N
+        btnAbonos.setText("INGRESAR ABONOS");
         btnAbonos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAbonosActionPerformed(evt);
+            }
+        });
+
+        btnAbonos1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/modificar32.png"))); // NOI18N
+        btnAbonos1.setText("MODIFICAR ABONOS");
+        btnAbonos1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAbonos1ActionPerformed(evt);
             }
         });
 
@@ -124,14 +136,16 @@ public class interfaz_credito extends javax.swing.JInternalFrame {
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addGap(22, 22, 22)
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(BtnUltimosPagos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(BtnModCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(BtnRegistroClientes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnListadoClientes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnEliminar2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(BtnBusquedaCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnAbonos, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btnAbonos1, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(BtnUltimosPagos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(BtnModCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(BtnRegistroClientes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnListadoClientes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnEliminar2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(BtnBusquedaCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnAbonos, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(36, Short.MAX_VALUE))
         );
         jPanel6Layout.setVerticalGroup(
@@ -144,14 +158,16 @@ public class interfaz_credito extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(BtnBusquedaCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnListadoClientes)
+                .addComponent(btnListadoClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnAbonos)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnAbonos, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
+                .addComponent(btnAbonos1, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(BtnUltimosPagos)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnEliminar2, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(39, 39, 39))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnEliminar2)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
@@ -169,7 +185,7 @@ public class interfaz_credito extends javax.swing.JInternalFrame {
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, 406, Short.MAX_VALUE))
+                .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jInternalFrame1Layout = new javax.swing.GroupLayout(jInternalFrame1.getContentPane());
@@ -182,31 +198,35 @@ public class interfaz_credito extends javax.swing.JInternalFrame {
         );
         jInternalFrame1Layout.setVerticalGroup(
             jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(jInternalFrame1Layout.createSequentialGroup()
+                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jInternalFrame2.setBackground(new java.awt.Color(88, 147, 191));
         jInternalFrame2.setVisible(true);
 
+        JPanelcambianteLineaCredito.setBackground(new java.awt.Color(88, 147, 191));
+
         javax.swing.GroupLayout JPanelcambianteLineaCreditoLayout = new javax.swing.GroupLayout(JPanelcambianteLineaCredito);
         JPanelcambianteLineaCredito.setLayout(JPanelcambianteLineaCreditoLayout);
         JPanelcambianteLineaCreditoLayout.setHorizontalGroup(
             JPanelcambianteLineaCreditoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 694, Short.MAX_VALUE)
+            .addGap(0, 671, Short.MAX_VALUE)
         );
         JPanelcambianteLineaCreditoLayout.setVerticalGroup(
             JPanelcambianteLineaCreditoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 495, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout jInternalFrame2Layout = new javax.swing.GroupLayout(jInternalFrame2.getContentPane());
         jInternalFrame2.getContentPane().setLayout(jInternalFrame2Layout);
         jInternalFrame2Layout.setHorizontalGroup(
             jInternalFrame2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jInternalFrame2Layout.createSequentialGroup()
+            .addGroup(jInternalFrame2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(JPanelcambianteLineaCredito, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(JPanelcambianteLineaCredito, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jInternalFrame2Layout.setVerticalGroup(
             jInternalFrame2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -223,23 +243,26 @@ public class interfaz_credito extends javax.swing.JInternalFrame {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jInternalFrame1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jInternalFrame2)
-                .addContainerGap())
+                .addComponent(jInternalFrame2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jInternalFrame2)
-                    .addComponent(jInternalFrame1))
-                .addContainerGap(15, Short.MAX_VALUE))
+            .addComponent(jInternalFrame2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jInternalFrame1)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnListadoClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListadoClientesActionPerformed
-
+        JPanelListadoClienteCredito nu=new JPanelListadoClienteCredito();
+        sql.CargarTablaClientes(4, "");
+        nu.setSize(800,600);
+        nu.setLocation(5,5);
+        JPanelcambianteLineaCredito.removeAll();
+        JPanelcambianteLineaCredito.add(nu,BorderLayout.CENTER);
+        JPanelcambianteLineaCredito.revalidate();
+        JPanelcambianteLineaCredito.repaint();
     }//GEN-LAST:event_btnListadoClientesActionPerformed
 
     private void BtnRegistroClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnRegistroClientesActionPerformed
@@ -267,7 +290,14 @@ public class interfaz_credito extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnEliminar2ActionPerformed
 
     private void BtnUltimosPagosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnUltimosPagosActionPerformed
-        // TODO add your handling code here:
+        JPanelListadoClienteCredito nu=new JPanelListadoClienteCredito();
+        sql.CargarTablaClientes(4, "");
+        nu.setSize(800,600);
+        nu.setLocation(5,5);
+        JPanelcambianteLineaCredito.removeAll();
+        JPanelcambianteLineaCredito.add(nu,BorderLayout.CENTER);
+        JPanelcambianteLineaCredito.revalidate();
+        JPanelcambianteLineaCredito.repaint();        
     }//GEN-LAST:event_BtnUltimosPagosActionPerformed
 
     private void BtnBusquedaClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnBusquedaClienteActionPerformed
@@ -282,8 +312,24 @@ public class interfaz_credito extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_BtnBusquedaClienteActionPerformed
 
     private void btnAbonosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAbonosActionPerformed
-        // TODO add your handling code here:
+        JPanelIngresoAbonos nu=new JPanelIngresoAbonos();
+        nu.setSize(800,600);
+        nu.setLocation(1,1);
+        JPanelcambianteLineaCredito.removeAll();
+        JPanelcambianteLineaCredito.add(nu,BorderLayout.CENTER);
+        JPanelcambianteLineaCredito.revalidate();
+        JPanelcambianteLineaCredito.repaint();
     }//GEN-LAST:event_btnAbonosActionPerformed
+
+    private void btnAbonos1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAbonos1ActionPerformed
+        JPanelModAbonos nu=new JPanelModAbonos();
+        nu.setSize(800,600);
+        nu.setLocation(1,1);
+        JPanelcambianteLineaCredito.removeAll();
+        JPanelcambianteLineaCredito.add(nu,BorderLayout.CENTER);
+        JPanelcambianteLineaCredito.revalidate();
+        JPanelcambianteLineaCredito.repaint();
+    }//GEN-LAST:event_btnAbonos1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -291,8 +337,9 @@ public class interfaz_credito extends javax.swing.JInternalFrame {
     public javax.swing.JButton BtnModCliente;
     public javax.swing.JButton BtnRegistroClientes;
     public javax.swing.JButton BtnUltimosPagos;
-    private javax.swing.JPanel JPanelcambianteLineaCredito;
+    public static javax.swing.JPanel JPanelcambianteLineaCredito;
     public javax.swing.JButton btnAbonos;
+    public javax.swing.JButton btnAbonos1;
     public javax.swing.JButton btnEliminar2;
     public javax.swing.JButton btnListadoClientes;
     private javax.swing.JInternalFrame jInternalFrame1;

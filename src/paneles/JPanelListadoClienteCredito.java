@@ -6,10 +6,10 @@
 package paneles;
 
 import interfaces.Main;
-import interfaces.interfaz_usuarios2;
 import java.awt.AWTException;
 import java.awt.Robot;
 import java.awt.event.KeyEvent;
+import java.sql.SQLXML;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import metodos.ConsultasSQL;
@@ -21,7 +21,6 @@ import metodos.ConsultasSQL;
 public class JPanelListadoClienteCredito extends javax.swing.JPanel {
 
     ConsultasSQL sql = new ConsultasSQL();
-
     public JPanelListadoClienteCredito() {
         initComponents();
     }
@@ -52,7 +51,7 @@ public class JPanelListadoClienteCredito extends javax.swing.JPanel {
 
         lblNombreTablaClientes.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         lblNombreTablaClientes.setForeground(new java.awt.Color(255, 255, 255));
-        lblNombreTablaClientes.setText("                     LISTADO CLIENTES");
+        lblNombreTablaClientes.setText("                                      LISTADO CLIENTES");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -60,31 +59,24 @@ public class JPanelListadoClienteCredito extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 631, Short.MAX_VALUE)
-                .addContainerGap())
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(120, 120, 120)
-                    .addComponent(lblNombreTablaClientes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGap(120, 120, 120)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jScrollPane1)
+                    .addComponent(lblNombreTablaClientes, javax.swing.GroupLayout.DEFAULT_SIZE, 628, Short.MAX_VALUE))
+                .addContainerGap(21, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(50, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 388, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addContainerGap()
-                    .addComponent(lblNombreTablaClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(403, Short.MAX_VALUE)))
+                .addComponent(lblNombreTablaClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 361, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(31, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane jScrollPane1;
     public static javax.swing.JLabel lblNombreTablaClientes;
-    private javax.swing.JTable tblistadoclientescredito;
+    public static javax.swing.JTable tblistadoclientescredito;
     // End of variables declaration//GEN-END:variables
 }

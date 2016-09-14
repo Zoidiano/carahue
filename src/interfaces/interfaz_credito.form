@@ -28,20 +28,14 @@
           <Group type="102" alignment="0" attributes="0">
               <Component id="jInternalFrame1" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="jInternalFrame2" max="32767" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
+              <Component id="jInternalFrame2" min="-2" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" attributes="0">
-              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Component id="jInternalFrame2" max="32767" attributes="0"/>
-                  <Component id="jInternalFrame1" max="32767" attributes="0"/>
-              </Group>
-              <EmptySpace pref="15" max="32767" attributes="0"/>
-          </Group>
+          <Component id="jInternalFrame2" min="-2" max="-2" attributes="0"/>
+          <Component id="jInternalFrame1" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
   </Layout>
@@ -65,7 +59,10 @@
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Component id="jPanel5" min="-2" max="-2" attributes="0"/>
+              <Group type="102" attributes="0">
+                  <Component id="jPanel5" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
+              </Group>
           </Group>
         </DimensionLayout>
       </Layout>
@@ -93,7 +90,7 @@
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="jPanel6" pref="406" max="32767" attributes="0"/>
+                      <Component id="jPanel6" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -122,14 +119,17 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="BtnUltimosPagos" alignment="0" max="32767" attributes="0"/>
-                              <Component id="BtnModCliente" alignment="0" max="32767" attributes="0"/>
-                              <Component id="BtnRegistroClientes" alignment="0" max="32767" attributes="0"/>
-                              <Component id="btnListadoClientes" alignment="0" max="32767" attributes="0"/>
-                              <Component id="btnEliminar2" alignment="0" max="32767" attributes="0"/>
-                              <Component id="BtnBusquedaCliente" alignment="0" max="32767" attributes="0"/>
-                              <Component id="btnAbonos" alignment="1" min="-2" pref="219" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="1" attributes="0">
+                              <Component id="btnAbonos1" min="-2" pref="219" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="BtnUltimosPagos" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="BtnModCliente" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="BtnRegistroClientes" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="btnListadoClientes" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="btnEliminar2" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="BtnBusquedaCliente" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="btnAbonos" alignment="1" min="-2" pref="219" max="-2" attributes="0"/>
+                              </Group>
                           </Group>
                           <EmptySpace pref="36" max="32767" attributes="0"/>
                       </Group>
@@ -145,14 +145,16 @@
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Component id="BtnBusquedaCliente" min="-2" pref="46" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Component id="btnListadoClientes" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnListadoClientes" min="-2" pref="41" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Component id="btnAbonos" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="32767" attributes="0"/>
+                          <Component id="btnAbonos" min="-2" pref="41" max="-2" attributes="0"/>
+                          <EmptySpace pref="8" max="32767" attributes="0"/>
+                          <Component id="btnAbonos1" min="-2" pref="41" max="-2" attributes="0"/>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Component id="BtnUltimosPagos" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Component id="btnEliminar2" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="btnEliminar2" min="-2" pref="55" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -175,7 +177,7 @@
                 <Component class="javax.swing.JButton" name="BtnRegistroClientes">
                   <Properties>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="3" name="/imagenes/modificar32.png"/>
+                      <Image iconType="3" name="/imagenes/aceptar32.png"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="REGISTRO CLIENTES"/>
                   </Properties>
@@ -189,7 +191,7 @@
                 <Component class="javax.swing.JButton" name="BtnModCliente">
                   <Properties>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="3" name="/imagenes/adduser32.png"/>
+                      <Image iconType="3" name="/imagenes/modificar32.png"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="MODIFICAR CLIENTE"/>
                   </Properties>
@@ -245,12 +247,26 @@
                 <Component class="javax.swing.JButton" name="btnAbonos">
                   <Properties>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="3" name="/imagenes/salir32.png"/>
+                      <Image iconType="3" name="/imagenes/aceptar32.png"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="ABONOS"/>
+                    <Property name="text" type="java.lang.String" value="INGRESAR ABONOS"/>
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAbonosActionPerformed"/>
+                  </Events>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+                  </AuxValues>
+                </Component>
+                <Component class="javax.swing.JButton" name="btnAbonos1">
+                  <Properties>
+                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                      <Image iconType="3" name="/imagenes/modificar32.png"/>
+                    </Property>
+                    <Property name="text" type="java.lang.String" value="MODIFICAR ABONOS"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAbonos1ActionPerformed"/>
                   </Events>
                   <AuxValues>
                     <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
@@ -273,10 +289,10 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="1" attributes="0">
+              <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="JPanelcambianteLineaCredito" max="32767" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="JPanelcambianteLineaCredito" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -292,16 +308,24 @@
       </Layout>
       <SubComponents>
         <Container class="javax.swing.JPanel" name="JPanelcambianteLineaCredito">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="bf" green="93" red="58" type="rgb"/>
+            </Property>
+          </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
+          </AuxValues>
 
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="694" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="671" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="495" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
           </Layout>

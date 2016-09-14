@@ -10,6 +10,7 @@ import interfaces.interfaz_usuarios2;
 import java.awt.AWTException;
 import java.awt.Robot;
 import java.awt.event.KeyEvent;
+import java.text.DecimalFormat;
 import java.util.Calendar;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -114,6 +115,11 @@ public class JPanelNuevoClienteCredito extends javax.swing.JPanel {
         jLabel5.setText("CANTIDAD CREDITO:");
 
         txtCredito.setText("0");
+        txtCredito.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtCreditoFocusLost(evt);
+            }
+        });
         txtCredito.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtCreditoActionPerformed(evt);
@@ -164,8 +170,8 @@ public class JPanelNuevoClienteCredito extends javax.swing.JPanel {
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(30, 30, 30)
+                .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(btnLimpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(27, 27, 27)
                 .addComponent(BtnCancelar)
@@ -224,7 +230,7 @@ public class JPanelNuevoClienteCredito extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void BtnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnCancelarActionPerformed
-
+            Main.llama_interfaz_linea_credito.doClick();
     }//GEN-LAST:event_BtnCancelarActionPerformed
 
     private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
@@ -239,8 +245,9 @@ public class JPanelNuevoClienteCredito extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "El rut ingresado ya se encuentra registrado");
             txtRutCliente.setText("");
             txtRutCliente.setFocusable(true);
+
         } else {
-            sql.GuardarCliente(txtNombreCliente.getText(), txtRutCliente.getText(), txtTelefono.getText(), txtFechaCreacionCredito.getText(), Integer.parseInt(txtCredito.getText()));
+            sql.GuardarCliente(txtNombreCliente.getText(), txtRutCliente.getText(), txtTelefono.getText(), txtFechaCreacionCredito.getText(), Integer.parseInt(txtCredito.getText()));JOptionPane.showMessageDialog(null, "Cliente Ingresado Correctamente");Limpiar();
         }
     }//GEN-LAST:event_btnAgregarActionPerformed
 
@@ -276,6 +283,10 @@ public class JPanelNuevoClienteCredito extends javax.swing.JPanel {
             txtRutCliente.setText("");
         }
     }//GEN-LAST:event_txtRutClienteFocusLost
+
+    private void txtCreditoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtCreditoFocusLost
+
+    }//GEN-LAST:event_txtCreditoFocusLost
     void Limpiar() {
         txtRutCliente.setText("");
         txtNombreCliente.setText("");

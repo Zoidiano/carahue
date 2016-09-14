@@ -63,6 +63,9 @@ public static String dato="";
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jMenuBar2 = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
+        jMenu2 = new javax.swing.JMenu();
         Contenedor = new javax.swing.JDesktopPane();
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
@@ -93,13 +96,18 @@ public static String dato="";
         llama_interfaz_informes = new javax.swing.JMenuItem();
         Slider5 = new javax.swing.JMenu();
         llama_interfaz_linea_credito = new javax.swing.JMenuItem();
+        Slider6 = new javax.swing.JMenu();
+        jMenuItem3 = new javax.swing.JMenuItem();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        jMenu1.setText("File");
+        jMenuBar2.add(jMenu1);
+
+        jMenu2.setText("Edit");
+        jMenuBar2.add(jMenu2);
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setBackground(new java.awt.Color(56, 98, 127));
         addWindowListener(new java.awt.event.WindowAdapter() {
-            public void windowClosed(java.awt.event.WindowEvent evt) {
-                formWindowClosed(evt);
-            }
             public void windowClosing(java.awt.event.WindowEvent evt) {
                 formWindowClosing(evt);
             }
@@ -384,6 +392,19 @@ public static String dato="";
 
         jMenuBar1.add(Slider5);
 
+        Slider6.setText("CAJA");
+        Slider6.setEnabled(false);
+
+        jMenuItem3.setText("CAJA");
+        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem3ActionPerformed(evt);
+            }
+        });
+        Slider6.add(jMenuItem3);
+
+        jMenuBar1.add(Slider6);
+
         setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -535,10 +556,6 @@ public static String dato="";
         Contenedor.add(Form);
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
-    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
-        cerrar();
-    }//GEN-LAST:event_formWindowClosed
-
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
         cerrar();
     }//GEN-LAST:event_formWindowClosing
@@ -593,6 +610,18 @@ public static String dato="";
     private void Slider5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Slider5ActionPerformed
         
     }//GEN-LAST:event_Slider5ActionPerformed
+
+    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+        interfaz_administracion Form = new interfaz_administracion();
+        Form.setVisible(true);
+        this.add(Form);
+        Dimension desktopSize = this.getSize();
+        Dimension FrameSize = Form.getSize();
+        Form.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.height) / 2);
+        Contenedor.removeAll();
+        Contenedor.updateUI();
+        Contenedor.add(Form);
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
     public class cronometro implements ActionListener {
 
         public void actionPerformed(ActionEvent evt) {
@@ -616,7 +645,7 @@ public static String dato="";
         if (eleccion == JOptionPane.YES_OPTION) {
             System.exit(0);
         } else {
-
+    
         }
     }
 
@@ -662,6 +691,7 @@ public static String dato="";
     public static javax.swing.JMenu Slider3;
     public static javax.swing.JMenu Slider4;
     public static javax.swing.JMenu Slider5;
+    public static javax.swing.JMenu Slider6;
     private javax.swing.JButton btnSalir;
     public static javax.swing.JLabel fecha;
     public static javax.swing.JLabel hh;
@@ -669,9 +699,13 @@ public static String dato="";
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuBar jMenuBar2;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -682,7 +716,7 @@ public static String dato="";
     private javax.swing.JMenuItem llamaUsuarios;
     private javax.swing.JMenuItem llamaVestuario;
     private javax.swing.JMenuItem llama_interfaz_informes;
-    private javax.swing.JMenuItem llama_interfaz_linea_credito;
+    public static javax.swing.JMenuItem llama_interfaz_linea_credito;
     private javax.swing.JMenuItem llama_interfaz_principal;
     public static javax.swing.JLabel mm;
     public static javax.swing.JLabel ss;
