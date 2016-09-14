@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
-    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="2">
+        <file>
+            <url>src/metodos/ConsultasSQL.java</url>
+            <bookmark id="2">
+                <name/>
+                <line>296</line>
+                <key/>
+            </bookmark>
+        </file>
         <file>
             <url>src/paneles/JPanelNuevoUsuarios.java</url>
             <bookmark id="1">
@@ -12,22 +20,22 @@
     </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Zoidiano/Documents/GitHub/carahue/src/paneles/JPanelModUsuarios.java</file>
-            <file>file:/C:/Users/Zoidiano/Documents/GitHub/carahue/src/interfaces/ImprimirFactura.java</file>
+            <file>file:/C:/Users/Zoidiano/Documents/GitHub/carahue/src/paneles/reportes/JPanelVentasHoy.java</file>
+            <file>file:/C:/Users/Zoidiano/Documents/GitHub/carahue/src/paneles/JPanelBusquedaCliente.java</file>
+            <file>file:/C:/Users/Zoidiano/Documents/GitHub/carahue/src/paneles/usuarios/JPanelModUsuarios.java</file>
+            <file>file:/C:/Users/Zoidiano/Documents/GitHub/carahue/src/paneles/JPanelNuevoClienteCredito.java</file>
             <file>file:/C:/Users/Zoidiano/Documents/GitHub/carahue/src/interfaces/interfaz_credito.java</file>
             <file>file:/C:/Users/Zoidiano/Documents/GitHub/carahue/src/interfaces/interfaz_ventab.java</file>
             <file>file:/C:/Users/Zoidiano/Documents/GitHub/carahue/src/interfaces/interfaz_reportes.java</file>
-            <file>file:/C:/Users/Zoidiano/Documents/GitHub/carahue/src/conexion/conectar.java</file>
             <file>file:/C:/Users/Zoidiano/Documents/GitHub/carahue/src/metodos/ConsultasSQL.java</file>
-            <file>file:/C:/Users/Zoidiano/Documents/GitHub/carahue/src/interfaces/interfaz_login.java</file>
             <file>file:/C:/Users/Zoidiano/Documents/GitHub/carahue/src/interfaces/interfaz_usuarios2.java</file>
-            <file>file:/C:/Users/Zoidiano/Documents/GitHub/carahue/src/paneles/JPanelVentasHoy.java</file>
-            <file>file:/C:/Users/Zoidiano/Documents/GitHub/carahue/src/paneles/JPanelNuevoUsuarios.java</file>
+            <file>file:/C:/Users/Zoidiano/Documents/GitHub/carahue/src/paneles/JPanelclientes_muestra.java</file>
+            <file>file:/C:/Users/Zoidiano/Documents/GitHub/carahue/src/paneles/usuarios/JPanelNuevoUsuarios.java</file>
             <file>file:/C:/Users/Zoidiano/Documents/GitHub/carahue/src/interfaces/Main.java</file>
             <file>file:/C:/Users/Zoidiano/Documents/GitHub/carahue/src/interfaces/interfaz_inventario_administracion.java</file>
-            <file>file:/C:/Users/Zoidiano/Documents/GitHub/carahue/src/pruebaempresa/PruebaEmpresa.java</file>
-            <file>file:/C:/Users/Zoidiano/Documents/GitHub/carahue/src/metodos/validaciones.java</file>
-            <file>file:/C:/Users/Zoidiano/Documents/GitHub/carahue/src/interfaces/interfaz_ventaf.java</file>
+            <file>file:/C:/Users/Zoidiano/Documents/GitHub/carahue/src/paneles/JPanelClientes_Abonos.java</file>
+            <file>file:/C:/Users/Zoidiano/Documents/GitHub/carahue/src/paneles/JPanelModClienteCredito.java</file>
+            <file>file:/C:/Users/Zoidiano/Documents/GitHub/carahue/src/paneles/JPanelListadoClienteCredito.java</file>
         </group>
     </open-files>
 </project-private>

@@ -8,8 +8,8 @@ package interfaces;
 import java.awt.BorderLayout;
 import javax.swing.JOptionPane;
 import metodos.ConsultasSQL;
-import paneles.JPanelModUsuarios;
-import paneles.JPanelNuevoUsuarios;
+import paneles.usuarios.JPanelModUsuarios;
+import paneles.usuarios.JPanelNuevoUsuarios;
 
 /**
  *

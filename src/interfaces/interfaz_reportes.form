@@ -135,7 +135,7 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <Component id="jPanel5" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="0" pref="23" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="47" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -228,7 +228,6 @@
                       <Image iconType="3" name="/imagenes/salir32.png"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="REPORTE MENSUAL"/>
-                    <Property name="enabled" type="boolean" value="false"/>
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnEliminar1ActionPerformed"/>
@@ -257,7 +256,6 @@
                       <Image iconType="3" name="/imagenes/adduser32.png"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="REPORTE SEMANAL"/>
-                    <Property name="enabled" type="boolean" value="false"/>
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BtnNuevoActionPerformed"/>
@@ -285,7 +283,7 @@
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                       <Image iconType="3" name="/imagenes/salir32.png"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="RESUMEN"/>
+                    <Property name="text" type="java.lang.String" value="REPORTE DIA X"/>
                     <Property name="enabled" type="boolean" value="false"/>
                   </Properties>
                   <Events>

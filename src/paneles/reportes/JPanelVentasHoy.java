@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package paneles;
+package paneles.reportes;
 
 import java.util.Calendar;
 import javax.swing.JOptionPane;
@@ -161,7 +161,7 @@ public class JPanelVentasHoy extends javax.swing.JPanel {
             int fila = tbVentasHoy.getSelectedRow();
             String cod = tbVentasHoy.getValueAt(fila, 0).toString();
                 if (fila != -1) {
-                        sql.CargarTablaVentasDetalle(cod);
+                        sql.CargarTablaVentasDetalle(cod,1);
                 }else
                 {
                     

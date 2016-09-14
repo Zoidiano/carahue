@@ -13,7 +13,7 @@ import metodos.ConsultasSQL;
  *
  * @author Zoidiano
  */
-public class interfaz_login extends javax.swing.JInternalFrame  {
+public class interfaz_login extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form interfaz_login1
@@ -22,7 +22,7 @@ public class interfaz_login extends javax.swing.JInternalFrame  {
         initComponents();
     }
     ConsultasSQL sql = new ConsultasSQL();
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -183,15 +183,14 @@ public class interfaz_login extends javax.swing.JInternalFrame  {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarActionPerformed
-      if(ValidarCampos()){
-          entrar();
-      }else
-      {
-          JOptionPane.showMessageDialog(null, "Campos Obligatorios vacios");
-        txtUsuario.setText("");
-        txtContrasena.setText("");
-        txtUsuario.requestFocus();
-      }
+        if (ValidarCampos()) {
+            entrar();
+        } else {
+            JOptionPane.showMessageDialog(null, "Campos Obligatorios vacios");
+            txtUsuario.setText("");
+            txtContrasena.setText("");
+            txtUsuario.requestFocus();
+        }
     }//GEN-LAST:event_btnIngresarActionPerformed
 
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
@@ -199,49 +198,59 @@ public class interfaz_login extends javax.swing.JInternalFrame  {
     }//GEN-LAST:event_btnSalirActionPerformed
 
     private void txtContrasenaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtContrasenaKeyReleased
-        if(evt.getKeyCode()==KeyEvent.VK_ENTER)
-        {
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             entrar();
         }
     }//GEN-LAST:event_txtContrasenaKeyReleased
-    private boolean ValidarCampos()
-    {
-        boolean campo=true; 
-        
-        if(txtUsuario.getText().equals("") || txtContrasena.getText().equals(""))
-        {
-            campo=false;
+    private boolean ValidarCampos() {
+        boolean campo = true;
+
+        if (txtUsuario.getText().equals("") || txtContrasena.getText().equals("")) {
+            campo = false;
         }
         return campo;
     }
-    private void entrar()   
-    {
-       if(sql.ConsultaUsuario(txtUsuario.getText(), txtContrasena.getText()))
-        {
+
+    private void entrar() {
+        if (sql.ConsultaUsuario(txtUsuario.getText(), txtContrasena.getText())) {
             dispose();
-            if(sql.Consultatipo(txtUsuario.getText()).equals("Administrador"))
-            {
+            if (sql.Consultatipo(txtUsuario.getText()).equals("Administrador")) {
                 Main.Slider1.setEnabled(true);
                 Main.Slider2.setEnabled(true);
                 Main.Slider3.setEnabled(true);
                 Main.Slider4.setEnabled(true);
+                Main.Slider5.setEnabled(true);
                 Main.lb_user.setText(txtUsuario.getText());
                 Main.lbCARGO.setText("Administrador");
-                
-            }else if(sql.Consultatipo(txtUsuario.getText()).equals("Ventas"))
-            {
+
+            } else if (sql.Consultatipo(txtUsuario.getText()).equals("Ventas")) {
                 Main.Slider1.setEnabled(true);
                 Main.lb_user.setText(txtUsuario.getText());
                 Main.lbCARGO.setText("Ventas");
+                
+            } else if (sql.Consultatipo(txtUsuario.getText()).equals("LIBRERIA")) {
+                Main.Slider1.setEnabled(true);
+                Main.lb_user.setText(txtUsuario.getText());
+                Main.lbCARGO.setText("LIBRERIA");
+
+            } else if (sql.Consultatipo(txtUsuario.getText()).equals("VESTUARIO")) {
+                Main.Slider1.setEnabled(true);
+                Main.lb_user.setText(txtUsuario.getText());
+                Main.lbCARGO.setText("VESTUARIO");
+
+            } else if (sql.Consultatipo(txtUsuario.getText()).equals("CASA Y PESCA")) {
+                Main.Slider1.setEnabled(true);
+                Main.lb_user.setText(txtUsuario.getText());
+                Main.lbCARGO.setText("CASA Y PESCA");
+
             }
-            
-        }else
-        {
+
+        } else {
             JOptionPane.showMessageDialog(null, "Usuario y/o contraseña Incorrecta");
             txtUsuario.setText("");
             txtContrasena.setText("");
             txtUsuario.requestFocus();
-        } 
+        }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

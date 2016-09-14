@@ -27,7 +27,7 @@ import javax.print.attribute.PrintRequestAttributeSet;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import metodos.ConsultasSQL;
-import paneles.JPanelModUsuarios;
+import paneles.usuarios.JPanelModUsuarios;
 
 /**
  *
@@ -68,6 +68,8 @@ public class interfaz_ventab extends javax.swing.JInternalFrame {
         jLabel6 = new javax.swing.JLabel();
         BtnCerrar = new javax.swing.JButton();
         cbocantidad = new javax.swing.JComboBox<>();
+        jLabel5 = new javax.swing.JLabel();
+        txtCodigoBusqueda = new javax.swing.JTextField();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
@@ -154,6 +156,16 @@ public class interfaz_ventab extends javax.swing.JInternalFrame {
 
         cbocantidad.setEnabled(false);
 
+        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel5.setText("CODIGO:");
+
+        txtCodigoBusqueda.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtCodigoBusquedaKeyTyped(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -175,9 +187,13 @@ public class interfaz_ventab extends javax.swing.JInternalFrame {
                 .addComponent(BtnAceptar)
                 .addGap(23, 23, 23)
                 .addComponent(BtnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtCodigoBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(BtnCerrar, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18))
+                .addGap(6, 6, 6))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -188,7 +204,9 @@ public class interfaz_ventab extends javax.swing.JInternalFrame {
                         .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(BtnAceptar)
                         .addComponent(BtnCancelar)
-                        .addComponent(cbocantidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(cbocantidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtCodigoBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -352,10 +370,10 @@ public class interfaz_ventab extends javax.swing.JInternalFrame {
                         .addComponent(txtImpuestoAdicional, javax.swing.GroupLayout.DEFAULT_SIZE, 126, Short.MAX_VALUE)
                         .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                        .addComponent(txtMontoNeto, javax.swing.GroupLayout.DEFAULT_SIZE, 126, Short.MAX_VALUE)
+                        .addComponent(txtMontoNeto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                        .addComponent(txtIVA, javax.swing.GroupLayout.DEFAULT_SIZE, 126, Short.MAX_VALUE)
+                        .addComponent(txtIVA, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addContainerGap())))
         );
         jPanel5Layout.setVerticalGroup(
@@ -492,12 +510,9 @@ public class interfaz_ventab extends javax.swing.JInternalFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jPanel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -518,6 +533,7 @@ public class interfaz_ventab extends javax.swing.JInternalFrame {
     private void txtNombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombreKeyTyped
         char c = evt.getKeyChar();
         sql.CargarTablaListadoProductos(2, txtNombre.getText(), cboCategoria.getSelectedItem().toString());
+        txtCodigoBusqueda.setText("");
         if (Character.isDigit(c)) {
             getToolkit().beep();
             evt.consume();
@@ -558,10 +574,11 @@ public class interfaz_ventab extends javax.swing.JInternalFrame {
             int precio_individual = Integer.parseInt(tbproductosListado.getValueAt(fila, 4).toString());
             int cantidad2 = stock - cantidad;
             int precio = cantidad * precio_individual;
-
+            String cod_producto=(tbproductosListado.getValueAt(fila, 0).toString());
             nombre();
 
-            sql.NuevaVenta(Integer.parseInt(txtcodigo.getText()), cantidad, precio_individual, precio, Integer.parseInt(nombre), cboCategoria.getSelectedItem().toString(), cantidad2);
+            sql.NuevaVenta(Integer.parseInt(txtcodigo.getText()),cod_producto, cantidad, precio_individual, precio, nombre, cboCategoria.getSelectedItem().toString(), cantidad2);
+            
             
             sql.CargarTablaListadoProductos(1, cboCategoria.getSelectedItem().toString(), "");
             
@@ -579,7 +596,6 @@ public class interfaz_ventab extends javax.swing.JInternalFrame {
             cbocantidad.setEnabled(false);
             BtnGuardar.setEnabled(true);
             BtnLimpiar.setEnabled(true);
-            cboCategoria.setEnabled(false);
         }
     }//GEN-LAST:event_BtnAceptarActionPerformed
 
@@ -607,6 +623,7 @@ public class interfaz_ventab extends javax.swing.JInternalFrame {
         txtNombre.setText("");
         cbocantidad.removeAllItems();
         cbocantidad.setEnabled(false);
+        txtCodigoBusqueda.setText("");
     }//GEN-LAST:event_BtnCancelarActionPerformed
 
     private void BtnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnGuardarActionPerformed
@@ -629,7 +646,13 @@ public class interfaz_ventab extends javax.swing.JInternalFrame {
     private void BtnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnLimpiarActionPerformed
         BtnGuardar.setEnabled(false);
         BtnLimpiar.setEnabled(false);
-        cboCategoria.setEnabled(true);
+        if(Main.lbCARGO.getText().equals("Ventas"))
+        {
+            cboCategoria.setEnabled(true);
+        }else if(Main.lbCARGO.getText().equals("Administrador"))
+        {
+            cboCategoria.setEnabled(true);
+        }
         txtMontoNeto.setText("0");
         txtIVA.setText("0");
         txtImpuestoAdicional.setText("0");
@@ -650,6 +673,11 @@ public class interfaz_ventab extends javax.swing.JInternalFrame {
             dispose();
         }
     }//GEN-LAST:event_BtnSalirActionPerformed
+
+    private void txtCodigoBusquedaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCodigoBusquedaKeyTyped
+        sql.CargarTablaListadoProductos(4, txtCodigoBusqueda.getText(), cboCategoria.getSelectedItem().toString());
+        txtNombre.setText("");
+    }//GEN-LAST:event_txtCodigoBusquedaKeyTyped
     private void LimpiarVenta() {
         DefaultTableModel modelo = (DefaultTableModel) tbventa.getModel();
         int filas = tbventa.getRowCount();
@@ -678,7 +706,7 @@ public class interfaz_ventab extends javax.swing.JInternalFrame {
     private void nombre() {
         try {
             Statement st = this.cn.createStatement();
-            ResultSet rs = st.executeQuery("SELECT cod_producto from productos where nom_producto='" + txtNombre.getText() + "';");
+            ResultSet rs = st.executeQuery("SELECT nom_producto from productos where nom_producto='" + txtNombre.getText() + "';");
             while (rs.next()) {
                 nombre = rs.getString(1);
             }
@@ -778,7 +806,7 @@ public class interfaz_ventab extends javax.swing.JInternalFrame {
     private javax.swing.JButton BtnGuardar;
     private javax.swing.JButton BtnLimpiar;
     private javax.swing.JButton BtnSalir;
-    private javax.swing.JComboBox<String> cboCategoria;
+    public static javax.swing.JComboBox<String> cboCategoria;
     private javax.swing.JComboBox<String> cbocantidad;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -789,6 +817,7 @@ public class interfaz_ventab extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
@@ -803,6 +832,7 @@ public class interfaz_ventab extends javax.swing.JInternalFrame {
     private javax.swing.JScrollPane jScrollPane2;
     public static javax.swing.JTable tbproductosListado;
     public static javax.swing.JTable tbventa;
+    public javax.swing.JTextField txtCodigoBusqueda;
     private javax.swing.JLabel txtIVA;
     private javax.swing.JLabel txtImpuestoAdicional;
     private javax.swing.JLabel txtMontoNeto;

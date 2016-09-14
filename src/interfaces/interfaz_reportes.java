@@ -7,8 +7,12 @@ package interfaces;
 
 import java.awt.BorderLayout;
 import java.util.Calendar;
+import javax.swing.JOptionPane;
 import metodos.ConsultasSQL;
-import paneles.JPanelVentasHoy;
+import paneles.reportes.JPanelVentasHoy;
+import java.util.Calendar;
+import paneles.reportes.JPanelVentasMensual;
+import paneles.reportes.JPanelVentasSemanal;
 
 /**
  *
@@ -18,7 +22,7 @@ public class interfaz_reportes extends javax.swing.JInternalFrame {
 
     ConsultasSQL sql = new ConsultasSQL();
      Calendar cal = Calendar.getInstance();
-    String fechas = cal.get(cal.DATE) + "/" + cal.get(cal.MONTH) + "/" + cal.get(cal.YEAR);
+    String fechas = cal.get(cal.DATE) + "/" + (cal.get(cal.MONTH)+1) + "/" + cal.get(cal.YEAR);
     public interfaz_reportes() {
         initComponents();
     }
@@ -109,7 +113,6 @@ public class interfaz_reportes extends javax.swing.JInternalFrame {
 
         btnEliminar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/salir32.png"))); // NOI18N
         btnEliminar1.setText("REPORTE MENSUAL");
-        btnEliminar1.setEnabled(false);
         btnEliminar1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEliminar1ActionPerformed(evt);
@@ -126,7 +129,6 @@ public class interfaz_reportes extends javax.swing.JInternalFrame {
 
         BtnNuevo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/adduser32.png"))); // NOI18N
         BtnNuevo.setText("REPORTE SEMANAL");
-        BtnNuevo.setEnabled(false);
         BtnNuevo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BtnNuevoActionPerformed(evt);
@@ -142,7 +144,7 @@ public class interfaz_reportes extends javax.swing.JInternalFrame {
         });
 
         btnEliminar3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/salir32.png"))); // NOI18N
-        btnEliminar3.setText("RESUMEN");
+        btnEliminar3.setText("REPORTE DIA X");
         btnEliminar3.setEnabled(false);
         btnEliminar3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -209,7 +211,7 @@ public class interfaz_reportes extends javax.swing.JInternalFrame {
             jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jInternalFrame1Layout.createSequentialGroup()
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 23, Short.MAX_VALUE))
+                .addGap(0, 47, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -232,8 +234,14 @@ public class interfaz_reportes extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnEliminar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminar1ActionPerformed
-
-        
+        JPanelVentasMensual nu=new JPanelVentasMensual();
+       sql.CargarTabalasVentasMensuales((cal.get(cal.MONTH)+1), cal.get(cal.YEAR));
+        nu.setSize(713,487);
+        nu.setLocation(1,1);
+        PanelCambianteUsuarios.removeAll();
+        PanelCambianteUsuarios.add(nu,BorderLayout.CENTER);
+        PanelCambianteUsuarios.revalidate();
+        PanelCambianteUsuarios.repaint();
     }//GEN-LAST:event_btnEliminar1ActionPerformed
 
     private void BtnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnModificarActionPerformed
@@ -248,7 +256,92 @@ public class interfaz_reportes extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_BtnModificarActionPerformed
 
     private void BtnNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnNuevoActionPerformed
-
+        int numero=cal.get(cal.DATE);// dia actual        
+        String[] strDays = new String[]{"Domingo","Lunes","Martes","Miercoles","Jueves","Viernes","Sabado"};
+        String[] Meses = new String[]{"NoDebedartecero","Ene","Feb","Mar","abril","may","jun","jul","ago","sep","octo","nov","dic"};
+        
+            switch(strDays[cal.get(Calendar.DAY_OF_WEEK)-1])
+            {
+                case "Domingo":numero=numero-6;
+                    break;
+                case "Lunes":numero=numero;
+                    break;
+                case "Martes":numero=numero-1;
+                    break;
+                case "Miercoles":numero=numero-2;
+                    break;
+                case "Jueves":numero=numero-3;
+                    break;
+                case "Viernes":numero=numero-4;
+                    break;
+                case "Sabado":numero=numero-5;
+                    break;
+            }
+           if(numero<=0)
+           {
+               int mes_anterior=cal.get(Calendar.MONTH);
+               
+               int ultimodia=0;
+               switch(mes_anterior)
+               {
+                   case 1:ultimodia=31;
+                       break;
+                   case 2:ultimodia=28;
+                       break;    
+                   case 3:ultimodia=31;
+                       break;
+                   case 4:ultimodia=30;
+                       break;
+                   case 5:ultimodia=31;
+                       break;
+                   case 6:ultimodia=30;
+                       break;
+                   case 7:ultimodia=31;
+                       break;
+                   case 8:ultimodia=31;
+                       break;
+                   case 9:ultimodia=30;
+                       break;
+                   case 10:ultimodia=31;
+                       break;
+                   case 11:ultimodia=30;
+                       break;
+                   case 12:ultimodia=31;
+                       break;
+               }
+               int dialunes=ultimodia+(numero);
+               JPanelVentasSemanal nu=new JPanelVentasSemanal();
+               switch(dialunes)
+               {
+                   case 28:sql.CargarTablaVentasSemana(dialunes, dialunes+1, dialunes+2, dialunes+3, cal.get(cal.DATE));
+                       break;
+                   case 29:sql.CargarTablaVentasSemana(dialunes, dialunes+1, dialunes+2, (cal.get(cal.DATE)), (cal.get(cal.DATE)+1));
+                       break;
+                   case 30:sql.CargarTablaVentasSemana(dialunes, dialunes, (cal.get(cal.DATE)), (cal.get(cal.DATE)+1), (cal.get(cal.DATE)+2));
+                       break;
+                   case 31:sql.CargarTablaVentasSemana(dialunes,(cal.get(cal.DATE)),(cal.get(cal.DATE)+1),(cal.get(cal.DATE)+2), (cal.get(cal.DATE)+3));
+                       break;
+               }
+               
+            nu.setSize(713,487);
+            nu.setLocation(1,1);
+            PanelCambianteUsuarios.removeAll();
+            PanelCambianteUsuarios.add(nu,BorderLayout.CENTER);
+            PanelCambianteUsuarios.revalidate();
+            PanelCambianteUsuarios.repaint(); 
+               
+           }else
+           {
+           JPanelVentasSemanal nu=new JPanelVentasSemanal();
+            sql.CargarTablaVentasSemana(numero, numero+1, numero+2, numero+3, numero+4);
+            nu.setSize(713,487);
+            nu.setLocation(1,1);
+            PanelCambianteUsuarios.removeAll();
+            PanelCambianteUsuarios.add(nu,BorderLayout.CENTER);
+            PanelCambianteUsuarios.revalidate();
+            PanelCambianteUsuarios.repaint(); 
+           }
+        
     }//GEN-LAST:event_BtnNuevoActionPerformed
 
     private void btnEliminar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminar2ActionPerformed
@@ -258,7 +351,7 @@ public class interfaz_reportes extends javax.swing.JInternalFrame {
     private void btnEliminar3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminar3ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnEliminar3ActionPerformed
-
+     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton BtnModificar;

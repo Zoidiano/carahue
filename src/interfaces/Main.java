@@ -25,14 +25,14 @@ import nicon.notify.core.Notification;
 
 public class Main extends javax.swing.JFrame {
     
-    Timer timer = new Timer(1800000, new ActionListener() {
+    Timer timer = new Timer(10000, new ActionListener() {
         public void actionPerformed(ActionEvent e) {
             ConsultasSQL sql= new ConsultasSQL();
             if (sql.ComprobarProductos()) {
                 try {
                     UIManager.setLookAndFeel(new NimbusLookAndFeel());
                     sql.Stockcero();
-                    Notification.showConfirm("Advertencia", "No tenemos Stock de: "+dato, Notification.NICON_DARK_THEME, true, 1800000);
+                    Notification.showConfirm("Advertencia", "No tenemos Stock de: "+dato, Notification.NICON_DARK_THEME, true, 10000);
                     
                 //El metodo showConfirm() puede variar con esto me refiero a que puedes solo mostrar el mensaje o bien puedes mandar mensaje, el tema que prefieras , si se reproduce un sonido o no y tambien por cuanto tiempo se mostrara, este ultimo es el que muestro en el ejemplo.
                 } catch (Exception ex) {
@@ -91,6 +91,8 @@ public static String dato="";
         llamaUsuarios = new javax.swing.JMenuItem();
         Slider4 = new javax.swing.JMenu();
         llama_interfaz_informes = new javax.swing.JMenuItem();
+        Slider5 = new javax.swing.JMenu();
+        llama_interfaz_linea_credito = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(56, 98, 127));
@@ -363,6 +365,25 @@ public static String dato="";
 
         jMenuBar1.add(Slider4);
 
+        Slider5.setText("Linea de Credito");
+        Slider5.setEnabled(false);
+        Slider5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Slider5ActionPerformed(evt);
+            }
+        });
+
+        llama_interfaz_linea_credito.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_1, java.awt.event.InputEvent.ALT_MASK));
+        llama_interfaz_linea_credito.setText("Linea de Credito");
+        llama_interfaz_linea_credito.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                llama_interfaz_linea_creditoActionPerformed(evt);
+            }
+        });
+        Slider5.add(llama_interfaz_linea_credito);
+
+        jMenuBar1.add(Slider5);
+
         setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -387,6 +408,7 @@ public static String dato="";
         interfaz_inventario1 Form = new interfaz_inventario1();
         Form.CargarTablas(2, "LIBRERIA");
         Form.categoria = "LIBRERIA";
+        
         this.add(Form);
         Dimension desktopSize = this.getSize();
         Dimension FrameSize = Form.getSize();
@@ -428,6 +450,19 @@ public static String dato="";
     private void llama_interfaz_principalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_llama_interfaz_principalActionPerformed
         interfaz_ventab Form = new interfaz_ventab();
         Form.setVisible(true);
+        if(lbCARGO.getText().equals("LIBRERIA"))
+        {
+            Form.cboCategoria.setSelectedIndex(0);
+            Form.cboCategoria.setEnabled(false);
+        }else if(lbCARGO.getText().equals("VESTUARIO"))
+        {
+            Form.cboCategoria.setSelectedIndex(1);
+            Form.cboCategoria.setEnabled(false);
+        }else if(lbCARGO.getText().equals("CASA Y PESCA"))
+        {
+            Form.cboCategoria.setSelectedIndex(2);
+            Form.cboCategoria.setEnabled(false);
+        }
         this.add(Form);
         Dimension desktopSize = this.getSize();
         Dimension FrameSize = Form.getSize();
@@ -536,7 +571,28 @@ public static String dato="";
 
         timer = new Timer(1000, new cronometro());
         timer.start();
+                Main.Slider1.setEnabled(false);
+                Main.Slider2.setEnabled(false);
+                Main.Slider3.setEnabled(false);
+                Main.Slider4.setEnabled(false);
+                Main.Slider5.setEnabled(false);
     }//GEN-LAST:event_btnSalirActionPerformed
+
+    private void llama_interfaz_linea_creditoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_llama_interfaz_linea_creditoActionPerformed
+    interfaz_credito Form = new interfaz_credito();
+        Form.setVisible(true);
+        this.add(Form);
+        Dimension desktopSize = this.getSize();
+        Dimension FrameSize = Form.getSize();
+        Form.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.height) / 2);
+        Contenedor.removeAll();
+        Contenedor.updateUI();
+        Contenedor.add(Form);
+    }//GEN-LAST:event_llama_interfaz_linea_creditoActionPerformed
+
+    private void Slider5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Slider5ActionPerformed
+        
+    }//GEN-LAST:event_Slider5ActionPerformed
     public class cronometro implements ActionListener {
 
         public void actionPerformed(ActionEvent evt) {
@@ -605,6 +661,7 @@ public static String dato="";
     public static javax.swing.JMenu Slider2;
     public static javax.swing.JMenu Slider3;
     public static javax.swing.JMenu Slider4;
+    public static javax.swing.JMenu Slider5;
     private javax.swing.JButton btnSalir;
     public static javax.swing.JLabel fecha;
     public static javax.swing.JLabel hh;
@@ -625,6 +682,7 @@ public static String dato="";
     private javax.swing.JMenuItem llamaUsuarios;
     private javax.swing.JMenuItem llamaVestuario;
     private javax.swing.JMenuItem llama_interfaz_informes;
+    private javax.swing.JMenuItem llama_interfaz_linea_credito;
     private javax.swing.JMenuItem llama_interfaz_principal;
     public static javax.swing.JLabel mm;
     public static javax.swing.JLabel ss;
