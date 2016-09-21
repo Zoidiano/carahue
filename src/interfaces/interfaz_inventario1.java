@@ -117,7 +117,7 @@ public class interfaz_inventario1 extends javax.swing.JInternalFrame {
         jPanel5.setBackground(new java.awt.Color(88, 147, 191));
         jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(255, 255, 255))); // NOI18N
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/cancel_user32.png"))); // NOI18N
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/menos32.png"))); // NOI18N
         jButton1.setText("STOCK MENOR A 10");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -125,23 +125,23 @@ public class interfaz_inventario1 extends javax.swing.JInternalFrame {
             }
         });
 
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/cancel_user32.png"))); // NOI18N
-        jButton2.setText("STOCK 0");
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/igual32.png"))); // NOI18N
+        jButton2.setText("STOCK 0                 ");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
             }
         });
 
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/cancel_user32.png"))); // NOI18N
-        jButton3.setText("STOCK TOTAL");
+        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/mas32.png"))); // NOI18N
+        jButton3.setText("STOCK TOTAL        ");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
             }
         });
 
-        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/reporte.png"))); // NOI18N
+        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/impresora32.png"))); // NOI18N
         jButton4.setText(" IMPRIMIR REPORTES");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
