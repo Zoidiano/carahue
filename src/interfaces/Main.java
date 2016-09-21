@@ -72,14 +72,15 @@ public static String dato="";
         lb_user = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         lbCARGO = new javax.swing.JLabel();
-        btnSalir = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
-        hh = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
         mm = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
+        hh = new javax.swing.JLabel();
         ss = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
         fecha = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         Slider1 = new javax.swing.JMenu();
@@ -98,6 +99,7 @@ public static String dato="";
         llama_interfaz_linea_credito = new javax.swing.JMenuItem();
         Slider6 = new javax.swing.JMenu();
         jMenuItem3 = new javax.swing.JMenuItem();
+        menu_salir = new javax.swing.JMenu();
 
         jMenu1.setText("File");
         jMenuBar2.add(jMenu1);
@@ -124,7 +126,7 @@ public static String dato="";
         );
         ContenedorLayout.setVerticalGroup(
             ContenedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 210, Short.MAX_VALUE)
+            .addGap(0, 213, Short.MAX_VALUE)
         );
 
         jPanel1.setBackground(new java.awt.Color(56, 98, 127));
@@ -144,13 +146,6 @@ public static String dato="";
         lbCARGO.setForeground(new java.awt.Color(255, 255, 255));
         lbCARGO.setText("CARGO");
 
-        btnSalir.setText("SALIR");
-        btnSalir.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSalirActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -162,9 +157,7 @@ public static String dato="";
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lbCARGO)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnSalir)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(97, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -172,63 +165,67 @@ public static String dato="";
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lb_user)
                     .addComponent(jLabel2)
-                    .addComponent(lbCARGO)
-                    .addComponent(btnSalir))
-                .addGap(0, 7, Short.MAX_VALUE))
+                    .addComponent(lbCARGO))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel3.setBackground(new java.awt.Color(56, 98, 127));
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel5.setText("|");
 
-        hh.setForeground(new java.awt.Color(255, 255, 255));
-        hh.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/hora.png"))); // NOI18N
-        hh.setText("00");
-
-        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel7.setText(":");
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setText(":");
 
         mm.setForeground(new java.awt.Color(255, 255, 255));
-        mm.setText("00");
+        mm.setText("mm");
+
+        hh.setForeground(new java.awt.Color(255, 255, 255));
+        hh.setText("hh");
+
+        ss.setForeground(new java.awt.Color(255, 255, 255));
+        ss.setText("ss");
 
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
         jLabel9.setText(":");
 
-        ss.setForeground(new java.awt.Color(255, 255, 255));
-        ss.setText("00");
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setText("|");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel5)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(hh)
+                .addContainerGap()
+                .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel7)
+                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 5, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(mm)
+                .addComponent(hh, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(mm, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel9)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(ss, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(ss, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(hh)
-                    .addComponent(jLabel7)
-                    .addComponent(mm)
-                    .addComponent(jLabel9)
-                    .addComponent(ss))
-                .addGap(0, 11, Short.MAX_VALUE))
+            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addComponent(jLabel5)
+                .addComponent(jLabel3)
+                .addComponent(mm)
+                .addComponent(hh)
+                .addComponent(ss)
+                .addComponent(jLabel9)
+                .addComponent(jLabel4))
         );
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/hora.png"))); // NOI18N
 
         fecha.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         fecha.setForeground(new java.awt.Color(255, 255, 255));
@@ -242,21 +239,25 @@ public static String dato="";
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 106, Short.MAX_VALUE)
-                .addComponent(fecha)
-                .addGap(18, 18, 18)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 72, Short.MAX_VALUE)
+                .addComponent(fecha, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(fecha)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jPanel3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel1)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(fecha)
+                            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap())
         );
 
@@ -272,6 +273,7 @@ public static String dato="";
         });
 
         llama_interfaz_principal.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_V, java.awt.event.InputEvent.CTRL_MASK));
+        llama_interfaz_principal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/boleta.png"))); // NOI18N
         llama_interfaz_principal.setText("Generar Venta Boleta");
         llama_interfaz_principal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -363,6 +365,7 @@ public static String dato="";
         Slider4.setEnabled(false);
 
         llama_interfaz_informes.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_R, java.awt.event.InputEvent.CTRL_MASK));
+        llama_interfaz_informes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/reporte.png"))); // NOI18N
         llama_interfaz_informes.setText("Reportes Venta");
         llama_interfaz_informes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -373,6 +376,7 @@ public static String dato="";
 
         jMenuBar1.add(Slider4);
 
+        Slider5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/credito2.png"))); // NOI18N
         Slider5.setText("Linea de Credito");
         Slider5.setEnabled(false);
         Slider5.addActionListener(new java.awt.event.ActionListener() {
@@ -382,6 +386,7 @@ public static String dato="";
         });
 
         llama_interfaz_linea_credito.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_1, java.awt.event.InputEvent.ALT_MASK));
+        llama_interfaz_linea_credito.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/credito2.png"))); // NOI18N
         llama_interfaz_linea_credito.setText("Linea de Credito");
         llama_interfaz_linea_credito.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -392,9 +397,11 @@ public static String dato="";
 
         jMenuBar1.add(Slider5);
 
+        Slider6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/caja.png"))); // NOI18N
         Slider6.setText("CAJA");
         Slider6.setEnabled(false);
 
+        jMenuItem3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/caja.png"))); // NOI18N
         jMenuItem3.setText("CAJA");
         jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -404,6 +411,15 @@ public static String dato="";
         Slider6.add(jMenuItem3);
 
         jMenuBar1.add(Slider6);
+
+        menu_salir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/cambio.png"))); // NOI18N
+        menu_salir.setText("Cambiar de Usuario");
+        menu_salir.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                menu_salirMouseClicked(evt);
+            }
+        });
+        jMenuBar1.add(menu_salir);
 
         setJMenuBar(jMenuBar1);
 
@@ -573,28 +589,6 @@ public static String dato="";
         Contenedor.add(Form);
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
-    private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
-        interfaz_login il = new interfaz_login();
-        lb_user.setText("NOMBRE USUARIO");
-        lbCARGO.setText("CARGO");
-        il.setVisible(true);
-        this.add(il);
-        Dimension desktopSize = this.getSize();
-        Dimension FrameSize = il.getSize();
-        il.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.height) / 2 - 60);
-        Contenedor.removeAll();
-        Contenedor.updateUI();
-        Contenedor.add(il);
-
-        timer = new Timer(1000, new cronometro());
-        timer.start();
-                Main.Slider1.setEnabled(false);
-                Main.Slider2.setEnabled(false);
-                Main.Slider3.setEnabled(false);
-                Main.Slider4.setEnabled(false);
-                Main.Slider5.setEnabled(false);
-    }//GEN-LAST:event_btnSalirActionPerformed
-
     private void llama_interfaz_linea_creditoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_llama_interfaz_linea_creditoActionPerformed
     interfaz_credito Form = new interfaz_credito();
         Form.setVisible(true);
@@ -622,6 +616,28 @@ public static String dato="";
         Contenedor.updateUI();
         Contenedor.add(Form);
     }//GEN-LAST:event_jMenuItem3ActionPerformed
+
+    private void menu_salirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menu_salirMouseClicked
+        interfaz_login il = new interfaz_login();
+        lb_user.setText("NOMBRE USUARIO");
+        lbCARGO.setText("CARGO");
+        il.setVisible(true);
+        this.add(il);
+        Dimension desktopSize = this.getSize();
+        Dimension FrameSize = il.getSize();
+        il.setLocation((desktopSize.width - FrameSize.width) / 2, (desktopSize.height - FrameSize.height) / 2 - 60);
+        Contenedor.removeAll();
+        Contenedor.updateUI();
+        Contenedor.add(il);
+
+        timer = new Timer(1000, new cronometro());
+        timer.start();
+                Main.Slider1.setEnabled(false);
+                Main.Slider2.setEnabled(false);
+                Main.Slider3.setEnabled(false);
+                Main.Slider4.setEnabled(false);
+                Main.Slider5.setEnabled(false);
+    }//GEN-LAST:event_menu_salirMouseClicked
     public class cronometro implements ActionListener {
 
         public void actionPerformed(ActionEvent evt) {
@@ -692,12 +708,13 @@ public static String dato="";
     public static javax.swing.JMenu Slider4;
     public static javax.swing.JMenu Slider5;
     public static javax.swing.JMenu Slider6;
-    private javax.swing.JButton btnSalir;
     public static javax.swing.JLabel fecha;
     public static javax.swing.JLabel hh;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
@@ -718,6 +735,7 @@ public static String dato="";
     private javax.swing.JMenuItem llama_interfaz_informes;
     public static javax.swing.JMenuItem llama_interfaz_linea_credito;
     private javax.swing.JMenuItem llama_interfaz_principal;
+    private javax.swing.JMenu menu_salir;
     public static javax.swing.JLabel mm;
     public static javax.swing.JLabel ss;
     // End of variables declaration//GEN-END:variables
