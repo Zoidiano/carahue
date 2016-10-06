@@ -29,13 +29,14 @@
               <Component id="jInternalFrame1" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jInternalFrame2" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="jInternalFrame2" min="-2" max="-2" attributes="0"/>
           <Component id="jInternalFrame1" max="32767" attributes="0"/>
+          <Component id="jInternalFrame2" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
   </Layout>
@@ -59,10 +60,7 @@
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" attributes="0">
-                  <Component id="jPanel5" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace max="32767" attributes="0"/>
-              </Group>
+              <Component id="jPanel5" alignment="0" max="32767" attributes="0"/>
           </Group>
         </DimensionLayout>
       </Layout>
@@ -148,13 +146,13 @@
                           <Component id="btnListadoClientes" min="-2" pref="41" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Component id="btnAbonos" min="-2" pref="41" max="-2" attributes="0"/>
-                          <EmptySpace pref="8" max="32767" attributes="0"/>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Component id="btnAbonos1" min="-2" pref="41" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Component id="BtnUltimosPagos" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Component id="btnEliminar2" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -163,9 +161,9 @@
                 <Component class="javax.swing.JButton" name="btnListadoClientes">
                   <Properties>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="3" name="/imagenes/salir32.png"/>
+                      <Image iconType="3" name="/imagenes/listado_32.png"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="LISTADO CLIENTES"/>
+                    <Property name="text" type="java.lang.String" value="      LISTADO CLIENTES"/>
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnListadoClientesActionPerformed"/>
@@ -177,9 +175,10 @@
                 <Component class="javax.swing.JButton" name="BtnRegistroClientes">
                   <Properties>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="3" name="/imagenes/aceptar32.png"/>
+                      <Image iconType="3" name="/imagenes/registro_32.png"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="REGISTRO CLIENTES"/>
+                    <Property name="text" type="java.lang.String" value="      REGISTRO CLIENTES"/>
+                    <Property name="actionCommand" type="java.lang.String" value="REGISTRO CLIENTES"/>
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BtnRegistroClientesActionPerformed"/>
@@ -193,7 +192,7 @@
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                       <Image iconType="3" name="/imagenes/modificar32.png"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="MODIFICAR CLIENTE"/>
+                    <Property name="text" type="java.lang.String" value="      MODIFICAR CLIENTE"/>
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BtnModClienteActionPerformed"/>
@@ -207,7 +206,7 @@
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                       <Image iconType="3" name="/imagenes/salir32.png"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="SALIR"/>
+                    <Property name="text" type="java.lang.String" value="        SALIR"/>
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnEliminar2ActionPerformed"/>
@@ -219,9 +218,9 @@
                 <Component class="javax.swing.JButton" name="BtnUltimosPagos">
                   <Properties>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="3" name="/imagenes/salir32.png"/>
+                      <Image iconType="3" name="/imagenes/last_32.png"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="ULTIMOS PAGOS"/>
+                    <Property name="text" type="java.lang.String" value="      ULTIMOS PAGOS"/>
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BtnUltimosPagosActionPerformed"/>
@@ -233,9 +232,9 @@
                 <Component class="javax.swing.JButton" name="BtnBusquedaCliente">
                   <Properties>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="3" name="/imagenes/adduser32.png"/>
+                      <Image iconType="3" name="/imagenes/buscar_32.png"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="BUSQUEDA CLIENTE"/>
+                    <Property name="text" type="java.lang.String" value="      BUSQUEDA CLIENTE"/>
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BtnBusquedaClienteActionPerformed"/>
@@ -247,9 +246,9 @@
                 <Component class="javax.swing.JButton" name="btnAbonos">
                   <Properties>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="3" name="/imagenes/aceptar32.png"/>
+                      <Image iconType="3" name="/imagenes/agregar_32.png"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="INGRESAR ABONOS"/>
+                    <Property name="text" type="java.lang.String" value="      INGRESAR ABONOS"/>
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAbonosActionPerformed"/>
@@ -261,9 +260,9 @@
                 <Component class="javax.swing.JButton" name="btnAbonos1">
                   <Properties>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="3" name="/imagenes/modificar32.png"/>
+                      <Image iconType="3" name="/imagenes/modificar2_32.png"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="MODIFICAR ABONOS"/>
+                    <Property name="text" type="java.lang.String" value="      MODIFICAR ABONOS"/>
                   </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAbonos1ActionPerformed"/>
@@ -281,7 +280,7 @@
     <Container class="javax.swing.JInternalFrame" name="jInternalFrame2">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="bf" green="93" red="58" type="rgb"/>
+          <Color blue="ff" green="ff" red="ff" type="rgb"/>
         </Property>
         <Property name="visible" type="boolean" value="true"/>
       </Properties>
@@ -289,46 +288,68 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Component id="JPanelcambianteLineaCredito" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace max="32767" attributes="0"/>
-              </Group>
+              <Component id="jPanel1" alignment="0" max="32767" attributes="0"/>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Component id="JPanelcambianteLineaCredito" max="32767" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
-              </Group>
+              <Component id="jPanel1" alignment="1" max="32767" attributes="0"/>
           </Group>
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Container class="javax.swing.JPanel" name="JPanelcambianteLineaCredito">
+        <Container class="javax.swing.JPanel" name="jPanel1">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="bf" green="93" red="58" type="rgb"/>
+              <Color blue="7f" green="62" red="38" type="rgb"/>
             </Property>
           </Properties>
-          <AuxValues>
-            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
-          </AuxValues>
 
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="671" max="32767" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="JPanelcambianteLineaCredito" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
+                  </Group>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <EmptySpace min="0" pref="495" max="32767" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
+                      <Component id="JPanelcambianteLineaCredito" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace pref="55" max="32767" attributes="0"/>
+                  </Group>
               </Group>
             </DimensionLayout>
           </Layout>
+          <SubComponents>
+            <Container class="javax.swing.JPanel" name="JPanelcambianteLineaCredito">
+              <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="bf" green="93" red="58" type="rgb"/>
+                </Property>
+              </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
+              </AuxValues>
+
+              <Layout>
+                <DimensionLayout dim="0">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <EmptySpace min="0" pref="684" max="32767" attributes="0"/>
+                  </Group>
+                </DimensionLayout>
+                <DimensionLayout dim="1">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <EmptySpace min="0" pref="482" max="32767" attributes="0"/>
+                  </Group>
+                </DimensionLayout>
+              </Layout>
+            </Container>
+          </SubComponents>
         </Container>
       </SubComponents>
     </Container>

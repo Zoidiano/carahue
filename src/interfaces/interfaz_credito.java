@@ -48,6 +48,7 @@ public class interfaz_credito extends javax.swing.JInternalFrame {
         btnAbonos = new javax.swing.JButton();
         btnAbonos1 = new javax.swing.JButton();
         jInternalFrame2 = new javax.swing.JInternalFrame();
+        jPanel1 = new javax.swing.JPanel();
         JPanelcambianteLineaCredito = new javax.swing.JPanel();
 
         setClosable(true);
@@ -66,16 +67,17 @@ public class interfaz_credito extends javax.swing.JInternalFrame {
 
         jPanel6.setBackground(new java.awt.Color(88, 147, 191));
 
-        btnListadoClientes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/salir32.png"))); // NOI18N
-        btnListadoClientes.setText("LISTADO CLIENTES");
+        btnListadoClientes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/listado_32.png"))); // NOI18N
+        btnListadoClientes.setText("      LISTADO CLIENTES");
         btnListadoClientes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnListadoClientesActionPerformed(evt);
             }
         });
 
-        BtnRegistroClientes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/aceptar32.png"))); // NOI18N
-        BtnRegistroClientes.setText("REGISTRO CLIENTES");
+        BtnRegistroClientes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/registro_32.png"))); // NOI18N
+        BtnRegistroClientes.setText("      REGISTRO CLIENTES");
+        BtnRegistroClientes.setActionCommand("REGISTRO CLIENTES");
         BtnRegistroClientes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BtnRegistroClientesActionPerformed(evt);
@@ -83,7 +85,7 @@ public class interfaz_credito extends javax.swing.JInternalFrame {
         });
 
         BtnModCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/modificar32.png"))); // NOI18N
-        BtnModCliente.setText("MODIFICAR CLIENTE");
+        BtnModCliente.setText("      MODIFICAR CLIENTE");
         BtnModCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BtnModClienteActionPerformed(evt);
@@ -91,39 +93,39 @@ public class interfaz_credito extends javax.swing.JInternalFrame {
         });
 
         btnEliminar2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/salir32.png"))); // NOI18N
-        btnEliminar2.setText("SALIR");
+        btnEliminar2.setText("        SALIR");
         btnEliminar2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEliminar2ActionPerformed(evt);
             }
         });
 
-        BtnUltimosPagos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/salir32.png"))); // NOI18N
-        BtnUltimosPagos.setText("ULTIMOS PAGOS");
+        BtnUltimosPagos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/last_32.png"))); // NOI18N
+        BtnUltimosPagos.setText("      ULTIMOS PAGOS");
         BtnUltimosPagos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BtnUltimosPagosActionPerformed(evt);
             }
         });
 
-        BtnBusquedaCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/adduser32.png"))); // NOI18N
-        BtnBusquedaCliente.setText("BUSQUEDA CLIENTE");
+        BtnBusquedaCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/buscar_32.png"))); // NOI18N
+        BtnBusquedaCliente.setText("      BUSQUEDA CLIENTE");
         BtnBusquedaCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BtnBusquedaClienteActionPerformed(evt);
             }
         });
 
-        btnAbonos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/aceptar32.png"))); // NOI18N
-        btnAbonos.setText("INGRESAR ABONOS");
+        btnAbonos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/agregar_32.png"))); // NOI18N
+        btnAbonos.setText("      INGRESAR ABONOS");
         btnAbonos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAbonosActionPerformed(evt);
             }
         });
 
-        btnAbonos1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/modificar32.png"))); // NOI18N
-        btnAbonos1.setText("MODIFICAR ABONOS");
+        btnAbonos1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/modificar2_32.png"))); // NOI18N
+        btnAbonos1.setText("      MODIFICAR ABONOS");
         btnAbonos1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAbonos1ActionPerformed(evt);
@@ -161,13 +163,13 @@ public class interfaz_credito extends javax.swing.JInternalFrame {
                 .addComponent(btnListadoClientes, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnAbonos, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnAbonos1, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(BtnUltimosPagos)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnEliminar2)
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
@@ -198,13 +200,13 @@ public class interfaz_credito extends javax.swing.JInternalFrame {
         );
         jInternalFrame1Layout.setVerticalGroup(
             jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jInternalFrame1Layout.createSequentialGroup()
-                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        jInternalFrame2.setBackground(new java.awt.Color(88, 147, 191));
+        jInternalFrame2.setBackground(new java.awt.Color(255, 255, 255));
         jInternalFrame2.setVisible(true);
+
+        jPanel1.setBackground(new java.awt.Color(56, 98, 127));
 
         JPanelcambianteLineaCredito.setBackground(new java.awt.Color(88, 147, 191));
 
@@ -212,28 +214,39 @@ public class interfaz_credito extends javax.swing.JInternalFrame {
         JPanelcambianteLineaCredito.setLayout(JPanelcambianteLineaCreditoLayout);
         JPanelcambianteLineaCreditoLayout.setHorizontalGroup(
             JPanelcambianteLineaCreditoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 671, Short.MAX_VALUE)
+            .addGap(0, 684, Short.MAX_VALUE)
         );
         JPanelcambianteLineaCreditoLayout.setVerticalGroup(
             JPanelcambianteLineaCreditoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 495, Short.MAX_VALUE)
+            .addGap(0, 482, Short.MAX_VALUE)
+        );
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(JPanelcambianteLineaCredito, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(44, 44, 44)
+                .addComponent(JPanelcambianteLineaCredito, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(55, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jInternalFrame2Layout = new javax.swing.GroupLayout(jInternalFrame2.getContentPane());
         jInternalFrame2.getContentPane().setLayout(jInternalFrame2Layout);
         jInternalFrame2Layout.setHorizontalGroup(
             jInternalFrame2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jInternalFrame2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(JPanelcambianteLineaCredito, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jInternalFrame2Layout.setVerticalGroup(
             jInternalFrame2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jInternalFrame2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(JPanelcambianteLineaCredito, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -243,12 +256,13 @@ public class interfaz_credito extends javax.swing.JInternalFrame {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jInternalFrame1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jInternalFrame2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jInternalFrame2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jInternalFrame2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addComponent(jInternalFrame1)
+            .addComponent(jInternalFrame2)
         );
 
         pack();
@@ -345,6 +359,7 @@ public class interfaz_credito extends javax.swing.JInternalFrame {
     private javax.swing.JInternalFrame jInternalFrame1;
     private javax.swing.JInternalFrame jInternalFrame2;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     // End of variables declaration//GEN-END:variables

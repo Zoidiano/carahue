@@ -112,7 +112,7 @@ public class interfaz_reportes extends javax.swing.JInternalFrame {
 
         jPanel6.setBackground(new java.awt.Color(88, 147, 191));
 
-        btnEliminar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/salir32.png"))); // NOI18N
+        btnEliminar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/mes_32.png"))); // NOI18N
         btnEliminar1.setText("REPORTE MENSUAL");
         btnEliminar1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -120,15 +120,15 @@ public class interfaz_reportes extends javax.swing.JInternalFrame {
             }
         });
 
-        BtnModificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/modificar32.png"))); // NOI18N
-        BtnModificar.setText("VENTAS DE HOY");
+        BtnModificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/today_32.png"))); // NOI18N
+        BtnModificar.setText("  VENTAS DE HOY");
         BtnModificar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BtnModificarActionPerformed(evt);
             }
         });
 
-        BtnNuevo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/adduser32.png"))); // NOI18N
+        BtnNuevo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/semana_32.png"))); // NOI18N
         BtnNuevo.setText("REPORTE SEMANAL");
         BtnNuevo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -144,7 +144,7 @@ public class interfaz_reportes extends javax.swing.JInternalFrame {
             }
         });
 
-        btnEliminar3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/salir32.png"))); // NOI18N
+        btnEliminar3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/diax_32.png"))); // NOI18N
         btnEliminar3.setText("REPORTE DIA X");
         btnEliminar3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -213,7 +213,7 @@ public class interfaz_reportes extends javax.swing.JInternalFrame {
             jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jInternalFrame1Layout.createSequentialGroup()
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, 514, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 8, Short.MAX_VALUE))
+                .addGap(0, 32, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
